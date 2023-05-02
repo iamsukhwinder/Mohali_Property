@@ -1,0 +1,74 @@
+﻿
+<table id="companytable" name="companytable" class="display responsive nowrap">
+    <thead>
+        <tr>
+
+            <th>Id</th>
+            <th>Company_name</th>
+            <th>Company_address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Pin_code</th>
+            <th>Mobile_number</th>
+            <th>Email</th>
+            <th>Action</th>
+            
+
+
+        </tr>
+    </thead>
+
+</table>
+
+<script>
+    $(function () {
+        getCompanies();
+    });
+    function getCompanies() {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/GetComopanyList",
+            success: function (data) {
+                debugger;
+                $('#companytable').DataTable().clear().destroy();
+
+                $('#companytable').dataTable({
+                    processing: true,
+                    "aaData": data,
+                    "order": [[0, 'desc']],
+                    "columns": [
+                        //{
+                        //    "data": "id",
+                        //    visible: false,
+                        //    searchable: false,
+                        //},
+
+                        { "data": "company_id" },
+                        { "data": "company_name" },
+                        { "data": "company_address" },
+                        { "data": "city" },
+                        { "data": "state" },
+                        { "data": "pin_code" },
+                        { "data": "mobileNumber" },
+                        { "data": "email" },
+                        {
+                            "mRender": function (data, type, row) {
+                                return ' <a id="btneditproduct" onclick="showeditproductmodal(' + row.id + ')"  title="Edit" class="btn-text-size btn btn-primary btneditproduct" data-id=' + row.id + '>Edit</a>';
+                                //return ' <a   class="btn-text-size " href="/Admin/editProduct/' + row.id+'" >Edit</a>';
+                            }
+                        }
+
+
+                    ]
+                })
+
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+</script>

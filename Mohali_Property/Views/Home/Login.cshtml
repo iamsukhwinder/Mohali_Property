@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    h5 {
+        color: white;
+        text-align: center;
+    }
+
+    img {
+        margin-top: 15px;
+    }
+</style>
+
+
+
+<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+
+<section class="myform-area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="form-area login-form">
+                    <div class="form-content">
+                        <h5>Mohali Property</h5>
+                        <img src="/Image/property.jpeg" style="height:250px; width:300px;" alt="Property Image" />
+                    </div>
+                    <div class="form-input">
+                        <h2>Login </h2>
+                        <form asp-controller="Home" asp-action="Login" method="post">
+                            <div class="form-group">
+                                <input type="text" id="username" name="username" required>
+                                <span style="color:red" id="eusername"></span>
+                                <label>User Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="password" name="password" required>
+                                <span style="color:red" id="epassword"></span><br />
+                                @{
+                                    if (ViewData["empty_input"] != null)
+                                    {
+                                        <span style="color:red">@ViewData["empty_input"]</span><br />
+
+                                    }
+                                    if (ViewData["invalid_input"] != null)
+                                    {
+                                        <span style="color:red" id="einvalid_input" >@ViewData["invalid_input"]</span>
+                                        
+                                    }
+                                }
+                                <label>password</label>
+                            </div>
+                            <div class="myform-button">
+                                <button class="myform-btn" onclick=" return validate()" type="submit">Login</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script>
+    
+
+   
+    function validate() {
+        var result = true;
+
+        var username = $("#username").val();
+
+        if (username == "") {
+            result = false;
+            $("#eusername").html("please enter username");
+
+        }
+        else {
+            $("#eusername").html("");
+        }
+        var password = $("#password").val();
+        if (password == "") {
+            result = false;
+            $("#epassword").html("please enter password");
+
+        }
+        else {
+            $("#epassword").html("");
+        }
+        if(result == false){
+            $("#einvalid_input").hide();
+        }
+
+        return result;
+    }
+</script>
