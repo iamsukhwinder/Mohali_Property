@@ -16,20 +16,20 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
         }
 
 
-        public async Task<Company_profile> add_company(Company_profile data)
+        public async Task<int> add_company(Company_profileVM data)
         {
             var url = "/api/Admin/add_company";
             var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url, data);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
-              var usrDetail = JsonConvert.DeserializeObject<Company_profile>(stringResponse);
+              var usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
                 return usrDetail;
             }
             else
             {
                 Console.WriteLine("Internal server Error");
-                return null ; 
+                return 0 ; 
             }
         }
 

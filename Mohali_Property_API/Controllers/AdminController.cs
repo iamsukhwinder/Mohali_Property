@@ -36,7 +36,7 @@ namespace Mohali_Property_API.Controllers
 
 
         [HttpPost("add_company")]
-        public  Company_profile add_company(Company_profile obj) 
+        public int add_company(Company_profileVM obj) 
         {
             List<SqlParameter> parms = new List<SqlParameter>
             {
@@ -50,17 +50,24 @@ namespace Mohali_Property_API.Controllers
                   new SqlParameter { ParameterName = "@website", Value = obj.website},
                   new SqlParameter { ParameterName = "@gst_number", Value = obj.gst_number},
                   new SqlParameter { ParameterName = "@status", Value = obj.status},
-                  new SqlParameter { ParameterName = "@mobile_number", Value = obj.mobile_number},
-                  new SqlParameter { ParameterName = "@landline_number", Value = obj.landline_number},
+                  new SqlParameter { ParameterName = "@mobile_number", Value = obj.mobileNumber},
+                  new SqlParameter { ParameterName = "@landline_number", Value = obj.landlineNo},
                   new SqlParameter { ParameterName = "@company_logo", Value = obj.company_logo},
 
 
             };
 
-            int n = _context.Database.ExecuteSqlRaw("EXEC add_company @company,@company_name,@email,@company_address,@city,@state,@pin_code,@website,@gst_number,@status,@mobile_number,@landline_number,@company_logo", parms.ToArray());
+            int n = _context.Database.ExecuteSqlRaw("EXEC add_company @company,@company_name,@company_address,@city,@state,@pin_code,@mobile_number,@landline_number,@email,@website,@gst_number,@status,@company_logo", parms.ToArray());
 
+            if(n == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
 
-            return obj;
+            }
 
             
         }

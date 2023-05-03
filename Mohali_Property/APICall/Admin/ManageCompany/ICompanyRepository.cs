@@ -7,7 +7,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
     {
 
         public Task<List<Company_profileVM>> GetComopanyList();
-        public Task<Company_profile> add_company(Company_profile obj);
+        public Task<int> add_company(Company_profileVM obj);
        
 
     }
