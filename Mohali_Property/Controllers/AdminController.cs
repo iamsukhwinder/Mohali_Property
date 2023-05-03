@@ -5,7 +5,9 @@ using Mohali_Property_Web.APICall.Admin.ManageCompany;
 using System.Data;
 using System.Net.Mail;
 using System.Net;
+using Microsoft.AspNetCore.Authentication;
 using System.Globalization;
+
 
 namespace Mohali_Property_Web.Controllers
 {
@@ -107,6 +109,11 @@ namespace Mohali_Property_Web.Controllers
             }
         }
 
+        public IActionResult Logout()
+        {
+            HttpContext.SignOutAsync();
+            return RedirectToAction("Login","Home");
+        }
 
     }
 }
