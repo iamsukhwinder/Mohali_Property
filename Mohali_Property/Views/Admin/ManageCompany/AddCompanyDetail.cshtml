@@ -1,44 +1,44 @@
 ﻿
 @*    
-For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?Linkname="" id=397860
 *@
 
 
 <div class="container">
-<form asp-controller="admin" asp-action="AddCompanyDetail" method="post" id="add_company_form" >
+<form asp-controller="admin" asp-action="AddCompanyDetail" method="post" enctype="multipart/form-data" id="add_company_form" >
    
         <div class="row">
             <div class="form-group col-md-6">
                 <label>Company</label>
-                <input type="text" class="form-control" id="company" placeholder="Company">
+                <input type="text" class="form-control" name="company" id="company" placeholder="Company">
             </div>
             <div class="form-group col-md-6">
                 <label>Company Name</label>
-                <input type="text" class="form-control" id="companyname" placeholder="Company Name">
+                <input type="text" class="form-control" name="companyname" id="companyname" placeholder="Company Name">
             </div>
         </div><br />
     <div class="row">
             <div class="form-group col-md-6">
                 <label>Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Email">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
             </div>
             <div class="form-group col-md-6">
                <label> Company Address</label>
-               <input type="text" class="form-control" id="address" placeholder="Company Address">
+                <input type="text" class="form-control" name="address" id="address" placeholder="Company Address">
             </div>
 
      </div>
      <br />
         <div class="form-group col-md-6">
             <label>City</label>
-        <input type="text" class="form-control" id="city" placeholder="City">
+            <input type="text" class="form-control" name="city" id="city" placeholder="City">
         </div>
         <br />
 
         <div class="row">
             <div class="form-group col-md-4">
                 <label>State</label>
-                <select id="state" class="form-control">
+                <select name="state" id="state" class="form-control">
                     <option selected>choose...</option>
                     <option>Himachal</option>
                     <option>Mohali</option>
@@ -48,30 +48,30 @@ For more information on enabling MVC for empty projects, visit http://go.microso
             </div>
             <div class="form-group col-md-2">
                 <label>PinCode</label>
-                <input type="text" class="form-control" id="pincode">
+                <input type="text" class="form-control" name="pincode" id="pincode">
             </div>
 
         <div class="form-group col-md-2">
             <label>Website</label>
-            <input type="text" class="form-control" id="website">
+                <input type="text" class="form-control" name="website" id="website">
         </div>
 
         <div class="form-group col-md-2">
             <label>GST No</label>
-            <input type="text" class="form-control" id="gst">
+                <input type="text" class="form-control" name="gst" id="gst">
         </div>
 
         <div class="form-group col-md-2">
             <label>Status</label>
-            <input type="text" class="form-control" id="status">
+                <input type="text" class="form-control" name="status" id="status">
         </div>
         <div class="form-group col-md-2">
             <label>Mobile Number</label>
-            <input type="text" class="form-control" id="mobilenumber">
+                <input type="text" class="form-control" name="mobilenumber" id="mobilenumber">
         </div>
         <div class="form-group col-md-2">
             <label>Landline Number</label>
-            <input type="text" class="form-control" id="landlinenumber">
+                <input type="text" class="form-control" name="landlinenumber" id="landlinenumber">
         </div>
         <br />
 
@@ -79,12 +79,12 @@ For more information on enabling MVC for empty projects, visit http://go.microso
         <br />
 
         <div class="form-group col-md-2">
-            <label for="inputzip">Company Logo</label>
-            <input type="file" class="form-control" id="inputzip">
+            <label for="company_logo">Company Logo</label>
+            <input type="file" name="company_logo" class="form-control" id="company_logo">
         </div><br />
      
 
-        <button type="submit" class="btn btn-primary" onclick="add_company()" >Submit</button>
+        <button type="button" class="btn btn-primary" onclick="add_company()" >Submit</button>
     
 
 </form>
@@ -94,7 +94,41 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 
         var data = new FormData();
         var form_data = $('#add_company_form').serializeArray();
-        debugger;
+        $.each(form_data, function (key, input) {
+            data.append(input.name, input.value)
+        });
+       
+        var image = $("#company_logo").val();
+        if (image != '') {
+            var file_data = $('input[name = company_logo]')[0].files;
+            for (var i = 0; i < file_data.length; i++) {
+                data.append("image", file_data[i]);
+            }
+            $.ajax({
+                url: '/Admin/AddCompanyDetail',
+                type: "post",
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                data: data,
+                
+                success: function (res) {
+
+                    if (res == 1) {
+
+                        alert("Company Added");
+
+                        
+                    } else {
+                        alert("Please try again");
+                        
+                    }
+                }
+
+            });
+
+        }
+        
     }
 </script>
 

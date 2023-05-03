@@ -5,6 +5,7 @@ using Mohali_Property_Web.APICall.Admin.ManageCompany;
 using System.Data;
 using System.Net.Mail;
 using System.Net;
+using System.Globalization;
 
 namespace Mohali_Property_Web.Controllers
 {
@@ -12,8 +13,10 @@ namespace Mohali_Property_Web.Controllers
 	public class AdminController : Controller
 	{
         private readonly ICompanyRepository _company;
-        public AdminController(ICompanyRepository company)
+        private IWebHostEnvironment _hostingEnvironment;
+        public AdminController(ICompanyRepository company, IWebHostEnvironment hostEnvironment) 
         {
+            _hostingEnvironment = hostEnvironment;
             _company = company;
         }
         public IActionResult Index()
@@ -49,50 +52,59 @@ namespace Mohali_Property_Web.Controllers
 
 
         [HttpPost]
-        public async Task<Company_profile> AddCompanyDetail(Company_profile obj)
+        public async Task<int> AddCompanyDetail(IFormCollection obj)
         {
-            var data = await _company.add_company(obj);
-            if (data != null)
+            if (obj.Files.Count != 0)
             {
+                var file = obj.Files[0];
+                var size = file.Length;
+                string company = obj["company"];
+                string company_name = obj["companyname"];
+                string company_address = obj["address"];
+                string city = obj["city"];
+                string state = obj["State"];
+                string pin_code = obj["pincode"];
+                string website = obj["website"];
+                string gst_number = obj["gst"];
+                string status = obj["status"];
+                string company_logo = file.FileName;
+                string mobileNumber = obj["mobilenumber"];
+                string landlineNo = obj["landlinenumber"];
+                string email = obj["email"];
+               
+                var webPath = _hostingEnvironment.WebRootPath;
+                var filePath = Path.Combine(webPath, "Admin/images/company_logo");
+                filePath = Path.Combine(filePath, file.FileName);
+                Company_profileVM comp = new Company_profileVM();
+                comp.company = company;
+                comp.company_name = company_name;
+                comp.company_address = company_address;
+                comp.city = city;
+                comp.state = state;
+                comp.pin_code = pin_code;
+                comp.website = website;
+                comp.gst_number = gst_number;
+                comp.status = status;
+                comp.company_logo = company_logo;
+                comp.mobileNumber = mobileNumber;
+                comp.landlineNo = landlineNo;
+                comp.email = email;
 
-
-                var file = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Email_Image", "Registrationpage.html");
-                String SendMailFrom = "bisheshdhiman5514@gmail.com";
-                String SendMailTo = obj.email;
-                String SendMailSubject = "Registration Successfully";
-
-                //String SendMailBody = "<a href='http://localhost:5063/Home/Login'>Thanks for registration for us  [Please click here to login] </a>";
-                String SendMailBody = System.IO.File.ReadAllText(file);
-                try
+                var result = await _company.add_company(comp);
+                using (var stream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
                 {
-                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com", 587);
-                    SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    MailMessage email = new MailMessage();
-                    // START
-                    email.From = new MailAddress(SendMailFrom);
-                    email.To.Add(SendMailTo);
-                    email.CC.Add(SendMailFrom);
-                    email.Subject = SendMailSubject;
-                    email.Body = SendMailBody;
-                    email.IsBodyHtml = true;
-                    //END
-                    SmtpServer.Timeout = 10000;
-                    SmtpServer.EnableSsl = true;
-                    SmtpServer.UseDefaultCredentials = false;
-                    SmtpServer.Credentials = new NetworkCredential(SendMailFrom, "neenaeaznlfjlivo");
-                    SmtpServer.Send(email);
-
+                    await file.CopyToAsync(stream);
                 }
-                catch (Exception ex)
-                {
-
-                }
+                return result;
+              
+            
+            
             }
             else
             {
-                return null;
+                return 0;
+
             }
-            return null;
         }
 
 
