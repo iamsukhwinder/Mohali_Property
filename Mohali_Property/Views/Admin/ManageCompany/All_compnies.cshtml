@@ -4,12 +4,16 @@
         margin-top: 30px;
         margin-left: 30px;
         margin-right: 30px;
+       
     }
+
+    
 </style>
 
 
 <div id="div1">
-<table id="companytable" name="companytable" class="display responsive nowrap">
+    <h3>List of All Companies</h3>
+    <table id="companytable" name="companytable" class="display responsive">
     <thead>
         <tr>
 
@@ -69,6 +73,7 @@
 
                 $('#companytable').dataTable({
                     processing: true,
+                    
                     "aaData": data,
                     "order": [[0, 'desc']],
                     "columns": [
@@ -78,9 +83,9 @@
                         //    searchable: false,
                         //},
 
-                        { "data": "company_id" },
+                        { "data": "company_id"},
                         { "data": "company_name" },
-                        { "data": "company_address" },
+                        { "data": "company_address"},
                         { "data": "city" },
                         { "data": "state" },
                         { "data": "pin_code" },
@@ -106,6 +111,7 @@
             }
         });
     }
+
 
 
 
@@ -184,3 +190,4 @@
 
 
 </script>
+

@@ -71,6 +71,22 @@ namespace Mohali_Property_API.Controllers
 
             
         }
+        [HttpGet("editcompany")]
+        public Company_profileVM editcompany ( int id)
+        {
+            SqlParameter parm = new SqlParameter("@id", id);
+            var company = _context.Company_profileVMs.FromSqlRaw("edits_company @id", parm).ToList().FirstOrDefault();
+            if(company == null)
+            {
+                return null;
+            }
+            else
+            {
+                return company;
+            }
+            
+        }
+
 
 
 
