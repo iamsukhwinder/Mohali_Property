@@ -53,6 +53,20 @@ namespace Mohali_Property_Web.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> Editcompany(int id)
+        {
+
+
+            var data = await _company.Editcompany(id);
+            return PartialView("~/Views/Admin/ManageCompany/Editcompany.cshtml");
+        }
+
+
+        
+
+
+
         [HttpPost]
         public async Task<int> AddCompanyDetail(IFormCollection obj)
         {

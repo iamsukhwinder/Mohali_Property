@@ -4495,7 +4495,7 @@ textarea.form-control-lg {
   color: #fff;
 }
 .navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 1);
 }
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
   color: rgba(255, 255, 255, 0.75);
@@ -11424,7 +11424,7 @@ body {
     padding-left: 0;
     height: 56px;
     z-index: 1039;
-    background: rgba(103,58,183,0.7);
+    background: rgba(103,58,183,0.90);
     
 }
 .sb-topnav .navbar-brand {
@@ -11498,7 +11498,7 @@ body {
   color: rgba(255, 255, 255, 0.25);
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.8);
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
   color: rgba(255, 255, 255, 0.25);
