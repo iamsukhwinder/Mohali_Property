@@ -117,9 +117,15 @@ For more information on enabling MVC for empty projects, visit http://go.microso
                     if (res == 1) {
 
                         alert("Company Added");
-
                         
-                    } else {
+                    } 
+                    if(res == 300){
+                        alert ("only image is alowed to upload");
+                    }
+                    if(res == 301){
+                        alert ("please upload only one file");
+                    }
+                    else {
                         alert("Please try again");
                         
                     }

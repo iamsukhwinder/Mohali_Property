@@ -56,6 +56,14 @@ namespace Mohali_Property_Web.Controllers
         [HttpPost]
         public async Task<int> AddCompanyDetail(IFormCollection obj)
         {
+            if(obj.Files.Count >= 2)
+            {
+                return 301;
+            }
+            if (obj.Files[0].ContentType != "image/jpeg" && obj.Files[0].ContentType != "image/png" && obj.Files[0].ContentType != "image/jpg")
+            {
+                return 300;
+            }
             if (obj.Files.Count != 0)
             {
                 var file = obj.Files[0];
