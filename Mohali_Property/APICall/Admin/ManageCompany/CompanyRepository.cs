@@ -55,7 +55,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
         [HttpGet]
         public async Task<Company_profileVM> Editcompany(int id)//int id)
         {
-            var url = "/api/Admin/Editcompany",id;
+            var url = "/api/Admin/Editcompany?id="+id;
 
             var response = await ApiCall.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
