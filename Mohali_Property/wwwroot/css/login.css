@@ -12,7 +12,7 @@ a, a:hover {
 .myform-area {
     overflow: hidden;
     padding: 60px 0;
-    background: #f4fffe;
+    /*background: #f4fffe;*/
     position: relative;
     padding-top: 70px;
     padding-bottom: 70px;
