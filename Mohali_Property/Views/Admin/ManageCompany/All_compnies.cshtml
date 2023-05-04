@@ -35,6 +35,30 @@
 </table>
 </div>
 
+
+@*edit modal*@
+<div class="modal fade" id="EditProdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Companies details</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="EditCloseModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="editModalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="EditCloseModal()" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" onclick="Update()" id="editProduct">Update changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
 <script>
     $(function () {
         getCompanies();
@@ -69,7 +93,7 @@
                         { "data": "email" },
                         {
                             "mRender": function (data, type, row) {
-                                return ' <a id="btneditproduct" onclick="showeditproductmodal(' + row.id + ')"  title="Edit" class="btn-text-size btn btn-primary btneditproduct" data-id=' + row.id + '>Edit</a>';
+                                return ' <a id="btneditproduct" onclick="showeditcompanymodal(' + row.company_id + ')"  title="Edit" class="btn-text-size btn btn-primary btneditproduct" data-id=' + row.id + '>Edit</a>';
                                 //return ' <a   class="btn-text-size " href="/Admin/editProduct/' + row.id+'" >Edit</a>';
                             }
                         }
@@ -87,4 +111,83 @@
             }
         });
     }
+
+
+
+
+
+
+
+    ////edit
+
+
+    function showeditcompanymodal(id) {
+        debugger;
+        //  var id = $("#MId").html();
+        $.get("/Admin/Editcompany/" + id,
+
+            function (res) {
+                debugger;
+                if (res) {
+                    $('#editModalBody').html(res);
+                } else {
+                    alert("Unsuccessful");
+                }
+
+            });
+
+        $('#EditProdModal').modal("show");
+    };
+    function Update() {
+        debugger;
+        var company_id = $("#company_id").val();
+        var company_name = $("#company_name").val();
+        var company_address = $("#company_address").val();
+        var city = $("#city").val();
+        var state = $("#state").val();
+        var pin_code = $("#pin_code").val();
+        var mobileNumber = $("#mobileNumber").val();
+        var email = $("email").val();
+
+
+
+
+        var data = { "company_id": company_id, "company_name": company_name, "company_address": company_address, "city": city, "state": state, "pin_code": pin_code, "mobileNumber": mobileNumber, "email": email }
+
+        $.post("/Admin/Editcompany", data,
+            function (res) {
+                debugger;
+                if (res == true) {
+
+                    $("#msg").html("Data updated successfully");
+                    clear();
+
+                };
+
+
+                // alert('Ajax called');
+
+            });
+    }
+
+    function EditCloseModal() {
+        $('#EditProdModal').modal("hide");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
+

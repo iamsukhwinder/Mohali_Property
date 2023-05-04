@@ -1,4 +1,5 @@
-﻿using Mohali_Property_Model;
+﻿using Microsoft.AspNetCore.Mvc;
+using Mohali_Property_Model;
 using Mohali_Property_Web.Extension;
 using Newtonsoft.Json;
 using System.Net.Http.Json;
@@ -50,6 +51,30 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
                 return null;
             }
         }
+
+        [HttpGet]
+        public async Task<Company_profileVM> Editcompany(int id)//int id)
+        {
+            var url = "/api/Admin/Editcompany",id;
+
+            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();
+                var _usrDetail = JsonConvert.DeserializeObject<Company_profileVM>(stringResponse);
+                return _usrDetail;
+            }
+            else
+            {
+                Console.WriteLine("Internal server Error");
+                return null;
+            }
+
+        }
+
+
+
+
     }
 
           

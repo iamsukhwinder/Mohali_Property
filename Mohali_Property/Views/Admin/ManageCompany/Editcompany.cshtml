@@ -1,0 +1,13 @@
+﻿@using Mohali_Property_Model;
+@model Company_profileVM
+
+<h3>Edit User</h3>
+<input type="hidden" asp-for="company_id" />
+
+<input type="text" asp-for="company_name" value="@Model.company_name" />
+<input type="text" asp-for="company_address" value="@Model.company_address" />
+<input type="text" asp-for="city" value="@Model.city"/>
+<input type="text" asp-for="state" value="@Model.state"/>
+<input type="text" asp-for="pin_code" value="@Model.pin_code"/>
+<input type="text" asp-for="mobileNumber" value="@Model.mobileNumber" />
+<input type="text" asp-for="email" value="@Model.email" />
