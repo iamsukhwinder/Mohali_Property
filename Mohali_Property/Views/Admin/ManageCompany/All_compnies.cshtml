@@ -125,17 +125,9 @@
     }
 
 
-
-
-
-
-
-    ////edit
-
+    //it show the comopanydetail in editing mode
 
     function showeditcompanymodal(id) {
-        debugger;
-        //  var id = $("#MId").html();
         $.get("/Admin/Editcompany/" + id,
 
             function (res) {
@@ -150,36 +142,51 @@
 
         $('#EditProdModal').modal("show");
     };
+
+
     function Update() {
-        debugger;
-        var company_id = $("#company_id").val();
-        var company_name = $("#company_name").val();
-        var company_address = $("#company_address").val();
-        var city = $("#city").val();
-        var state = $("#state").val();
-        var pin_code = $("#pin_code").val();
-        var mobileNumber = $("#mobileNumber").val();
-        var email = $("email").val();
+        var data = new FormData();
+        var form_data = $('#edit_company_form').serializeArray();
+        $.each(form_data, function (key, input) {
+            data.append(input.name, input.value)
+        });
 
+        var image = $("#company_logo").val();
+        if (image != '') {
+            var file_data = $('input[name = company_logo]')[0].files;
+            for (var i = 0; i < file_data.length; i++) {
+                data.append("image", file_data[i]);
+            }
+            $.ajax({
+                url: '/Admin/update_company_detail',
+                type: "post",
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                data: data,
 
+                success: function (res) {
 
+                    if (res == 1) {
 
-        var data = { "company_id": company_id, "company_name": company_name, "company_address": company_address, "city": city, "state": state, "pin_code": pin_code, "mobileNumber": mobileNumber, "email": email }
+                        alert("Company updated");
 
-        $.post("/Admin/Editcompany", data,
-            function (res) {
-                debugger;
-                if (res == true) {
+                    }
+                    if (res == 300) {
+                        alert("only image is alowed to upload");
+                    }
+                    if (res == 301) {
+                        alert("please upload only one file");
+                    }
+                    else {
+                        alert("Please try again");
 
-                    $("#msg").html("Data updated successfully");
-                    clear();
-
-                };
-
-
-                // alert('Ajax called');
+                    }
+                }
 
             });
+
+        }
     }
 
     function EditCloseModal() {
