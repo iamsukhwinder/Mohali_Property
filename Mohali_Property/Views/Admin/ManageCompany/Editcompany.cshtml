@@ -79,8 +79,15 @@
 
 <p>Mobile No: <input type="text" asp-for="mobileNumber" /></p>
 <p>Landline No: <input type="text" asp-for="landlineNo" /></p>
-<p>Logo: <input type="file" asp-for="company_logo"/></p>
-</form>
+<p>Logo: 
+    <button type="button"><label for="company_logo">Change Profile Pic</label></button>
+    <img id="blah" src="/Admin/images/company_logo/@Model.company_logo" alt="Product image" width="90px" height="90px" />
+
+    <input type="file" style="display:none;" asp-for="company_logo" id="company_logo" onchange="readURL(this);" />
+    
+    </p>
+    </form>
+
 
 <script>
     $(document).ready(function(){
@@ -93,7 +100,18 @@
 
 
     })
-  
+  // for image
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result).width(150).height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
  
     
 </script>
