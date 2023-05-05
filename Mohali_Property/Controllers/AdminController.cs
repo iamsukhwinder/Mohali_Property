@@ -57,7 +57,7 @@ namespace Mohali_Property_Web.Controllers
         public async Task<IActionResult> Editcompany(int id)
         {
             var company = await _company.Editcompany(id);
-            return PartialView("~/Views/Admin/ManageCompany/Editcompany.cshtml", company);
+            return PartialView("~/Views/Admin/ManageCompany/Editcompany.cshtml",company);
         }
 
 
