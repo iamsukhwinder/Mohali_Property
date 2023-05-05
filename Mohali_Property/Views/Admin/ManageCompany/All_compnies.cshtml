@@ -138,37 +138,37 @@
 
         $('#EditProdModal').modal("show");
     };
-    function Update() {
-        debugger;
-        var company_id = $("#company_id").val();
-        var company_name = $("#company_name").val();
-        var company_address = $("#company_address").val();
-        var city = $("#city").val();
-        var state = $("#state").val();
-        var pin_code = $("#pin_code").val();
-        var mobileNumber = $("#mobileNumber").val();
-        var email = $("email").val();
+    //function Update() {
+    //    debugger;
+    //    var company_id = $("#company_id").val();
+    //    var company_name = $("#company_name").val();
+    //    var company_address = $("#company_address").val();
+    //    var city = $("#city").val();
+    //    var state = $("#state").val();
+    //    var pin_code = $("#pin_code").val();
+    //    var mobileNumber = $("#mobileNumber").val();
+    //    var email = $("email").val();
 
 
 
 
-        var data = { "company_id": company_id, "company_name": company_name, "company_address": company_address, "city": city, "state": state, "pin_code": pin_code, "mobileNumber": mobileNumber, "email": email }
+    //    var data = { "company_id": company_id, "company_name": company_name, "company_address": company_address, "city": city, "state": state, "pin_code": pin_code, "mobileNumber": mobileNumber, "email": email }
 
-        $.post("/Admin/Editcompany", data,
-            function (res) {
-                debugger;
-                if (res == true) {
+    //    $.post("/Admin/Editcompany", data,
+    //        function (res) {
+    //            debugger;
+    //            if (res == true) {
 
-                    $("#msg").html("Data updated successfully");
-                    clear();
+    //                $("#msg").html("Data updated successfully");
+    //                clear();
 
-                };
+    //            };
 
 
-                // alert('Ajax called');
+    //            // alert('Ajax called');
 
-            });
-    }
+    //        });
+    //}
 
     function EditCloseModal() {
         $('#EditProdModal').modal("hide");
