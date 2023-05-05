@@ -59,7 +59,7 @@ namespace Mohali_Property_Web.Controllers
 
 
             var company = await _company.Editcompany(id);
-            return PartialView("~/Views/Admin/ManageCompany/Editcompany.cshtml", company);
+            return PartialView("~/Views/Admin/ManageCompany/Editcompany.cshtml",company);
         }
 
 
