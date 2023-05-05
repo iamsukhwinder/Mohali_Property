@@ -2,7 +2,10 @@
 @model Company_profileVM
 
 <h3>Edit User</h3>
-<input type="hidden" asp-for="company_id" />
+<form enctype="multipart/form-data" method="post" id="edit_company_form">
+
+
+    <input type="hidden" asp-for="company_id" />
 <p>Company: <input type="text" asp-for="company"/></p>
 
 <p>Company Name:<input type="text" asp-for="company_name" /></p>
@@ -77,7 +80,7 @@
 <p>Mobile No: <input type="text" asp-for="mobileNumber" /></p>
 <p>Landline No: <input type="text" asp-for="landlineNo" /></p>
 <p>Logo: <input type="file" asp-for="company_logo"/></p>
-
+</form>
 
 <script>
     $(document).ready(function(){

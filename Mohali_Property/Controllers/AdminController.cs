@@ -130,6 +130,13 @@ namespace Mohali_Property_Web.Controllers
 
             }
         }
+        [HttpPost]
+        public Task<int> update_company (Company_profileVM obj)
+        {
+            var result = _company.update_company(obj);
+            return result;
+
+        }
 
         public IActionResult Logout()
         {
