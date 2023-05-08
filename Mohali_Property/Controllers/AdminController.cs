@@ -56,8 +56,6 @@ namespace Mohali_Property_Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Editcompany(int id)
         {
-
-
             var company = await _company.Editcompany(id);
             return PartialView("~/Views/Admin/ManageCompany/Editcompany.cshtml",company);
         }
@@ -231,6 +229,11 @@ namespace Mohali_Property_Web.Controllers
             }
         }
 
+        public async Task<int> DeleteCompany(int id)
+        {
+            var data = await _company.Deletecompany(id);
+            return data;
+        }
         public IActionResult Logout()
         {
             HttpContext.SignOutAsync();

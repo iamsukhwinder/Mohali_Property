@@ -11,5 +11,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
         public Task<Company_profileVM> Editcompany(int id);
         public Task<int> update_company(Company_profileVM obj);
 
+        public Task<int> Deletecompany(int id);
+
     }
 }

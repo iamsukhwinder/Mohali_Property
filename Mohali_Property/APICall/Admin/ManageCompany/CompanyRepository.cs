@@ -86,11 +86,27 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
                 Console.WriteLine("Internal server Error");
                 return 0;
             }
+}
+        public async Task<int> Deletecompany(int id)
+        {
+            var url = "/api/Admin/Deletecompany?id=" + id;
 
-
+            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();
+                var _usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
+                return _usrDetail;
+            }
+            else
+            {
+                Console.WriteLine("Internal server Error");
+                return 0;
+            }
 
 
         }
+
 
 
     }

@@ -126,6 +126,23 @@ namespace Mohali_Property_API.Controllers
         }
 
 
+        [HttpGet("Deletecompany")]
+        public int Deletecompany(int id)
+        {
+            SqlParameter parm = new SqlParameter("@id", id);
+            var company = _context.Database.ExecuteSqlRaw("delete_company @id", parm);
+            if (company == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+
+        }
+
+
 
 
     } 
