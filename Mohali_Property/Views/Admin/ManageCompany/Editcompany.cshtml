@@ -2,7 +2,10 @@
 @model Company_profileVM
 
 <h3>Edit User</h3>
-<input type="hidden" asp-for="company_id" />
+<form enctype="multipart/form-data" method="post" id="edit_company_form">
+
+
+    <input type="hidden" asp-for="company_id" />
 <p>Company: <input type="text" asp-for="company"/></p>
 
 <p>Company Name:<input type="text" asp-for="company_name" /></p>
@@ -80,9 +83,10 @@
     <button type="button"><label for="company_logo">Change Profile Pic</label></button>
     <img id="blah" src="/Admin/images/company_logo/@Model.company_logo" alt="Product image" width="90px" height="90px" />
 
-    <input type="file" style="display:none;" asp-for="company_logo" id="company_logo" onchange="readURL(this);" />
+    <input type="file" style="display:none;" asp-for="company_logo" id="company_logo" onchange="readURL(this);" value="@Model.company_logo" />
     
     </p>
+    </form>
 
 
 <script>

@@ -24,13 +24,13 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
-              var usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
+                var usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
                 return usrDetail;
             }
             else
             {
                 Console.WriteLine("Internal server Error");
-                return 0 ; 
+                return 0;
             }
         }
 
@@ -71,14 +71,29 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
             }
 
         }
+        public async Task<int> update_company(Company_profileVM obj)
+        {
+            var url = "/api/Admin/update_company";
+            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url,obj);
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();
+                var _usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
+                return _usrDetail;
+            }
+            else
+            {
+                Console.WriteLine("Internal server Error");
+                return 0;
+            }
 
 
+
+
+        }
 
 
     }
-
-          
-
 }
    
 
