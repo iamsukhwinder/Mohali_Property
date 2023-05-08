@@ -145,6 +145,7 @@
 
 
     function Update() {
+        debugger;
         var data = new FormData();
         var form_data = $('#edit_company_form').serializeArray();
         $.each(form_data, function (key, input) {
@@ -185,6 +186,41 @@
                 }
 
             });
+        }else{
+            var imgsrc = $("#blah").attr("src");
+            var imagename = imgsrc.split("/");
+           if(imagename[3] != ""){
+               data.set("company_logo", imagename[3] );
+            $.ajax({
+                url: '/Admin/update_company',
+                type: "post",
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                data: data,
+
+                success: function (res) {
+
+                    if (res == 1) {
+
+                        alert("Company updated");
+
+                        } 
+                            else {
+                            alert("Please try again");
+
+                        }
+                    if (res == 300) {
+                        alert("only image is alowed to upload");
+                    }
+                    if (res == 301) {
+                        alert("please upload only one file");
+                    }
+                    
+                }
+
+            });
+            }
 
         }
     }

@@ -112,7 +112,7 @@ namespace Mohali_Property_API.Controllers
 
 
             };
-            var result = _context.Database.ExecuteSqlRaw("update_company @id,@company,@company_name,@company_address,@city,@state,@pin_code,@mobile_number,@landline_number,@email,@website,@gst_number,@status,@company_logo\", parms.ToArray()");
+            var result = _context.Database.ExecuteSqlRaw("update_company @id,@company,@company_name,@company_address,@city,@state,@pin_code,@mobile_number,@landline_number,@email,@website,@gst_number,@status,@company_logo", parms.ToArray());
         
             if(result == 0)
             {

@@ -73,8 +73,8 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
         }
         public async Task<int> update_company(Company_profileVM obj)
         {
-            var url = "/api/Admin/GetComopanyList";
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            var url = "/api/Admin/update_company";
+            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url,obj);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
