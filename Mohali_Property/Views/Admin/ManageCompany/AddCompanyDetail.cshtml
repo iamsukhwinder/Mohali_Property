@@ -176,7 +176,7 @@ For more information on enabling MVC for empty projects, visit http://go.microso
 
     
     function add_company(){
-        debugger;
+        
         validate();
         var data = new FormData();
         var form_data = $('#add_company_form').serializeArray();
@@ -205,16 +205,17 @@ For more information on enabling MVC for empty projects, visit http://go.microso
                         alert("Company Added");
                         
                     } 
+                    else {
+                        alert("Please try again");
+
+                    }
                     if(res == 300){
                         alert ("only image is alowed to upload");
                     }
                     if(res == 301){
                         alert ("please upload only one file");
                     }
-                    else {
-                        alert("Please try again");
-                        
-                    }
+                    
                 }
 
             });
