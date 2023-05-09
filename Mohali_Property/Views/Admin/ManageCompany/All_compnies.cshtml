@@ -158,6 +158,10 @@
             for (var i = 0; i < file_data.length; i++) {
                 data.append("image", file_data[i]);
             }
+            var state = $("#state").val();
+            var status = $("#status").val();
+            data.set("state",state);
+            data.set("status",status);
             $.ajax({
                 url: '/Admin/update_company',
                 type: "post",
@@ -173,16 +177,17 @@
                         alert("Company updated");
 
                     }
+                    else {
+                        alert("Please try again");
+
+                    }
                     if (res == 300) {
                         alert("only image is alowed to upload");
                     }
                     if (res == 301) {
                         alert("please upload only one file");
                     }
-                    else {
-                        alert("Please try again");
-
-                    }
+                    
                 }
 
             });
@@ -191,6 +196,11 @@
             var imagename = imgsrc.split("/");
            if(imagename[3] != ""){
                data.set("company_logo", imagename[3] );
+                var state = $("#state").val();
+                alert(state);
+                data.set("state", state);
+                var status = $("#status").val();
+                data.set("status", status);
             $.ajax({
                 url: '/Admin/update_company',
                 type: "post",
