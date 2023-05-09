@@ -17,6 +17,8 @@ namespace Mohali_Property_API.Controllers
             _context = context;
         }
 
+        // get the list of all the companies
+
         [HttpGet("GetComopanyList")]
         public List<Company_profileVM> GetComopanyList()
         {
@@ -85,6 +87,59 @@ namespace Mohali_Property_API.Controllers
                 return company;
             }
             
+        }
+
+        [HttpPost("update_company")]
+        public int update_company (Company_profileVM company)
+        {
+            List<SqlParameter> parms = new List<SqlParameter>
+            {
+
+                  new SqlParameter { ParameterName = "@id", Value = company.company_id },
+                  new SqlParameter { ParameterName = "@company", Value = company.company },
+                  new SqlParameter { ParameterName = "@company_name", Value = company.company_name },
+                  new SqlParameter { ParameterName = "@email", Value = company.email },
+                  new SqlParameter { ParameterName = "@company_address", Value = company.company_address },
+                  new SqlParameter { ParameterName = "@city", Value = company.city },
+                  new SqlParameter { ParameterName = "@state", Value = company.state },
+                  new SqlParameter { ParameterName = "@pin_code", Value = company.pin_code },
+                  new SqlParameter { ParameterName = "@website", Value = company.website},
+                  new SqlParameter { ParameterName = "@gst_number", Value = company.gst_number},
+                  new SqlParameter { ParameterName = "@status", Value = company.status},
+                  new SqlParameter { ParameterName = "@mobile_number", Value = company.mobileNumber},
+                  new SqlParameter { ParameterName = "@landline_number", Value = company.landlineNo},
+                  new SqlParameter { ParameterName = "@company_logo", Value = company.company_logo},
+
+
+            };
+            var result = _context.Database.ExecuteSqlRaw("update_company @id,@company,@company_name,@company_address,@city,@state,@pin_code,@mobile_number,@landline_number,@email,@website,@gst_number,@status,@company_logo", parms.ToArray());
+        
+            if(result == 0)
+            {
+                return result;
+            }
+            else
+            {
+                return 1;
+            }
+        
+        }
+
+
+        [HttpGet("Deletecompany")]
+        public int Deletecompany(int id)
+        {
+            SqlParameter parm = new SqlParameter("@id", id);
+            var company = _context.Database.ExecuteSqlRaw("delete_company @id", parm);
+            if (company == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+
         }
 
 

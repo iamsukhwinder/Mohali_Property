@@ -24,13 +24,13 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
-              var usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
+                var usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
                 return usrDetail;
             }
             else
             {
                 Console.WriteLine("Internal server Error");
-                return 0 ; 
+                return 0;
             }
         }
 
@@ -55,7 +55,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
         [HttpGet]
         public async Task<Company_profileVM> Editcompany(int id)//int id)
         {
-            var url = "/api/Admin/Editcompany?id="+id;
+            var url = "/api/Admin/editcompany?id=" + id;
 
             var response = await ApiCall.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
@@ -71,14 +71,45 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
             }
 
         }
+        public async Task<int> update_company(Company_profileVM obj)
+        {
+            var url = "/api/Admin/update_company";
+            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url,obj);
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();
+                var _usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
+                return _usrDetail;
+            }
+            else
+            {
+                Console.WriteLine("Internal server Error");
+                return 0;
+            }
+}
+        public async Task<int> Deletecompany(int id)
+        {
+            var url = "/api/Admin/Deletecompany?id=" + id;
 
+            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();
+                var _usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
+                return _usrDetail;
+            }
+            else
+            {
+                Console.WriteLine("Internal server Error");
+                return 0;
+            }
+
+
+        }
 
 
 
     }
-
-          
-
 }
    
 
