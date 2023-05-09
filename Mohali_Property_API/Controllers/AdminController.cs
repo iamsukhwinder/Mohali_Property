@@ -142,8 +142,57 @@ namespace Mohali_Property_API.Controllers
 
         }
 
+        [HttpPost("AddKothi")]
+
+        public int add_kothi(AddKothi addkothi)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                new SqlParameter {ParameterName="@kothi_number",Value=addkothi.kothi_Number},
+                new SqlParameter {ParameterName="@dimension" ,Value=addkothi.dimension},
+
+                new SqlParameter{ParameterName="@kothi_unit",Value=addkothi.kothi_unit},
+                new SqlParameter{ParameterName="@block",Value=addkothi.block},
+                new SqlParameter{ParameterName="@kothi_size" ,Value=addkothi.kothi_size},
+                new SqlParameter{ParameterName="@unit_rate" ,Value=addkothi.unit_rate},
+                new SqlParameter{ParameterName="@price",Value=addkothi.price},
+                new SqlParameter{ParameterName="@booking_amount",Value=addkothi.booking_amount},
+                new SqlParameter{ParameterName="@status",Value=addkothi.status},
+                new SqlParameter{ParameterName="@token_amount" ,Value=addkothi.token_amount}
 
 
+                };
+            var result = _context.Database.ExecuteSqlRaw("add_kothi @kothi_number,@dimension,@kothi_unit,@block,@kothi_size,@unit_rate,@price,@booking_amount,@status,@token_amount", parameters.ToArray());
+
+            if (result == 0)
+            {
+                return result;
+            }
+            else
+            {
+                return 1;
+            }
+
+
+
+        }
+
+    
+
+        [HttpGet("GetKothiList")]
+        public List<AddKothi>GetKothi()
+        {
+            var vm = _context.addKothis.FromSqlRaw("manage_kothies");
+
+            if(vm==null)
+            {
+                return null;
+            }
+            else
+            {
+                return vm.ToList();
+            }
+        }
 
     } 
 }

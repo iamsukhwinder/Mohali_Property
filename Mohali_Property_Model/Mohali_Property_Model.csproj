@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddKothi.cs" />
+    <Compile Include="AddKothiVm.cs" />
     <Compile Include="Company_profile.cs" />
     <Compile Include="Company_profileVM.cs" />
     <Compile Include="LoginModel.cs" />
