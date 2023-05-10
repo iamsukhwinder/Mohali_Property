@@ -32,7 +32,7 @@
     function getkothies() {
         $.ajax({
             type: "GET",
-            url: "/Admin/getkothieslist",
+            url: "/Kothi/getkothieslist",
             success: function (data) {
                 debugger;
                 $('#kothitable').DataTable().clear().destroy();
@@ -49,18 +49,19 @@
                         //    searchable: false,
                         //},
 
-                        { "data": "company_id" },
-                        { "data": "company_name" },
-                        { "data": "company_address" },
-                        { "data": "city" },
-                        { "data": "state" },
-                        { "data": "pin_code" },
-                        { "data": "mobileNumber" },
-                        { "data": "email" },
+                        { "data": "kothi_id" },
+                        { "data": "kothi_Number" },
+                        { "data": "block" },
+                        { "data": "kothi_size" },
+                        { "data": "kothi_unit" },
+                        { "data": "dimension" },
+                        { "data": "unit_rate" },
+                        { "data": "price" },
+                        { "data": "token_amount" },
                         {
                             "mRender": function (data, type, row) {
-                                return ' <a id="btneditproduct" onclick="showeditcompanymodal(' + row.company_id + ')"  title="Edit" class="btn-text-size btn btn-primary btneditproduct" data-id=' + row.id + '>Edit</a>';
-                                return ' <a   class="btn-text-size " href="/Admin/editProduct/' + row.id+'" >Edit</a>';
+                                //return ' <a id="btneditproduct" onclick="showeditcompanymodal(' + row.company_id + ')"  title="Edit" class="btn-text-size btn btn-primary btneditproduct" data-id=' + row.id + '>Edit</a>';
+                                //return ' <a   class="btn-text-size " href="/Admin/editProduct/' + row.id+'" >Edit</a>';
                                 return '<img src="/Image/edit.png"  height="20" width="20"  id="btneditproduct" onclick="showeditcompanymodal(' + row.company_id + ')"  title="Edit"  data-id=' + row.company_id + '>&nbsp;&nbsp;&nbsp;&nbsp; <img src="/Image/delete.png"  height="20" width="20"  id="btneditproduct" onclick="deletecompanydetail(' + row.company_id + ')"  title="Delete"  data-id=' + row.company_id + '>'
                             }
 
