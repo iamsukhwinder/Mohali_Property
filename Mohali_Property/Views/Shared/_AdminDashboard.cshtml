@@ -156,6 +156,28 @@
             });
         }
 
+        function addkothi(){
+            //$.get("/Kothi/Add_Kothi/",
+
+            //    function (res) {
+            //        $("#mainbody").html(res);
+
+            //    });
+
+           $.ajax({
+
+               type:"GET",
+                url: "/Kothi/Add_Kothi",
+                success:function(data){
+                  
+                    $("#mainbody").html(data);
+                }
+                
+
+           } );
+        }
+
+
         function showkothies(){
             $.ajax({
 

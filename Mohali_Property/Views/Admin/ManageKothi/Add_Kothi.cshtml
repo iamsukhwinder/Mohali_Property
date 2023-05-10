@@ -1,0 +1,227 @@
+﻿<style>
+    #p1 {
+        opacity: 1;
+        color: red;
+    }
+</style>
+
+
+
+<form asp-action="Add_Kothi" asp-controller="Kothi" method="post">
+
+     <h3>Add Kothi</h3>
+    <p id="p1">* All Fields are Required</p>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>Kothi Number</label>
+            <input type="text" class="form-control" name="kothi_Number" id="kothi_Number" placeholder="Kothi Number">
+            <span style="color:red" id="ekothinumber"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Block</label>
+            <input type="text" class="form-control" name="block" id="block" placeholder="Block">
+            <span style="color:red" id="eblock"></span>
+        </div>
+    </div><br />
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>Denomination</label>
+            <input type="text" class="form-control" name="dimension" id="dimension" placeholder="Denomination">
+            <span style="color:red" id="edenomination"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label> Kothi Unit</label>
+            <input type="text" class="form-control" name="kothi_unit" id="kothi_unit" placeholder="Kothi Unit">
+            <span style="color:red" id="ekothiunit"></span>
+        </div>
+        </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>Kothi Size</label>
+            <input type="text" class="form-control" name="kothi_size" id="kothi_size" placeholder="Kothi Size">
+            <span style="color:red" id="ekothisize"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Unit rate</label>
+            <input type="text" class="form-control" name="unit_rate" id="unit_rate" placeholder="Unit rate">
+            <span style="color:red" id="eunitrate"></span>
+        </div>
+
+    </div>
+    <br />
+
+    <div class="row">
+        
+        <div class="form-group col-md-6">
+            <label>Price</label>
+            <input type="text" class="form-control" name="price" id="price" placeholder="Price">
+            <span style="color:red" id="eprice"></span>
+        </div>
+
+    </div>
+    <br />
+
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>Token Amount</label>
+            <input type="text" class="form-control" name="token_amount" id="token_amount" placeholder="Token Amount">
+            <span style="color:red" id="etokenamount"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label>Status</label>
+            <select name="status" id="status" class="form-control">
+                <option selected>choose...</option>
+                <option>Active</option>
+                <option>InActive</option>
+
+            </select>
+            <span style="color:red" id="estatus"></span>
+        </div>
+
+    </div>
+    <br />
+
+
+    <button type="button" class="btn btn-primary" onclick="add_kothi()">Submit</button>
+
+</form>
+
+
+        <script>
+            function add_kothi()
+            {
+
+        var result = true;
+
+        var company = $("#ekothinumber").val();
+        debugger;
+        if (company == "") {
+            debugger;
+            result = false;
+            $("#ekothinumber").html("");
+
+        }
+        else {
+           
+            $("#ekothinumber").html("please enter  Kothi Number");
+        }
+
+
+
+        var result = true;
+
+        var company = $("#eblock").val();
+
+        if (company == "") {
+            result = false;
+            $("#eblock").html("");
+
+        }
+        else {
+           
+            $("#eblock").html("please enter Block ");
+        }
+
+        var result = true;
+
+        var company = $("#edenomination").val();
+
+        if (company == "") {
+            result = false;
+            $("#edenomination").html("please enter Denomination ");
+
+        }
+        else {
+            $("#edenomination").html("");
+        }
+
+        var result = true;
+
+        var company = $("#ekothiunit").val();
+
+        if (company == "") {
+            result = false;
+            $("#ekothiunit").html("");
+
+        }
+        else {
+            
+            $("#ekothiunit").html("please enter Kothi Unit ");
+        }
+
+        var result = true;
+
+        var company = $("#ekothisize").val();
+
+        if (company == "") {
+            result = false;
+            $("#ekothisize").html("");
+
+        }
+        else {
+          
+            $("#ekothisize").html("please enter Kothi Size ");
+        }
+
+        var result = true;
+
+        var company = $("#eunitrate").val();
+
+            if (company == "") {
+                result = false;
+            $("#eunitrate").html("");
+
+            }
+            else {
+            $("#eunitrate").html("");
+            $("#eunitrate").html("please enter Unit rate ");
+            }
+
+        var result = true;
+
+        var company = $("#eprice").val();
+
+        if (company == "") {
+            result = false;
+            $("#eprice").html("");
+
+        }
+        else {
+         
+            $("#eprice").html("please enter Price ");
+        }
+
+        var result = true;
+
+        var company = $("#etokenamount").val();
+
+        if (company == "") {
+            result = false;
+            $("#etokenamount").html("");;
+
+        }
+        else {
+          
+
+            $("#etokenamount").html("please enter Token Amount ");
+        }
+
+
+
+        var status = $("#status").val();
+        if (status == "choose...") {
+            result = false;
+            $("#estatus").html("");
+
+        }
+        else {
+         
+            $("#estatus").html("please enter status");
+        }
+
+            }
+
+
+        </script>

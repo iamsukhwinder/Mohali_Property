@@ -9,6 +9,15 @@ namespace Mohali_Property_Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Add_Kothi()
+        {
+            var check = PartialView("/Views/Admin/ManageKothi/Add_Kothi.cshtml");
+            return check;
+        }
+
+
+
         public IActionResult showkothies()
         {
             return PartialView("/Views/Admin/ManageKothi/All_kothies.cshtml");
