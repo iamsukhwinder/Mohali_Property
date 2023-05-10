@@ -7,11 +7,19 @@
 
     <input type="hidden" asp-for="company_id" />
 <p>Company: <input type="text" asp-for="company"/></p>
+<span style="color:red" id="ecompany"></span>
 
 <p>Company Name:<input type="text" asp-for="company_name" /></p>
+<span style="color:red" id="ecompanyname"></span>
+
 <p>Email: <input type="text" asp-for="email" /></p>
+<span style="color:red" id="eemail"></span>
+
 <p>Company Address: <input type="text" asp-for="company_address" /></p>
+ <span style="color:red" id="eaddress"></span>
+
 <p>City: <input type="text" asp-for="city" /></p>
+<span style="color:red" id="ecity"></span>
 
 
 <input type="hidden" asp-for="state" id="stateHide" />
@@ -57,6 +65,7 @@
 
 
     </select>
+    <span style="color:red" id="estate"></span>
 
 
 </p>
@@ -64,8 +73,14 @@
 
 
 <p>Pin Code: <input type="text" asp-for="pin_code" /></p>
+<span style="color:red" id="epincode"></span>
+
 <p>Website: <input type="text" asp-for="website"/></p>
+<span style="color:red" id="ewebsite"></span>
+
 <p>GST No: <input type="text" asp-for="gst_number"/></p>
+<span style="color:red" id="egst"></span>
+
 <input type="hidden" asp-for="status" id="sta"/>
 
 <p> Status: 
@@ -73,18 +88,22 @@
         @* <option value ="choose">choose</option>*@
          <option value ="Active">Active</option>
         <option value="InActive">Inactive</option>
- </select>   
-
+ </select>
+    <span style="color:red" id="estatus"></span>
 </p>
 
 <p>Mobile No: <input type="text" asp-for="mobileNumber" /></p>
+<span style="color:red" id="emobilenumber"></span>
+
 <p>Landline No: <input type="text" asp-for="landlineNo" /></p>
+<span style="color:red" id="elandlinenumber"></span>
+
 <p>Logo: 
     <button type="button"><label for="company_logo">Change Profile Pic</label></button>
     <img id="blah" src="/Admin/images/company_logo/@Model.company_logo" alt="Product image" width="90px" height="90px" />
 
-    <input type="file" style="display:none;" asp-for="company_logo" id="company_logo" onchange="readURL(this);" value="@Model.company_logo" />
-    
+    <input type="file" style="display:none;" asp-for="company_logo" id="company_logo" onchange="readURL(this);" />
+    <span style="color:red" id="ecompany_logo"></span>
     </p>
     </form>
 
@@ -112,6 +131,8 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
- 
+
+
+    
     
 </script>
