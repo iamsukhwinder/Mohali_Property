@@ -53,7 +53,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" onclick="EditCloseModal()" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-warning" onclick="Update()" id="editProduct">Update changes</button>
+                <button type="button" class="btn btn-warning" onclick="return Update()" id="editProduct">Update changes</button>
             </div>
         </div>
     </div>
@@ -142,16 +142,21 @@
 
         $('#EditProdModal').modal("show");
     };
-
+   
 
     function Update() {
-        debugger;
+       var result  = validate();
+       if(result== false){
+           return false;
+       }
+        
         var data = new FormData();
         var form_data = $('#edit_company_form').serializeArray();
         $.each(form_data, function (key, input) {
             data.append(input.name, input.value)
         });
-
+        
+        
         var image = $("#company_logo").val();
         if (image != '') {
             var file_data = $('input[name = company_logo]')[0].files;
@@ -230,8 +235,8 @@
                 }
 
             });
-            }
 
+        }
         }
     }
 
@@ -241,28 +246,185 @@
 
 
     function deletecompanydetail(id) {
-
-      
-
-        $.ajax({
+        var result = confirm("Are you sure want to delete?")
+        if (result) {
+        $.ajax({  
             type: "GET",
-            url: "/Admin/DeleteCompany/" + id,
-            success: function (data) {
+            url: "/Admin/DeleteCompany/" + id,            
+            success: function (data) {               
                 debugger;
+                    alert("Company details deleted");
                 getCompanies();
+            
             },
+        
             failure: function (response) {
                 alert(response.responseText);
             },
             error: function (response) {
                 alert(response.responseText);
             }
+            
         });
+        }
+        
+        
     }
 
 
 
+    function validate() {
+        var result = true;
 
+        var company = $("#company").val();
+
+        if (company == "") {
+            result = false;
+            $("#ecompany").html("please enter company ");
+
+        }
+        else {
+            $("#ecompany").html("");
+        }
+
+
+        var companyname = $("#company_name").val();
+        if (companyname == "") {
+            result = false;
+            $("#ecompanyname").html("please enter company name");
+
+        }
+        else {
+            $("#ecompanyname").html("");
+        }
+
+        var email = $("#email").val();
+        if (email == "") {
+            result = false;
+            $("#eemail").html("please enter email");
+
+        }
+        else {
+            $("#eemail").html("");
+        }
+
+
+        var address = $("#company_address").val();
+        if (address == "") {
+            result = false;
+            $("#eaddress").html("please enter address");
+
+        }
+        else {
+            $("#eaddress").html("");
+        }
+
+
+        var city = $("#city").val();
+        if (city == "") {
+            result = false;
+            $("#ecity").html("please enter city");
+
+        }
+        else {
+            $("#ecity").html("");
+        }
+
+        var state = $("#state").val();
+        debugger;
+        if (state == "choose...") {
+            result = false;
+            $("#estate").html("please select state");
+
+        }
+        else {
+            $("#estate").html("");
+        }
+
+
+        var pincode = $("#pin_code").val();
+        if (pincode == "") {
+            result = false;
+            $("#epincode").html("please enter pincode");
+
+        }
+        else {
+            $("#epincode").html("");
+        }
+
+        var website = $("#website").val();
+        if (website == "") {
+            result = false;
+            $("#ewebsite").html("please enter website");
+
+        }
+        else {
+            $("#ewebsitee").html("");
+        }
+
+        var gst = $("#gst_number").val();
+        if (gst == "") {
+            result = false;
+            $("#egst").html("please enter gst");
+
+        }
+        else {
+            $("#egst").html("");
+        }
+
+
+
+
+        var status = $("#status").val();
+        if (status == "choose...") {
+            result = false;
+            $("#estatus").html("please enter status");
+
+        }
+        else {
+            $("#estatus").html("");
+        }
+
+
+
+
+
+        var mobilenumber = $("#mobileNumber").val();
+        if (mobilenumber == "") {
+            result = false;
+            $("#emobilenumber").html("please enter moblie number");
+
+        }
+        else {
+            $("#emobilenumber").html("");
+        }
+
+        var landlinenumber = $("#landlineNo").val();
+        if (landlinenumber == "") {
+            result = false;
+            $("#elandlinenumber").html("please enter landline number");
+
+        }
+        else {
+            $("#elandlinenumber").html("");
+        }
+
+
+       
+
+
+
+
+
+
+
+
+
+        return result;
+    }
+
+
+  
 
 
 
