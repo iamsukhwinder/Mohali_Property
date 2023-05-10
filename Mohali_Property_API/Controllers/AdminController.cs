@@ -144,7 +144,7 @@ namespace Mohali_Property_API.Controllers
 
         [HttpPost("AddKothi")]
 
-        public int add_kothi(AddKothi addkothi)
+        public int add_kothi(KothiModel addkothi)
         {
             List<SqlParameter> parameters = new List<SqlParameter>
             {
@@ -180,9 +180,9 @@ namespace Mohali_Property_API.Controllers
     
 
         [HttpGet("GetKothiList")]
-        public List<AddKothi>GetKothi()
+        public List<KothiModel>GetKothi()
         {
-            var vm = _context.addKothis.FromSqlRaw("manage_kothies");
+            var vm = _context.kothis.FromSqlRaw("manage_kothies");
 
             if(vm==null)
             {
