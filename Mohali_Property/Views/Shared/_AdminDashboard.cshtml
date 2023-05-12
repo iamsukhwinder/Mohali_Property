@@ -157,17 +157,11 @@
         }
 
         function addkothi(){
-            //$.get("/Kothi/Add_Kothi/",
-
-            //    function (res) {
-            //        $("#mainbody").html(res);
-
-            //    });
-
+        
            $.ajax({
 
                type:"GET",
-                url: "/Kothi/Add_Kothi",
+                url: "/Kothi/add_kothi_view",
                 success:function(data){
                   
                     $("#mainbody").html(data);
