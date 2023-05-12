@@ -23,6 +23,41 @@
 
     </table>
 </div>
+
+
+
+@*edit modal*@
+<div class="modal fade" id="EditProdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Kothi</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="EditCloseModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="editModalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="EditCloseModal()" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" onclick="return Update()" id="editProduct">Update changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
 
 
@@ -85,6 +120,76 @@
             }
         });
     }
+
+
+
+    //it show the comopanydetail in editing mode
+
+    function showeditcompanymodal(id) {
+        $.get("/Kothi/Edit_kothi/" + id,
+
+            function (res) {
+                debugger;
+                if (res) {
+                    $('#editModalBody').html(res);
+                } else {
+                    alert("Unsuccessful");
+                }
+
+            });
+
+        $('#EditProdModal').modal("show");
+    };
+
+
+
+
+    function EditCloseModal() {
+        $('#EditProdModal').modal("hide");
+    }
+
+
+    function deletecompanydetail(id) {
+        var result = confirm("Are you sure want to delete?")
+        if (result) {
+            $.ajax({
+                type: "GET",
+                url: "/Kothi/delete_kothi/" + id,
+                success: function (data) {
+                    debugger;
+                    alert("Company details deleted");
+                    getCompanies();
+
+                },
+
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </script>

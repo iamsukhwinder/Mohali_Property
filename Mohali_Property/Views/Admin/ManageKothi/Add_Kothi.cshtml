@@ -7,7 +7,7 @@
 
 
 
-<form asp-action="Add_Kothi" asp-controller="Kothi" method="post">
+<form asp-action="Add_kothi" asp-controller="Kothi" method="post" id="form">
 
      <h3>Add Kothi</h3>
     <p id="p1">* All Fields are Required</p>
@@ -90,7 +90,40 @@
 
 
         <script>
-            function add_kothi()
+            function  add_kothi()
+            {
+                validate();
+        var valdata = $("#form").serialize();
+       // alert("Really want to add?");
+
+        $.ajax({
+            url: '/Kothi/Add_kothi',
+            type: "post",
+            dataType: 'json',
+            processData: false,
+          
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: valdata,
+
+                success: function (res) {
+
+                if (res == 1) {
+
+                    alert("Kothi Added");
+
+                }
+                else {
+                    alert("Please try again");
+
+                }
+
+            }
+        });
+        }
+
+
+
+            function validate()
             {
 
         var result = true;
@@ -130,11 +163,12 @@
 
         if (company == "") {
             result = false;
-            $("#edenomination").html("please enter Denomination ");
+            $("#edenomination").html("");
+           
 
         }
         else {
-            $("#edenomination").html("");
+            $("#edenomination").html("please enter Denomination ");
         }
 
         var result = true;
@@ -175,7 +209,7 @@
 
             }
             else {
-            $("#eunitrate").html("");
+           
             $("#eunitrate").html("please enter Unit rate ");
             }
 
@@ -203,8 +237,6 @@
 
         }
         else {
-          
-
             $("#etokenamount").html("please enter Token Amount ");
         }
 
@@ -213,12 +245,13 @@
         var status = $("#status").val();
         if (status == "choose...") {
             result = false;
-            $("#estatus").html("");
+            $("#estatus").html("please enter status");
 
         }
         else {
+            $("#estatus").html("");
          
-            $("#estatus").html("please enter status");
+            
         }
 
             }
