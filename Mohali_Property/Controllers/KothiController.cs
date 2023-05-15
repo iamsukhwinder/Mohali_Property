@@ -67,7 +67,14 @@ namespace Mohali_Property_Web.Controllers
         public async Task<int> update_kothi(KothiModel obj)
         {
             var kothies = await _kothi.update_kothi(obj);
-            return kothies;
+            if (kothies == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
         }
 
 

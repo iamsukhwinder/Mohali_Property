@@ -1,15 +1,31 @@
 ﻿<style>
+    #form {
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
     #p1 {
         opacity: 1;
         color: red;
     }
+
+    #div2 {
+        background-color: lightgrey;
+        color: white;
+    }
+
 </style>
 
-
+<div id="div1" class="container">
 
 <form asp-action="Add_kothi" asp-controller="Kothi" method="post" id="form">
+    <h3>Add Kothi</h3>
+    
+    <div id="div2">
 
-     <h3>Add Kothi</h3>
+     <h3> Kothi Information</h3>
+     </div>
     <p id="p1">* All Fields are Required</p>
     <div class="row">
         <div class="form-group col-md-6">
@@ -59,6 +75,14 @@
             <span style="color:red" id="eprice"></span>
         </div>
 
+
+        <div class="form-group col-md-6">
+            <label>Booking amount</label>
+            <input type="text" class="form-control" name="booking_amount" id="booking_amount" placeholder="Booking amount">
+            <span style="color:red" id="ebookingamount"></span>
+        </div>
+
+
     </div>
     <br />
 
@@ -88,7 +112,7 @@
 
 </form>
 
-
+</div>
         <script>
             function  add_kothi()
             {
@@ -128,121 +152,132 @@
 
         var result = true;
 
-        var company = $("#ekothinumber").val();
+        var kothi_Number = $("#kothi_Number").val();
         debugger;
-        if (company == "") {
+        if (kothi_Number == "") {
             debugger;
             result = false;
-            $("#ekothinumber").html("");
-
-        }
-        else {
-           
             $("#ekothinumber").html("please enter  Kothi Number");
-        }
-
-
-
-        var result = true;
-
-        var company = $("#eblock").val();
-
-        if (company == "") {
-            result = false;
-            $("#eblock").html("");
 
         }
         else {
+            $("#ekothinumber").html("");
            
+        }
+
+
+
+        var block = $("#block").val();
+
+        if (block == "") {
+            result = false;
             $("#eblock").html("please enter Block ");
+
         }
-
-        var result = true;
-
-        var company = $("#edenomination").val();
-
-        if (company == "") {
-            result = false;
-            $("#edenomination").html("");
+        else {
+            $("#eblock").html("");
            
-
-        }
-        else {
-            $("#edenomination").html("please enter Denomination ");
         }
 
-        var result = true;
+ 
+        var dimension = $("#dimension").val();
 
-        var company = $("#ekothiunit").val();
-
-        if (company == "") {
+        if (dimension == "") {
             result = false;
-            $("#ekothiunit").html("");
+           
+            $("#edenomination").html("please enter Denomination ");
 
         }
         else {
-            
+            $("#edenomination").html("");
+        }
+
+       
+
+        var kothi_unit = $("#kothi_unit").val();
+
+        if (kothi_unit == "") {
+            result = false;
+
             $("#ekothiunit").html("please enter Kothi Unit ");
         }
-
-        var result = true;
-
-        var company = $("#ekothisize").val();
-
-        if (company == "") {
-            result = false;
-            $("#ekothisize").html("");
-
-        }
         else {
-          
+            $("#ekothiunit").html("");
+            
+        }
+
+       
+
+        var kothi_size = $("#kothi_size").val();
+
+        if (kothi_size == "") {
+            result = false;
+
             $("#ekothisize").html("please enter Kothi Size ");
         }
+        else {
+            $("#ekothisize").html("");
+          
+        }
 
-        var result = true;
+       
 
-        var company = $("#eunitrate").val();
+        var unit_rate = $("#unit_rate").val();
 
-            if (company == "") {
+        if (unit_rate == "") {
                 result = false;
-            $("#eunitrate").html("");
+            $("#eunitrate").html("please enter Unit rate ");
 
             }
             else {
+            $("#eunitrate").html("");
            
-            $("#eunitrate").html("please enter Unit rate ");
             }
 
-        var result = true;
+     
 
-        var company = $("#eprice").val();
+        var token_amount = $("#price").val();
 
-        if (company == "") {
+        if (token_amount == "") {
             result = false;
-            $("#eprice").html("");
+            $("#eprice").html("please enter Price ");
 
         }
         else {
          
-            $("#eprice").html("please enter Price ");
+            $("#eprice").html("");
         }
 
-        var result = true;
 
-        var company = $("#etokenamount").val();
-
-        if (company == "") {
+   
+        var bookingAmount = $("#booking_amount").val();
+        if (bookingAmount == "")
+        {
             result = false;
-            $("#etokenamount").html("");;
+            $("#ebookingamount").html("please enter booking Amount ");
 
         }
         else {
+
+            $("#ebookingamount").html("");
+        }
+        
+
+       
+    var token_amount = $("#token_amount").val();
+
+    if (token_amount == "") {
+            result = false;
+
             $("#etokenamount").html("please enter Token Amount ");
+        }
+        else {
+            $("#etokenamount").html("");;
         }
 
 
 
-        var status = $("#status").val();
+    var status = $("#status").val();
         if (status == "choose...") {
             result = false;
             $("#estatus").html("please enter status");
@@ -254,6 +289,7 @@
             
         }
 
+            return  result;
             }
 
 
