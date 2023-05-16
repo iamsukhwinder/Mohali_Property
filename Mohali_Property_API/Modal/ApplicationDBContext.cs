@@ -16,7 +16,9 @@ namespace Mohali_Property_API.Modal
         public DbSet<Company_profile> Company_profiles { get; set; }
         public DbSet<Company_profileVM> Company_profileVMs { get; set; }
         public DbSet<KothiModel> kothis { get; set; }
+        public DbSet<TokenModel> tokens { get; set; }
         public DbSet<TokenVM> tokenVMs { get; set; }
+
          
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -28,6 +30,7 @@ namespace Mohali_Property_API.Modal
             modelBuilder.Entity<Company_profileVM>().HasNoKey();
 
             modelBuilder.Entity<KothiModel>().ToTable("Kothi");
+            modelBuilder.Entity<TokenModel>().ToTable("Tokens");
             modelBuilder.Entity<TokenVM>().HasNoKey();
 			
 

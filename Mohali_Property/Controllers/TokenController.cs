@@ -45,11 +45,12 @@ namespace Mohali_Property_Web.Controllers
             items1.Text = "---Select kothi---";
             items1.Value = "0";
             kothiDD.Add(items1);
+            
             foreach (var kothie in kothies)
             {
                 SelectListItem items = new SelectListItem();
-                items.Text = kothie.kothi_id.ToString();
-                items.Value = kothie.kothi_Number.ToString();
+                items.Text = kothie.kothi_Number.ToString();
+                items.Value = kothie.kothi_id.ToString();
                 kothiDD.Add(items);
             }
             ViewData["kothiesDD"] = kothiDD;
@@ -89,7 +90,25 @@ namespace Mohali_Property_Web.Controllers
             DateTime date = DateTime.Today.AddDays(30);
             string check = date.Date.ToShortDateString();
             TempData["expiry_token_date"] = check;
-                return PartialView("/Views/Admin/ManageTokens/Add_token.cshtml");
+            return PartialView("/Views/Admin/ManageTokens/Add_token.cshtml",kothies);
+        }
+
+
+        [HttpPost]
+        public async Task<int> AddToken(TokenModel token)
+        {
+            DateTime today_date = DateTime.Today.Date;
+            token.created_date = today_date;
+            var result = await _tokenRepository.AddToken(token);
+            return result;
+        }
+
+        [HttpGet]
+        public async Task<int> delete_token(int id)
+        {
+            var result =await _tokenRepository.delete_token(id);
+
+            return result;
         }
     }
 }
