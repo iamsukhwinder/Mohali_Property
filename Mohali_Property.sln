@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MohaliProperty.Dbcontext", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MohaliProperty.Services", "MohaliProperty.Services\MohaliProperty.Services.csproj", "{9AB0B8CC-3C8F-4EBF-8D65-D72CF41F6F03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MohaliProperty.Extensions", "MohaliProperty.Extensions\MohaliProperty.Extensions.csproj", "{870C14E7-CBF7-4971-BAF3-AF8B3B9C02E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9AB0B8CC-3C8F-4EBF-8D65-D72CF41F6F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AB0B8CC-3C8F-4EBF-8D65-D72CF41F6F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AB0B8CC-3C8F-4EBF-8D65-D72CF41F6F03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{870C14E7-CBF7-4971-BAF3-AF8B3B9C02E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{870C14E7-CBF7-4971-BAF3-AF8B3B9C02E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{870C14E7-CBF7-4971-BAF3-AF8B3B9C02E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{870C14E7-CBF7-4971-BAF3-AF8B3B9C02E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
