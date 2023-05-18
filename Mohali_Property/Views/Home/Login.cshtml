@@ -68,49 +68,5 @@
 </>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-<script>
-    
 
-   
-    function validate() {
-        var result = true;
-
-        var username = $("#username").val();
-
-        if (username == "") {
-            result = false;
-            $("#eusername").html("please enter username");
-
-        }
-        else {
-            $("#eusername").html("");
-        }
-        var password = $("#password").val();
-        if (password == "") {
-            result = false;
-            $("#epassword").html("please enter password");
-
-        }
-        else {
-            $("#epassword").html("");
-        }
-        if(result == false){
-            $("#einvalid_input").hide();
-        }
-
-        return result;
-    }
-
-
-
-
-   
-    
-
-
-
-
-
-
-    
-</script>
+      <script src="/js/Login/LoginValidations.js"></script>
