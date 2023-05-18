@@ -1,9 +1,15 @@
-﻿using Mohali_Property_Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Json;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Mohali_Property_Model;
+using MohaliProperty.Extensions.Extensions;
 using Newtonsoft.Json;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static Mohali_Property_Web.Extension.Configuration;
 
-namespace Mohali_Property_Web.APICall.Admin.ManageToken
+namespace MohaliProperty.Services.WebServices.Admin.ManageTokens
 {
     public class TokenRepository : ITokenRepository
     {
@@ -16,7 +22,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageToken
         public async Task<int> AddToken(TokenModel token)
         {
             var url = "/api/TokenApi/add_token";
-            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url, token);
+            var response = await Configurations.Initial(_configuration).PostAsJsonAsync(url, token);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -34,7 +40,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageToken
         {
             var url = "/api/TokenApi/gettokenlist";
 
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -50,9 +56,9 @@ namespace Mohali_Property_Web.APICall.Admin.ManageToken
 
         public async Task<int> delete_token(int id)
         {
-            var url = "/api/TokenApi/delete_token?id="+id;
+            var url = "/api/TokenApi/delete_token?id=" + id;
 
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -67,3 +73,5 @@ namespace Mohali_Property_Web.APICall.Admin.ManageToken
         }
     }
 }
+
+

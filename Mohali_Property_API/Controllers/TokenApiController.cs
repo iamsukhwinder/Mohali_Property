@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Mohali_Property_API.Modal;
+
 using Mohali_Property_Model;
+using MohaliProperty.Dbcontext.Models;
 
 namespace Mohali_Property_API.Controllers
 {
@@ -11,8 +12,8 @@ namespace Mohali_Property_API.Controllers
     [ApiController]
     public class TokenApiController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
-        public TokenApiController(ApplicationDBContext context)
+        private readonly ApplicationDbContext _context;
+        public TokenApiController(ApplicationDbContext context)
         {
             _context = context;
         }

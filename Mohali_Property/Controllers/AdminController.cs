@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using System.Globalization;
 using MohaliProperty.Model;
 using MohaliProperty.Services.WebServices.Admin.ManageCompany;
+using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 
 namespace MohaliProperty.Web.Controllers
 {

@@ -2,6 +2,7 @@
 using MohaliProperty.Services.WebServices.Admin.Login;
 using MohaliProperty.Services.WebServices.Admin.ManageCompany;
 using MohaliProperty.Services.WebServices.Admin.ManageKothi;
+using MohaliProperty.Services.WebServices.Admin.ManageTokens;
 
 var builder = WebApplication.CreateBuilder(args);
 

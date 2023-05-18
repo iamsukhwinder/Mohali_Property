@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Mohali_Property_Model;
 using MohaliProperty.Model;
 using System;
 using System.Collections.Generic;
