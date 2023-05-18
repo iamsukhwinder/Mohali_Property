@@ -1,10 +1,14 @@
-﻿using MohaliProperty.Model;
+﻿using Microsoft.Extensions.Configuration;
+using MohaliProperty.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MohaliProperty.Extensions;
+using MohaliProperty.Extensions.Extensions;
+using System.Net.Http.Json;
 
 namespace MohaliProperty.Services.WebServices.Admin.ManageCompany
 {
@@ -20,7 +24,7 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageCompany
         public async Task<int> add_company(Company_profileVM data)
         {
             var url = "/api/Admin/add_company";
-            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url, data);
+            var response = await Configurations.Initial(_configuration).PostAsJsonAsync(url, data);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -38,7 +42,7 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageCompany
         {
             var url = "/api/Admin/GetComopanyList";
 
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -52,12 +56,12 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageCompany
             }
         }
 
-        [HttpGet]
+       
         public async Task<Company_profileVM> Editcompany(int id)//int id)
         {
             var url = "/api/Admin/editcompany?id=" + id;
 
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -74,7 +78,7 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageCompany
         public async Task<int> update_company(Company_profileVM obj)
         {
             var url = "/api/Admin/update_company";
-            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url, obj);
+            var response = await Configurations.Initial(_configuration).PostAsJsonAsync(url, obj);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -91,7 +95,7 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageCompany
         {
             var url = "/api/Admin/Deletecompany?id=" + id;
 
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -105,6 +109,6 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageCompany
             }
 
 
-        
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MohaliProperty.Model;
-using Mohali_Property_Web.APICall.Admin.ManageCompany;
-using Mohali_Property_Web.APICall.Admin.ManageKothi;
+
+using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 
 namespace Mohali_Property_Web.Controllers
 {

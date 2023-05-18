@@ -6,7 +6,8 @@ using Mohali_Property.Models;
 
 using System.Diagnostics;
 using System.Security.Claims;
-
+using MohaliProperty.Model;
+using MohaliProperty.Services.WebServices.Admin.Login;
 
 namespace Mohali_Property.Controllers
 {

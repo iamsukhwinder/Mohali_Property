@@ -4,6 +4,9 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+//using Microsoft.Extensions.Configuration;
+
 
 namespace MohaliProperty.Extensions.Extensions
 {
