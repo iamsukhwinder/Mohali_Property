@@ -1,9 +1,15 @@
-﻿using Mohali_Property_Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Json;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using MohaliProperty.Extensions.Extensions;
+using MohaliProperty.Model;
 using Newtonsoft.Json;
-using static Mohali_Property_Web.Extension.Configuration;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace Mohali_Property_Web.APICall.Admin.ManageKothi
+namespace MohaliProperty.Services.WebServices.Admin.ManageKothi
 {
     public class ManageKothi : IManageKothi
     {
@@ -13,11 +19,11 @@ namespace Mohali_Property_Web.APICall.Admin.ManageKothi
             _configuration = configuration;
         }
 
-       
+
         public async Task<int> Add_Kothi(KothiModel kothiModel)
         {
             var url = "/api/Admin/AddKothi";
-            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url, kothiModel);
+            var response = await Configurations.Initial(_configuration).PostAsJsonAsync(url, kothiModel);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -35,7 +41,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageKothi
         {
             var url = "/api/Admin/DeleteKothi?id=" + id;
 
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -53,7 +59,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageKothi
         {
             var url = "/api/Admin/editKothi?id=" + id;
 
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -71,7 +77,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageKothi
         {
             var url = "/api/Admin/GetKothiList";
 
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -88,7 +94,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageKothi
         public async Task<int> update_kothi(KothiModel obj)
         {
             var url = "/api/Admin/updateKothi";
-            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url, obj);
+            var response = await Configurations.Initial(_configuration).PostAsJsonAsync(url, obj);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();

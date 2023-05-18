@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mohali_Property_Model
+namespace MohaliProperty.Model
 {
     public class LoginModel
     {

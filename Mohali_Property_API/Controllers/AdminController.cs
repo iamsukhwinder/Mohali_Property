@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Mohali_Property_API.Modal;
-using Mohali_Property_Model;
+using MohaliProperty.Dbcontext.Models;
+using MohaliProperty.Model;
 
 namespace Mohali_Property_API.Controllers
 {
@@ -12,8 +12,8 @@ namespace Mohali_Property_API.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
-        public AdminController(ApplicationDBContext context)
+        private readonly ApplicationDbContext _context;
+        public AdminController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -150,6 +150,7 @@ namespace Mohali_Property_API.Controllers
             List<SqlParameter> parameters = new List<SqlParameter>
             {
                    new SqlParameter{ParameterName="@id",Value=addkothi.kothi_id},
+                   new SqlParameter{ParameterName="@hold",Value= 1},
                 new SqlParameter {ParameterName="@kothi_number",Value=addkothi.kothi_Number},
                 new SqlParameter {ParameterName="@dimension" ,Value=addkothi.dimension},
                 new SqlParameter{ParameterName="@kothi_unit",Value=addkothi.kothi_unit},
@@ -163,7 +164,7 @@ namespace Mohali_Property_API.Controllers
 
 
                 };
-            var result = _context.Database.ExecuteSqlRaw("add_kothi @id,@kothi_number,@dimension,@kothi_unit,@block,@kothi_size,@unit_rate,@price,@booking_amount,@status,@token_amount", parameters.ToArray());
+            var result = _context.Database.ExecuteSqlRaw("add_kothi @id,@hold,@kothi_number,@dimension,@kothi_unit,@block,@kothi_size,@unit_rate,@price,@booking_amount,@status,@token_amount", parameters.ToArray());
 
             if (result == 0)
             {

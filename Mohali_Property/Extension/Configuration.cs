@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Headers;
 
-namespace Mohali_Property_Web.Extension
+namespace MohaliProperty.Web.Extension
 {
     public class Configuration
     {

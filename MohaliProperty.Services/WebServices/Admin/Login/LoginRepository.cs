@@ -1,10 +1,15 @@
-﻿
-using Mohali_Property_Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Json;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using MohaliProperty.Extensions.Extensions;
+using MohaliProperty.Model;
 using Newtonsoft.Json;
-using System.Net.Http.Headers;
-using static Mohali_Property_Web.Extension.Configuration;
 
-namespace Mohali_Property_Web.APICall.Login
+namespace MohaliProperty.Services.WebServices.Admin.Login
 {
     public class LoginRepository : ILoginRepository
     {
@@ -17,7 +22,7 @@ namespace Mohali_Property_Web.APICall.Login
         public async Task<LoginVM> Login(LoginModel obj)
         {
             var url = "/api/Login/Login";
-            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url, obj);
+            var response = await Configurations.Initial(_configuration).PostAsJsonAsync(url, obj);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -34,6 +39,7 @@ namespace Mohali_Property_Web.APICall.Login
 
     }
 }
+
 
 
 
