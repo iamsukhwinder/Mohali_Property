@@ -1,23 +1,26 @@
-﻿using Mohali_Property_Model;
+﻿using MohaliProperty.Model;
 using Newtonsoft.Json;
-using static Mohali_Property_Web.Extension.Configuration;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Mohali_Property_Web.APICall.Admin.ManageKothi
+namespace MohaliProperty.Services.WebServices.Admin.ManageCompany
 {
-    public class ManageKothi : IManageKothi
+    public class CompanyRepsoitory : ICompanyRepository
     {
         private readonly IConfiguration _configuration;
-        public ManageKothi(IConfiguration configuration)
+        public CompanyRepsoitory(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-       
-        public async Task<int> Add_Kothi(KothiModel kothiModel)
+
+        public async Task<int> add_company(Company_profileVM data)
         {
-            var url = "/api/Admin/AddKothi";
-            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url, kothiModel);
+            var url = "/api/Admin/add_company";
+            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url, data);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -31,33 +34,15 @@ namespace Mohali_Property_Web.APICall.Admin.ManageKothi
             }
         }
 
-        public async Task<int> delete_kothi(int id)
+        public async Task<List<Company_profileVM>> GetComopanyList()
         {
-            var url = "/api/Admin/DeleteKothi?id=" + id;
+            var url = "/api/Admin/GetComopanyList";
 
             var response = await ApiCall.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
-                var _usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
-                return _usrDetail;
-            }
-            else
-            {
-                Console.WriteLine("Internal server Error");
-                return 0;
-            }
-        }
-
-        public async Task<KothiModel> Edit_kothi(int id)
-        {
-            var url = "/api/Admin/editKothi?id=" + id;
-
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
-            if (response.IsSuccessStatusCode)
-            {
-                var stringResponse = await response.Content.ReadAsStringAsync();
-                var _usrDetail = JsonConvert.DeserializeObject<KothiModel>(stringResponse);
+                var _usrDetail = JsonConvert.DeserializeObject<List<Company_profileVM>>(stringResponse);
                 return _usrDetail;
             }
             else
@@ -67,15 +52,16 @@ namespace Mohali_Property_Web.APICall.Admin.ManageKothi
             }
         }
 
-        public async Task<List<KothiModel>> getkothieslist()
+        [HttpGet]
+        public async Task<Company_profileVM> Editcompany(int id)//int id)
         {
-            var url = "/api/Admin/GetKothiList";
+            var url = "/api/Admin/editcompany?id=" + id;
 
             var response = await ApiCall.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
-                var _usrDetail = JsonConvert.DeserializeObject<List<KothiModel>>(stringResponse);
+                var _usrDetail = JsonConvert.DeserializeObject<Company_profileVM>(stringResponse);
                 return _usrDetail;
             }
             else
@@ -83,11 +69,11 @@ namespace Mohali_Property_Web.APICall.Admin.ManageKothi
                 Console.WriteLine("Internal server Error");
                 return null;
             }
-        }
 
-        public async Task<int> update_kothi(KothiModel obj)
+        }
+        public async Task<int> update_company(Company_profileVM obj)
         {
-            var url = "/api/Admin/updateKothi";
+            var url = "/api/Admin/update_company";
             var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url, obj);
             if (response.IsSuccessStatusCode)
             {
@@ -101,5 +87,24 @@ namespace Mohali_Property_Web.APICall.Admin.ManageKothi
                 return 0;
             }
         }
+        public async Task<int> Deletecompany(int id)
+        {
+            var url = "/api/Admin/Deletecompany?id=" + id;
+
+            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();
+                var _usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
+                return _usrDetail;
+            }
+            else
+            {
+                Console.WriteLine("Internal server Error");
+                return 0;
+            }
+
+
+        
     }
 }

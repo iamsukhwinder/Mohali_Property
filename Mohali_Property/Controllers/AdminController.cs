@@ -1,15 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Mohali_Property_Model;
-using Mohali_Property_Web.APICall.Admin.ManageCompany;
 using System.Data;
 using System.Net.Mail;
 using System.Net;
 using Microsoft.AspNetCore.Authentication;
 using System.Globalization;
+using MohaliProperty.Model;
 
-
-namespace Mohali_Property_Web.Controllers
+namespace MohaliProperty.Web.Controllers
 {
 	[Authorize(Roles = "Admin")]
 	public class AdminController : Controller

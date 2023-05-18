@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mohali_Property_Model
+namespace MohaliProperty.Model
 {
     public  class KothiModel
     {
@@ -22,6 +22,7 @@ namespace Mohali_Property_Model
         public double booking_amount { get; set; }
         public string status { get; set; }
         public double token_amount { get; set; }
+        public int hold { get; set; }
 
     }
 }

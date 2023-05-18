@@ -1,12 +1,12 @@
-﻿using  Mohali_Property_Model;
+﻿
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Mohali_Property.Models;
-using Mohali_Property_Web.APICall;
+
 using System.Diagnostics;
 using System.Security.Claims;
-using Mohali_Property_Web.APICall.Login;
+
 
 namespace Mohali_Property.Controllers
 {
@@ -75,6 +75,7 @@ namespace Mohali_Property.Controllers
                         claims.Add(new Claim(ClaimTypes.Role, data.role_name));
                         claims.Add(new Claim(ClaimTypes.NameIdentifier, data.username));
                         claims.Add(new Claim(ClaimTypes.Name, data.password + " " + data.password));
+            
                         var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         var claimPrinciple = new ClaimsPrincipal(claimIdentity);
                         HttpContext.SignInAsync(claimPrinciple);

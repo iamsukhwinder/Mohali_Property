@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Mohali_Property_Model\Mohali_Property_Model.csproj" />
+    <ProjectReference Include="..\MohaliProperty.Dbcontext\MohaliProperty.Dbcontext.csproj" />
+    <ProjectReference Include="..\MohaliProperty.Model\MohaliProperty.Model.csproj" />
   </ItemGroup>
 
   <ItemGroup>

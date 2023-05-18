@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Mohali_Property_Model;
+using MohaliProperty.Model;
 using Mohali_Property_Web.APICall.Admin.ManageCompany;
 using Mohali_Property_Web.APICall.Admin.ManageKothi;
 

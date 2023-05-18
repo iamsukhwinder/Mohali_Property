@@ -1,10 +1,10 @@
-﻿
-using Mohali_Property_Model;
-using Newtonsoft.Json;
-using System.Net.Http.Headers;
-using static Mohali_Property_Web.Extension.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Mohali_Property_Web.APICall.Login
+namespace MohaliProperty.Services.WebServices.Admin.Login
 {
     public class LoginRepository : ILoginRepository
     {
@@ -34,6 +34,7 @@ namespace Mohali_Property_Web.APICall.Login
 
     }
 }
+
 
 
 
