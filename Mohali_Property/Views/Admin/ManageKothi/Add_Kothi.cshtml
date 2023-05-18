@@ -19,6 +19,20 @@
 
 <div id="div1" class="container">
 
+@*
+    comppany_name(drop down)
+  //  kothi_number
+  //  block
+  //  kothi_size
+  //  dimention
+  //  plot area
+  //  price
+  //  bhk
+    booking amount
+  //  status*@
+
+
+
 <form asp-action="Add_kothi" asp-controller="Kothi" method="post" id="form">
     <h3>Add Kothi</h3>
     
@@ -40,28 +54,33 @@
         </div>
     </div><br />
     <div class="row">
-        <div class="form-group col-md-6">
-            <label>Denomination</label>
-            <input type="text" class="form-control" name="dimension" id="dimension" placeholder="Denomination">
-            <span style="color:red" id="edenomination"></span>
-        </div>
-        <div class="form-group col-md-6">
-            <label> Kothi Unit</label>
-            <input type="text" class="form-control" name="kothi_unit" id="kothi_unit" placeholder="Kothi Unit">
-            <span style="color:red" id="ekothiunit"></span>
-        </div>
-        </div>
-
-    <div class="row">
+        
         <div class="form-group col-md-6">
             <label>Kothi Size</label>
             <input type="text" class="form-control" name="kothi_size" id="kothi_size" placeholder="Kothi Size">
             <span style="color:red" id="ekothisize"></span>
         </div>
+
         <div class="form-group col-md-6">
-            <label>Unit rate</label>
-            <input type="text" class="form-control" name="unit_rate" id="unit_rate" placeholder="Unit rate">
-            <span style="color:red" id="eunitrate"></span>
+                <label>Kothi Description</label>
+                <input type="text" class="form-control" name="kothi_description" id="plot_area" placeholder="Plot Area">
+                <span style="color:red" id="eplotarea"></span>
+        </div>
+        
+        </div>
+
+    <div class="row">
+            <div class="form-group col-md-6">
+                <label>Dimension</label>
+                <input type="text" class="form-control" name="dimension" id="dimension" placeholder="Denomination">
+                <span style="color:red" id="edenomination"></span>
+            </div>
+
+
+        <div class="form-group col-md-6">
+            <label>Plot Area</label>
+                <input type="text" class="form-control" name="plot_area" id="plot_area" placeholder="Plot Area">
+            <span style="color:red" id="eplotarea"></span>
         </div>
 
     </div>
@@ -77,19 +96,21 @@
 
 
         <div class="form-group col-md-6">
-            <label>Booking amount</label>
-            <input type="text" class="form-control" name="booking_amount" id="booking_amount" placeholder="Booking amount">
-            <span style="color:red" id="ebookingamount"></span>
+            <label>Bhk</label>
+            <input type="text" class="form-control" name="bhk" id="bhk" placeholder="Bhk">
+            <span style="color:red" id="ebhk"></span>
         </div>
 
 
     </div>
     <br />
 
+ 
+
 
     <div class="row">
         <div class="form-group col-md-6">
-            <label>Token Amount</label>
+            <label>Booking Amount</label>
             <input type="text" class="form-control" name="token_amount" id="token_amount" placeholder="Token Amount">
             <span style="color:red" id="etokenamount"></span>
         </div>
@@ -194,15 +215,15 @@
 
        
 
-        var kothi_unit = $("#kothi_unit").val();
+        var kothi_unit = $("#plot_area").val();
 
         if (kothi_unit == "") {
             result = false;
 
-            $("#ekothiunit").html("please enter Kothi Unit ");
+            $("#eplotarea").html("please enter Plot Area ");
         }
         else {
-            $("#ekothiunit").html("");
+            $("#eplotarea").html("");
             
         }
 

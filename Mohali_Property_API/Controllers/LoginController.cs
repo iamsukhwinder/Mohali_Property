@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Mohali_Property_API.Modal;
-using Mohali_Property_Model;
+using MohaliProperty.Dbcontext.Models;
+using MohaliProperty.Model;
 
 namespace Mohali_Property_API.Controllers
 {
@@ -12,8 +12,8 @@ namespace Mohali_Property_API.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
-        public LoginController (ApplicationDBContext context)
+        private readonly ApplicationDbContext _context;
+        public LoginController (ApplicationDbContext context)
         {
             _context = context;
         }

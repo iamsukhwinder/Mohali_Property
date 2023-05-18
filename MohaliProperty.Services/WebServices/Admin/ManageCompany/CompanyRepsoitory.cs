@@ -1,17 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Mohali_Property_Model;
-using Mohali_Property_Web.Extension;
+﻿using Microsoft.Extensions.Configuration;
+using MohaliProperty.Model;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MohaliProperty.Extensions;
+using MohaliProperty.Extensions.Extensions;
 using System.Net.Http.Json;
-using static Mohali_Property_Web.Extension.Configuration;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace Mohali_Property_Web.APICall.Admin.ManageCompany
+namespace MohaliProperty.Services.WebServices.Admin.ManageCompany
 {
-    public class CompanyRepository : ICompanyRepository
+    public class CompanyRepsoitory : ICompanyRepository
     {
         private readonly IConfiguration _configuration;
-        public CompanyRepository(IConfiguration configuration)
+        public CompanyRepsoitory(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -20,7 +24,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
         public async Task<int> add_company(Company_profileVM data)
         {
             var url = "/api/Admin/add_company";
-            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url, data);
+            var response = await Configurations.Initial(_configuration).PostAsJsonAsync(url, data);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -38,7 +42,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
         {
             var url = "/api/Admin/GetComopanyList";
 
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -52,12 +56,12 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
             }
         }
 
-        [HttpGet]
+       
         public async Task<Company_profileVM> Editcompany(int id)//int id)
         {
             var url = "/api/Admin/editcompany?id=" + id;
 
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -74,7 +78,7 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
         public async Task<int> update_company(Company_profileVM obj)
         {
             var url = "/api/Admin/update_company";
-            var response = await ApiCall.Initial(_configuration).PostAsJsonAsync(url,obj);
+            var response = await Configurations.Initial(_configuration).PostAsJsonAsync(url, obj);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -86,12 +90,12 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
                 Console.WriteLine("Internal server Error");
                 return 0;
             }
-}
+        }
         public async Task<int> Deletecompany(int id)
         {
             var url = "/api/Admin/Deletecompany?id=" + id;
 
-            var response = await ApiCall.Initial(_configuration).GetAsync(url);
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
@@ -106,10 +110,5 @@ namespace Mohali_Property_Web.APICall.Admin.ManageCompany
 
 
         }
-
-
-
     }
 }
-   
-

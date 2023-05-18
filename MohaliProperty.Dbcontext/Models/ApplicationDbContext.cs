@@ -1,18 +1,25 @@
-﻿using Mohali_Property_Model;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Mohali_Property_Model;
+using MohaliProperty.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Mohali_Property_API.Modal
+namespace MohaliProperty.Dbcontext.Models
 {
-    public class ApplicationDBContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
 
-        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
         }
         public DbSet<LoginModel> Logins { get; set; }
         public DbSet<LoginVM> LoginVMs { get; set; }
-        
+
         public DbSet<Company_profile> Company_profiles { get; set; }
         public DbSet<Company_profileVM> Company_profileVMs { get; set; }
         public DbSet<KothiModel> kothis { get; set; }
@@ -25,7 +32,7 @@ namespace Mohali_Property_API.Modal
         {
             modelBuilder.Entity<LoginModel>().ToTable("Login");
             modelBuilder.Entity<LoginVM>().HasNoKey();
-            
+
             modelBuilder.Entity<Company_profile>().ToTable("company_profile ");
             modelBuilder.Entity<Company_profileVM>().HasNoKey();
 
@@ -34,6 +41,6 @@ namespace Mohali_Property_API.Modal
             modelBuilder.Entity<TokenVM>().HasNoKey();
 			
 
-		}
+        }
     }
 }

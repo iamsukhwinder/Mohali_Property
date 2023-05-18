@@ -1,15 +1,15 @@
-using Mohali_Property_Web.APICall;
-using Mohali_Property_Web.APICall.Admin.ManageCompany;
-using Mohali_Property_Web.APICall.Admin.ManageKothi;
-using Mohali_Property_Web.APICall.Admin.ManageToken;
-using Mohali_Property_Web.APICall.Login;
+
+using MohaliProperty.Services.WebServices.Admin.Login;
+using MohaliProperty.Services.WebServices.Admin.ManageCompany;
+using MohaliProperty.Services.WebServices.Admin.ManageKothi;
+using MohaliProperty.Services.WebServices.Admin.ManageTokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
-builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+builder.Services.AddScoped<ICompanyRepository, CompanyRepsoitory>();
 builder.Services.AddScoped<IManageKothi, ManageKothi>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 
