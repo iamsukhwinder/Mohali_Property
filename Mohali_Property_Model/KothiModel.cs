@@ -12,6 +12,7 @@ namespace MohaliProperty.Model
         [Key]
         public int kothi_id { get; set; }
         public int kothi_Number { get; set; }
+
         public string block { get; set; }
         public double kothi_size { get; set; }
         public string kothi_description { get; set; }
@@ -25,6 +26,7 @@ namespace MohaliProperty.Model
         public double booking_amount { get; set; }
         public string status { get; set; }
         //public double token_amount { get; set; }
+
         public int hold { get; set; }
 
     }
