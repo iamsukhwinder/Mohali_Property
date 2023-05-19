@@ -1,4 +1,4 @@
-﻿<script>
+﻿
 
 
 
@@ -210,4 +210,3 @@
     return result;
         }
 
-</script>
