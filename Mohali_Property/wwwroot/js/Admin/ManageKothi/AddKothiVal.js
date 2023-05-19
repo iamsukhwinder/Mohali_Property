@@ -1,4 +1,4 @@
-﻿<script>
+﻿
     function  add_kothi()
     {
         validate();
@@ -178,4 +178,3 @@
             }
 
 
-</script>

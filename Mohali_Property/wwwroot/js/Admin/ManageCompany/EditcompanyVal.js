@@ -1,5 +1,5 @@
 ﻿
-<script>
+
     $(document).ready(function(){
    //     debugger;
         var s = $("#sta").val();
@@ -26,4 +26,3 @@
 
 
 
-</script>

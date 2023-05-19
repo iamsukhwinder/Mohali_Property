@@ -153,18 +153,18 @@ namespace Mohali_Property_API.Controllers
                    new SqlParameter{ParameterName="@hold",Value= 1},
                 new SqlParameter {ParameterName="@kothi_number",Value=addkothi.kothi_Number},
                 new SqlParameter {ParameterName="@dimension" ,Value=addkothi.dimension},
-                new SqlParameter{ParameterName="@kothi_unit",Value=addkothi.kothi_unit},
+                //new SqlParameter{ParameterName="@kothi_unit",Value=addkothi.kothi_unit},
                 new SqlParameter{ParameterName="@block",Value=addkothi.block},
                 new SqlParameter{ParameterName="@kothi_size" ,Value=addkothi.kothi_size},
-                new SqlParameter{ParameterName="@unit_rate" ,Value=addkothi.unit_rate},
+                //new SqlParameter{ParameterName="@unit_rate" ,Value=addkothi.unit_rate},
                 new SqlParameter{ParameterName="@price",Value=addkothi.price},
                 new SqlParameter{ParameterName="@booking_amount",Value=addkothi.booking_amount},
                 new SqlParameter{ParameterName="@status",Value=addkothi.status},
-                new SqlParameter{ParameterName="@token_amount" ,Value=addkothi.token_amount}
+                //new SqlParameter{ParameterName="@token_amount" ,Value=addkothi.token_amount}
 
 
                 };
-            var result = _context.Database.ExecuteSqlRaw("add_kothi @id,@hold,@kothi_number,@dimension,@kothi_unit,@block,@kothi_size,@unit_rate,@price,@booking_amount,@status,@token_amount", parameters.ToArray());
+            var result = _context.Database.ExecuteSqlRaw("add_kothi @id,@hold,@kothi_number,@dimension,@block,@kothi_size,@unit_rate,@price,@booking_amount,@status,@token_amount", parameters.ToArray());
 
             if (result == 0)
             {
@@ -220,18 +220,18 @@ namespace Mohali_Property_API.Controllers
                 new SqlParameter{ParameterName="@id",Value=addkothi.kothi_id},
                new SqlParameter {ParameterName="@kothi_number",Value=addkothi.kothi_Number},
                 new SqlParameter {ParameterName="@dimension" ,Value=addkothi.dimension},
-                new SqlParameter{ParameterName="@kothi_unit",Value=addkothi.kothi_unit},
+                //new SqlParameter{ParameterName="@kothi_unit",Value=addkothi.kothi_unit},
                 new SqlParameter{ParameterName="@block",Value=addkothi.block},
                 new SqlParameter{ParameterName="@kothi_size" ,Value=addkothi.kothi_size},
-                new SqlParameter{ParameterName="@unit_rate" ,Value=addkothi.unit_rate},
+                //new SqlParameter{ParameterName="@unit_rate" ,Value=addkothi.unit_rate},
                 new SqlParameter{ParameterName="@price",Value=addkothi.price},
                 new SqlParameter{ParameterName="@booking_amount",Value=addkothi.booking_amount},
                 new SqlParameter{ParameterName="@status",Value=addkothi.status},
-                new SqlParameter{ParameterName="@token_amount" ,Value=addkothi.token_amount}
+                //new SqlParameter{ParameterName="@token_amount" ,Value=addkothi.token_amount}
 
 
             };
-            var result = _context.Database.ExecuteSqlRaw("updateKothi @id, @kothi_number,@dimension,@kothi_unit,@block,@kothi_size,@unit_rate,@price,@booking_amount,@status,@token_amount", parameters.ToArray());
+            var result = _context.Database.ExecuteSqlRaw("updateKothi @id, @kothi_number,@dimension,@block,@kothi_size,@price,@booking_amount,@status", parameters.ToArray());
 
             if (result == 0)
             {

@@ -1,4 +1,4 @@
-﻿<script>
+﻿
     $(function () {
         getCompanies();
     });
@@ -370,4 +370,4 @@
 
 
 
-</script>
+
