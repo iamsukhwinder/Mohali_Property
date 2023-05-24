@@ -153,51 +153,51 @@
 
 
 
-    //function validate() {
+    function validate() {
 
-    //        var result = true;
+            var result = true;
 
-    //var kothino = $("#kothi_Number").val();
-    //debugger;
-    //if (kothino == "") {
-    //            debugger;
-    //result = false;
-
-
-    //$("#ekothinumber").html("please enter  Kothi Number");
-
-    //        }
-    //else {
-
-    //    $("#ekothinumber").html("");
-    //        }
+    var kothino = $("#kothi_Number").val();
+    debugger;
+    if (kothino == "") {
+                debugger;
+    result = false;
 
 
+    $("#ekothinumber").html("please enter  Kothi Number");
 
-    //var kothiblock = $("#block").val();
+            }
+    else {
 
-    //if (kothiblock == "") {
-    //    result = false;
-    //$("#eblock").html("please enter Block ");
-    //        }
-    //else {
-    //    $("#eblock").html("");
-    //        }
+        $("#ekothinumber").html("");
+            }
 
 
 
-    //var denonimation = $("#dimension").val();
+    var kothiblock = $("#block").val();
 
-    //if (denonimation == "") {
-    //    result = false
+    if (kothiblock == "") {
+        result = false;
+    $("#eblock").html("please enter Block ");
+            }
+    else {
+        $("#eblock").html("");
+            }
 
-    //            $("#edenomination").html("please enter Denomination ");
 
-    //        }
-    //else {
-    //    $("#edenomination").html("");
+
+    var denonimation = $("#dimension").val();
+
+    if (denonimation == "") {
+        result = false
+
+                $("#edenomination").html("please enter Denomination ");
+
+            }
+    else {
+        $("#edenomination").html("");
                 
-    //        }
+            }
 
 
 
@@ -205,69 +205,69 @@
 
 
 
-    //var kothisize = $("#kothi_size").val();
+    var kothisize = $("#kothi_size").val();
 
-    //if (kothisize == "") {
-    //    result = false;
-    //$("#ekothisize").html("please enter Kothi Size ");
+    if (kothisize == "") {
+        result = false;
+    $("#ekothisize").html("please enter Kothi Size ");
                 
-    //        }
-    //else {
+            }
+    else {
 
-    //    $("#ekothisize").html("");
-    //        }
-
-
-
-
-
-
-    //var price = $("#price").val();
-
-    //if (price == "") {
-    //    result = false;
-    //$("#eprice").html("please enter Price ");
-
-    //        }
-    //else {
-    //    $("#eprice").html("");
-
-    //        }
-
-
-
-    //var bookingAmount = $("#booking_amount").val();
-    //if (bookingAmount == "") {
-    //    result = false;
-
-
-    //$("#ebookingamount").html("please enter booking Amount ");
-    //        }
-    //else {
-    //    $("#ebookingamount").html("");
-    //        }
+        $("#ekothisize").html("");
+            }
 
 
 
 
 
 
-    //var status = $("#status").val();
-    //if (status == "choose...") {
-    //    result = false;
-    //$("#estatus").html("please enter status");
+    var price = $("#price").val();
 
-    //    }
-    //else {
-    //    $("#estatus").html("");
+    if (price == "") {
+        result = false;
+    $("#eprice").html("please enter Price ");
+
+            }
+    else {
+        $("#eprice").html("");
+
+            }
 
 
-    //    }
+
+    var bookingAmount = $("#booking_amount").val();
+    if (bookingAmount == "") {
+        result = false;
+
+
+    $("#ebookingamount").html("please enter booking Amount ");
+            }
+    else {
+        $("#ebookingamount").html("");
+            }
 
 
 
-    //return result;
-    //        }
+
+
+
+    var status = $("#status").val();
+    if (status == "choose...") {
+        result = false;
+    $("#estatus").html("please enter status");
+
+        }
+    else {
+        $("#estatus").html("");
+
+
+        }
+
+
+
+    return result;
+            }
 
 
 
