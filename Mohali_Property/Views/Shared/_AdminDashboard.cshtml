@@ -73,15 +73,15 @@
                                 <a class="nav-link" onclick="addkothi()">Add Kothi</a>
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsetokens" aria-expanded="false" aria-controls="collapsetokens">
+                        @*<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsetokens" aria-expanded="false" aria-controls="collapsetokens">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Manage Tokens
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsetokens" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        </a>*@
+                        <div id="collapsetokens" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" onclick="showtokens()">Token Detail</a>
-                                <a class="nav-link" onclick="addtoken()">Create Token</a>
+                                <a class="nav-link" asp-action="showtokens" asp-controller="Token">Manage Tokens</a>
+                                @*<a class="nav-link" onclick="addtoken()">Create Token</a>*@
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

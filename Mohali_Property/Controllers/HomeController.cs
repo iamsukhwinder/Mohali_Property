@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Security.Claims;
 using MohaliProperty.Model;
 using MohaliProperty.Services.WebServices.Admin.Login;
+using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 
 namespace Mohali_Property.Controllers
 {
@@ -15,17 +16,19 @@ namespace Mohali_Property.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ILoginRepository _loginrepository;
+        private readonly IManageKothi _kothi;
 
-        public HomeController(ILogger<HomeController> logger, ILoginRepository loginrepository)
+        public HomeController(ILogger<HomeController> logger, ILoginRepository loginrepository, IManageKothi kothi)
         {
             _logger = logger;
             _loginrepository = loginrepository;
+            _kothi = kothi;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            
-            return View();
+            var kothies =await _kothi.getkothieslist();   
+            return View(kothies);
         }
 
         public IActionResult Privacy()
