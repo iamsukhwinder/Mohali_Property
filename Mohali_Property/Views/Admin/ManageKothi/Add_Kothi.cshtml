@@ -111,10 +111,10 @@
     <div class="row">
         <div class="form-group col-md-6">
             <label>Booking Amount</label>
-            <input type="text" class="form-control" name="token_amount" id="token_amount" placeholder="Token Amount">
-            <span style="color:red" id="etokenamount"></span>
+            <input type="text" class="form-control" name="booking_amount" id="booking_amount" placeholder="Booking Amount">
+            <span style="color:red" id="ebookingamount"></span>
         </div>
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-6">
             <label>Status</label>
             <select name="status" id="status" class="form-control">
                 <option selected>choose...</option>
@@ -127,6 +127,13 @@
 
     </div>
     <br />
+    <div class="row">
+            <div class="form-group col-md-6">
+                <label for="company_logo">Kothi Image</label>
+                <input type="file" name="kothi_image" class="form-control" id="kothi_image">
+                <span style="color:red" id="ekothi_image"></span>
+            </div><br />
+    </div><br />
 
 
     <button type="button" class="btn btn-primary" onclick="add_kothi()">Submit</button>

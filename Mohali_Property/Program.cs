@@ -4,6 +4,7 @@ using MohaliProperty.Services.WebServices.Admin.ManageCompany;
 using MohaliProperty.Services.WebServices.Admin.ManageCustomer;
 using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 using MohaliProperty.Services.WebServices.Admin.ManageTokens;
+using MohaliProperty.Services.WebServices.Admin.ManageUser;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddScoped<ICompanyRepository, CompanyRepsoitory>();
 builder.Services.AddScoped<IManageKothi, ManageKothi>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<IManageCustomer, ManageCustomer>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 
 builder.Services.AddSession(options =>
 {

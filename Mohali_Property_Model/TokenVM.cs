@@ -10,7 +10,7 @@ namespace Mohali_Property_Model
     {
         public int token_id { get; set; }
         public int kothi_Number { get; set; }
-        public string kothi_size { get; set; }  
+        public double kothi_size { get; set; }  
         public string customer_name { get; set; }
         public int mobile_number { get; set; }
         public double price { get; set; }

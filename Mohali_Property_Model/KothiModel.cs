@@ -27,6 +27,8 @@ namespace MohaliProperty.Model
         public string status { get; set; }
         //public double token_amount { get; set; }
 
+        public string kothi_image { get; set; }
+
         public int hold { get; set; }
 
     }
