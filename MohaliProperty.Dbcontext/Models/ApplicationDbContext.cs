@@ -25,23 +25,19 @@ namespace MohaliProperty.Dbcontext.Models
         public DbSet<KothiModel> kothis { get; set; }
         public DbSet<TokenModel> tokens { get; set; }
         public DbSet<TokenVM> tokenVMs { get; set; }
-
+        public DbSet<CustomerModel> CustomerModels { get; set; }
         public DbSet<UserModel> users { get; set; }
-
         public DbSet<UserVM> userVMs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LoginModel>().ToTable("Login");
             modelBuilder.Entity<LoginVM>().HasNoKey();
-
             modelBuilder.Entity<Company_profile>().ToTable("company_profile ");
             modelBuilder.Entity<Company_profileVM>().HasNoKey();
-
             modelBuilder.Entity<KothiModel>().ToTable("Kothi");
-
             modelBuilder.Entity<TokenModel>().ToTable("Tokens");
             modelBuilder.Entity<TokenVM>().HasNoKey();
-
+            modelBuilder.Entity<CustomerModel>().HasNoKey();
             modelBuilder.Entity<UserModel>().ToTable("Users");
             modelBuilder.Entity <UserVM>().HasNoKey();
 

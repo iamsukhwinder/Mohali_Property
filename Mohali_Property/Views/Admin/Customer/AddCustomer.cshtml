@@ -1,0 +1,105 @@
+﻿@model Mohali_Property_Model.CustomerModel
+@{
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+
+
+<style>
+    #add_company_form {
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    #p1 {
+        opacity: 1;
+        color: red;
+    }
+
+    #div2 {
+        background-color: lightgrey;
+        color: white;
+    }
+
+</style>
+
+<div id="div1" class="container">
+
+    <form asp-controller="Customer" asp-action="AddCustomer" method="post"  id="add_customer_form">
+        <h3>Add Customer</h3>
+
+        <br />
+        <div id="div2">
+            <h3>Customer Information</h3>
+
+        </div>
+
+        <p id="p1">* All Fields are Required</p>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Customer ID</label>
+                <input type="text" class="form-control"  id="company" asp-for="customer_id" placeholder="Company">
+                <span style="color:red" id="ecompany"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Customer Name</label>
+                <input type="text" class="form-control" name="customer_name" id="customername" asp-for="customer_name" placeholder="Customer Name">
+                <span style="color:red" id="ecustomername"></span>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Parent Name</label>
+                <input type="text" class="form-control" name="parent_name" id="parentname" asp-for="parent_name" placeholder="Parent Name">
+                <span style="color:red" id="eparentname"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Address</label>
+                <input type="text" class="form-control" name="address" id="address" asp-for="address" placeholder="Address">
+                <span style="color:red" id="eaddress"></span>
+            </div>
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>City</label>
+                <input type="text" class="form-control" name="city" id="city" asp-for="city" placeholder="City">
+                <span style="color:red" id="ecity"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Customer Email</label>
+                <input type="text" class="form-control" name="customer_email" id="customeremail" asp-for="customer_email" placeholder="Customer Email" />
+                <span style="color:red" id="ecustomeremail"></span>
+
+            </div>
+
+        </div>
+        <br />
+
+        <div class="row">
+
+            <div class="form-group col-md-2">
+                <label>Mobile Number</label>
+                <input type="text" class="form-control" name="mobile_number" id="mobilenumber" asp-for="mobile_number" placeholder="Mobile Number">
+                <span style="color:red" id="emobilenumber"></span>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label>Created Date</label>
+                <input type="text" class="form-control" name="created_date" id="createddate" asp-for="created_date" placeholder="Created date">
+                <span style="color:red" id="ecreateddate"></span>
+            </div>
+            
+         </div>
+         <br />
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+
+
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="/js/Admin/ManageCustomer/AddcustomerVal.js"></script>
+

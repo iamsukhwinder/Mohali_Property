@@ -53,9 +53,7 @@ namespace Mohali_Property_Web.Controllers
                 double booking_amount = Convert.ToDouble(kothidata["booking_amount"]);
                 string status = kothidata["status"];
                 int hold = Convert.ToInt32 (kothidata["1"]);
-
                 string kothi_image = kothidata.Files[0].FileName;
-
                 var webPath = _hostingEnvironment.WebRootPath;
                 var filePath = Path.Combine(webPath, "Image/kothi_images");
                 filePath = Path.Combine(filePath, kothi_Number + file.FileName );
@@ -71,7 +69,6 @@ namespace Mohali_Property_Web.Controllers
                 kothi.bhk = bhk;
                 kothi.booking_amount = booking_amount;
                 kothi.status = status;
-
                 kothi.kothi_image = kothi_Number + file.FileName;
 
                 kothi.hold = 1;

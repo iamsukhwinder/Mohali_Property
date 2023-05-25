@@ -84,7 +84,24 @@
                                 @*<a class="nav-link" onclick="addtoken()">Create Token</a>*@
                             </nav>
                         </div>
+
+                       @*Manage Customers*@
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapse_manage_customer" aria-expanded="false" aria-controls="collapse_manage_customer">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Manage Customer
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapse_manage_customer" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" asp-controller="Customer" asp-action="ShowCustomer">All Customers</a>
+                                <a class="nav-link" asp-controller="Customer" asp-action="AddCustomer">Add Customer</a>
+
+                            </nav>
+                        </div>
+
+
                         <a class="nav-link collapsed"  data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Manage User
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -174,6 +191,7 @@
 
 
         function showkothies(){
+            debugger;
             $.ajax({
 
                 type: "GET",
@@ -203,19 +221,53 @@
                     $("#mainbody").html(data);
                 }
             });
+
        }
 
+
+        function showcustomers() {
+                $.ajax({
+                    type: "GET",
+                    url: "/Customer/showcustomers",
+                    success: function (data) {
+                        $("#mainbody").html(data);
+                    }
+                });
+       }
+
+
+        function addcustomer() {
+            debugger
+            $.ajax({
+                type: "GET",
+                url: "/Customer/addcustomerview",
+                success: function (data) {
+                    $("#mainbody").html(data);
+                }
+            });
+
+
+        }
         function add_user_view() {
             debugger;
             $.ajax({
 
                 type: "GET",
                 url: "/ManageUser/add_user_view",
+
                 success: function (data) {
                     $("#mainbody").html(data);
                 }
             });
+
+
         }
+
+
+
+
+       
+
 
         
         function all_user_view() {
