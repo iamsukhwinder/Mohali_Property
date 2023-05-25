@@ -253,7 +253,7 @@ namespace Mohali_Property_API.Controllers
         public KothiModel editKothi(int id)
         {
             SqlParameter parm=new SqlParameter("@id", id);
-            var company = _context.kothis.FromSqlRaw("edit_kothi @id", parm).ToList().FirstOrDefault();
+            var company = _context.kothis.FromSqlRaw("get_kothi_byid @id", parm).ToList().FirstOrDefault();
 
             if (company == null)
             {

@@ -22,19 +22,8 @@
 </style>
 
 <div id="div1" class="container">
-
-    @*
-    comppany_name(drop down)
-    //  kothi_number
-    //  block
-    //  kothi_size
-    //  dimention
-    //  plot area
-    //  price
-    //  bhk
-    booking amount
-    //  status*@
-
+    <span style="color:red">@ViewData["multiple_not_valid"]</span>
+    <span style="color:red">@ViewData["image_type"]</span>
 
 
     <form asp-action="Add_kothi" enctype="multipart/form-data" asp-controller="Kothi" method="post" id="form">
