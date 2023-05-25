@@ -27,17 +27,18 @@ namespace Mohali_Property_Web.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Add_Kothi(IFormCollection kothidata,KothiModel obj)
+        public async Task<IActionResult> Add_Kothi(IFormCollection kothi_image,KothiModel kothidata)
 
         {
 
-            if (kothidata.Files.Count >= 2)
+            if (kothi_image.Files.Count >= 2)
             {
-
+                ViewData["multiple_not_valid"] = "* multiple images are not allowed";
                 return View();
             }
-            if (kothidata.Files[0].ContentType != "image/jpeg" && kothidata.Files[0].ContentType != "image/png" && kothidata.Files[0].ContentType != "image/jpg")
+            if (kothi_image.Files[0].ContentType != "image/jpeg" && kothi_image.Files[0].ContentType != "image/png" && kothi_image.Files[0].ContentType != "image/jpg")
             {
+                ViewData["image_type"] = "* image type is invalid upload only jpeg,png,jpg";
                 return View();
 
             }
@@ -45,38 +46,27 @@ namespace Mohali_Property_Web.Controllers
             if(ModelState.IsValid)
             {
                
-            if (kothidata.Files.Count != 0)
+            if (kothi_image.Files.Count != 0)
             {
-                var file = kothidata.Files[0];
+                var file = kothi_image.Files[0];
                 var size = file.Length;
-                int kothi_Number = Convert.ToInt32( kothidata["kothi_Number"]);
-                string block = kothidata["block"];
-                double kothi_size = Convert.ToDouble( kothidata["kothi_size"]);
-                string kothi_description = kothidata["kothi_description"];
-                string dimension = kothidata["dimension"];
-                double plot_area = Convert.ToDouble (kothidata["plot_area"]);
-                double price = Convert.ToDouble(kothidata["price"]);
-                int bhk = Convert.ToInt32( kothidata["bhk"]);
-                double booking_amount = Convert.ToDouble(kothidata["booking_amount"]);
-                string status = kothidata["status"];
-                int hold = Convert.ToInt32 (kothidata["1"]);
-                string kothi_image = kothidata.Files["0"].FileName;
+                string kothi_image_name = file.FileName;
 
                 var webPath = _hostingEnvironment.WebRootPath;
                 var filePath = Path.Combine(webPath, "Image/kothi_images");
-                filePath = Path.Combine(filePath, file.FileName + kothi_Number);
+                filePath = Path.Combine(filePath, kothidata.kothi_Number + file.FileName);
                 KothiModel kothi = new KothiModel();
-                kothi.kothi_Number = kothi_Number;
-                kothi.block = block;
-                kothi.kothi_size = kothi_size;
-                kothi.kothi_description = kothi_description;
-                kothi.dimension = dimension;
-                kothi.plot_area = plot_area;
-                kothi.price = price;
-                kothi.bhk = bhk;
-                kothi.booking_amount = booking_amount;
-                kothi.status = status;
-                kothi.kothi_image = kothi_image;
+                kothi.kothi_Number = kothidata.kothi_Number;
+                kothi.block = kothidata.block;
+                kothi.kothi_size = kothidata.kothi_size;
+                kothi.kothi_description = kothidata.kothi_description;
+                kothi.dimension = kothidata.dimension;
+                kothi.plot_area = kothidata.plot_area;
+                kothi.price = kothidata.price;
+                kothi.bhk = kothidata.bhk;
+                kothi.booking_amount = kothidata.booking_amount;
+                kothi.status = kothidata.status;
+                kothi.kothi_image = kothidata.kothi_Number + file.FileName;
                 kothi.hold = 1;
 
                 var result = await _kothi.Add_Kothi(kothi);
@@ -107,7 +97,7 @@ namespace Mohali_Property_Web.Controllers
  
         public IActionResult showkothies()
         {
-            return PartialView("/Views/Admin/ManageKothi/All_kothies.cshtml");
+            return View();
         }
 
         public async Task<List<KothiModel>> getkothieslist()
@@ -119,7 +109,7 @@ namespace Mohali_Property_Web.Controllers
         public async Task<IActionResult> Edit_kothi(int id)
         {
             var kothies = await _kothi.Edit_kothi(id);
-                   return PartialView("/Views/Admin/ManageKothi/Edit_kothi.cshtml",kothies);
+            return View(kothies);
           
 
         }
