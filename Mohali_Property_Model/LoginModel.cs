@@ -21,13 +21,13 @@ namespace MohaliProperty.Model
         public string password { get; set; }
 
 
-        [Range(0, 15, ErrorMessage = "Can only be between 0 .. 15")]
-        [StringLength(2, ErrorMessage = "Max 2 digits")]
+        //[Range(0, 15, ErrorMessage = "Can only be between 0 .. 15")]
+        //[StringLength(2, ErrorMessage = "Max 2 digits")]
 
         public int role_id { get; set; }
 
-        [Range(0, 15, ErrorMessage = "Can only be between 0 .. 15")]
-        [StringLength(2, ErrorMessage = "Max 2 digits")]
+        //[Range(0, 15, ErrorMessage = "Can only be between 0 .. 15")]
+        //[StringLength(2, ErrorMessage = "Max 2 digits")]
         public int user_id { get; set; }
 
         [Required(ErrorMessage = "Status is required")]

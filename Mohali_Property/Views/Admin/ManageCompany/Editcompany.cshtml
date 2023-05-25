@@ -1,5 +1,5 @@
-﻿@using MohaliProperty.Model;
-@model Company_profileVM
+﻿
+@model MohaliProperty.Model.Company_profileVM
 
 <h3>Edit User</h3>
 <form enctype="multipart/form-data" method="post" id="edit_company_form">
@@ -100,7 +100,7 @@
 
 <p>Logo: 
     <button type="button"><label for="company_logo">Change Profile Pic</label></button>
-    <img id="blah" src="/Admin/images/company_logo/@Model.company_logo" alt="Product image" width="90px" height="90px" />
+    <img id="blah" src="/Admin/images/company_logo/@Model.company_logo" alt="Product image" width="90" height="90" />
 
     <input type="file" style="display:none;" asp-for="company_logo" id="company_logo" onchange="readURL(this);" />
     <span style="color:red" id="ecompany_logo"></span>
