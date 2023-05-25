@@ -149,28 +149,28 @@ namespace Mohali_Property_API.Controllers
         {
             List<SqlParameter> parameters = new List<SqlParameter>
             {
-                   new SqlParameter{ParameterName="@id",Value=addkothi.kothi_id},
-                   new SqlParameter{ParameterName="@hold",Value= 1},
-                new SqlParameter {ParameterName="@kothi_number",Value=addkothi.kothi_Number},
-                new SqlParameter {ParameterName="@dimension" ,Value=addkothi.dimension},
-
-          //      new SqlParameter{ParameterName="@kothi_unit",Value=addkothi.kothi_unit},
-                new SqlParameter{ParameterName="@block",Value=addkothi.block},
-                new SqlParameter{ParameterName="@kothi_size" ,Value=addkothi.kothi_size},
-          //      new SqlParameter{ParameterName="@unit_rate" ,Value=addkothi.unit_rate},
-                new SqlParameter{ParameterName="@price",Value=addkothi.price},
-                new SqlParameter{ParameterName="@booking_amount",Value=addkothi.booking_amount},
-                new SqlParameter{ParameterName="@status",Value=addkothi.status},
-            //    new SqlParameter{ParameterName="@token_amount" ,Value=addkothi.token_amount}
+                   new SqlParameter {ParameterName="@kothi_number",Value=addkothi.kothi_Number},
+                   new SqlParameter{ParameterName="@block",Value=addkothi.block},
+                   new SqlParameter{ParameterName="@kothi_size" ,Value=addkothi.kothi_size},
+                   new SqlParameter{ParameterName="@kothi_description",Value= addkothi.kothi_description},
+                   new SqlParameter {ParameterName="@dimension" ,Value=addkothi.dimension},
+                   new SqlParameter{ParameterName="@plot_area",Value= addkothi.plot_area},
+                   new SqlParameter{ParameterName="@price",Value=addkothi.price},
+                   new SqlParameter{ParameterName="@bhk",Value= addkothi.bhk},
+                   new SqlParameter{ParameterName="@booking_amount",Value=addkothi.booking_amount},
+                   new SqlParameter{ParameterName="@status",Value=addkothi.status},
+                   new SqlParameter{ParameterName="@hold",Value= addkothi.hold},
+                   new SqlParameter{ParameterName="@kothi_image",Value=addkothi.kothi_image},
+                
 
 
                 };
-            var result = _context.Database.ExecuteSqlRaw("add_kothi @id,@hold,@kothi_number,@dimension,@block,@kothi_size,@price,@booking_amount,@status", parameters.ToArray());
+            var result = _context.Database.ExecuteSqlRaw("add_kothi @kothi_number,@block,@kothi_size,@kothi_description,@dimension,@plot_area,@price,@bhk,@booking_amount,@status,@hold,@kothi_image", parameters.ToArray());
 
 
             if (result == 0)
             {
-                return result;
+                return 0;
             }
             else
             {

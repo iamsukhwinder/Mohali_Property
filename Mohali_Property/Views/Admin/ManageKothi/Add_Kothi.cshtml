@@ -1,4 +1,3 @@
-﻿
 @model MohaliProperty.Model.KothiModel;
 @{
     Layout = "_AdminDashboard";
@@ -132,15 +131,39 @@
                 <span style="color:red" id="estatus"></span>
             </div>
 
+
         </div>
         <br />
-        <div class="row">
+        
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>Booking Amount</label>
+            <input type="text" class="form-control" name="booking_amount" id="booking_amount" placeholder="Booking Amount">
+            <span style="color:red" id="ebookingamount"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Status</label>
+            <select name="status" id="status" class="form-control">
+                <option selected>choose...</option>
+                <option>Active</option>
+                <option>InActive</option>
+
+            </select>
+            <span style="color:red" id="estatus"></span>
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+
             <div class="form-group col-md-6">
                 <label for="company_logo">Kothi Image</label>
                 <input type="file" name="kothi_image" class="form-control" id="kothi_image">
                 <span style="color:red" id="ekothi_image"></span>
             </div><br />
-        </div><br />
+
+    </div><br />
 
 
         <button type="submit" class="btn btn-primary">Submit</button>

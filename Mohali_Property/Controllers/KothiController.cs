@@ -26,16 +26,20 @@ namespace Mohali_Property_Web.Controllers
         }
 
         [HttpPost]
+
         public async Task<IActionResult> Add_Kothi(IFormCollection kothidata,KothiModel obj)
+
         {
 
             if (kothidata.Files.Count >= 2)
             {
+
                 return View();
             }
             if (kothidata.Files[0].ContentType != "image/jpeg" && kothidata.Files[0].ContentType != "image/png" && kothidata.Files[0].ContentType != "image/jpg")
             {
                 return View();
+
             }
 
             if(ModelState.IsValid)
@@ -92,7 +96,9 @@ namespace Mohali_Property_Web.Controllers
 
             else
             {
+
                 return View();
+
 
             }
 

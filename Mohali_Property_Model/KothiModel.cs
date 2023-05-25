@@ -77,6 +77,8 @@ namespace MohaliProperty.Model
         [Required(ErrorMessage = "Hold Required!")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$")]
 
+        public string kothi_image { get; set; }
+
         public int hold { get; set; }
 
     }

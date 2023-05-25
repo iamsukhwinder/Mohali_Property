@@ -27,7 +27,7 @@ namespace Mohali_Property_Web.Controllers
         [HttpGet]
         public IActionResult showtokens()
         {
-            return PartialView("/Views/Admin/ManageTokens/All_tokens.cshtml");
+            return View("/Views/Admin/ManageTokens/All_tokens.cshtml");
         }
 
         public async Task<List<TokenVM>> GetTokenList()
