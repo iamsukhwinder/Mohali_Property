@@ -85,7 +85,7 @@ namespace Mohali_Property.Controllers
                         HttpContext.SignInAsync(claimPrinciple);
                         if (data.role_name == "Admin")
                         {
-                        TempData["admin_name"] = data.first_name + " " + data.last_name;
+                        TempData["admin_name"] = data.name;
                         return RedirectToAction("Index", "Admin");
                         }
                         else

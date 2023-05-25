@@ -26,8 +26,9 @@ namespace MohaliProperty.Dbcontext.Models
         public DbSet<TokenModel> tokens { get; set; }
         public DbSet<TokenVM> tokenVMs { get; set; }
 
-         
-        
+        public DbSet<UserModel> users { get; set; }
+
+        public DbSet<UserVM> userVMs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LoginModel>().ToTable("Login");
@@ -37,9 +38,14 @@ namespace MohaliProperty.Dbcontext.Models
             modelBuilder.Entity<Company_profileVM>().HasNoKey();
 
             modelBuilder.Entity<KothiModel>().ToTable("Kothi");
+
             modelBuilder.Entity<TokenModel>().ToTable("Tokens");
             modelBuilder.Entity<TokenVM>().HasNoKey();
-			
+
+            modelBuilder.Entity<UserModel>().ToTable("Users");
+            modelBuilder.Entity <UserVM>().HasNoKey();
+
+
 
         }
     }
