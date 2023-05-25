@@ -19,25 +19,32 @@ namespace Mohali_Property_Web.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult add_kothi_view()
+      
+        public IActionResult Add_Kothi()
         {
-            var check = PartialView("/Views/Admin/ManageKothi/Add_Kothi.cshtml");
-            return check;
+            return View();
         }
 
         [HttpPost]
-        public async Task<int> Add_kothi(IFormCollection kothidata)
+
+        public async Task<IActionResult> Add_Kothi(IFormCollection kothidata,KothiModel obj)
+
         {
 
             if (kothidata.Files.Count >= 2)
             {
-                return 301;
+
+                return View();
             }
             if (kothidata.Files[0].ContentType != "image/jpeg" && kothidata.Files[0].ContentType != "image/png" && kothidata.Files[0].ContentType != "image/jpg")
             {
-                return 300;
+                return View();
+
             }
+
+            if(ModelState.IsValid)
+            {
+               
             if (kothidata.Files.Count != 0)
             {
                 var file = kothidata.Files[0];
@@ -53,11 +60,11 @@ namespace Mohali_Property_Web.Controllers
                 double booking_amount = Convert.ToDouble(kothidata["booking_amount"]);
                 string status = kothidata["status"];
                 int hold = Convert.ToInt32 (kothidata["1"]);
-                string kothi_image = kothidata.Files[0].FileName;
+                string kothi_image = kothidata.Files["0"].FileName;
+
                 var webPath = _hostingEnvironment.WebRootPath;
                 var filePath = Path.Combine(webPath, "Image/kothi_images");
-                filePath = Path.Combine(filePath, kothi_Number + file.FileName );
-
+                filePath = Path.Combine(filePath, file.FileName + kothi_Number);
                 KothiModel kothi = new KothiModel();
                 kothi.kothi_Number = kothi_Number;
                 kothi.block = block;
@@ -69,8 +76,7 @@ namespace Mohali_Property_Web.Controllers
                 kothi.bhk = bhk;
                 kothi.booking_amount = booking_amount;
                 kothi.status = status;
-                kothi.kothi_image = kothi_Number + file.FileName;
-
+                kothi.kothi_image = kothi_image;
                 kothi.hold = 1;
 
                 var result = await _kothi.Add_Kothi(kothi);
@@ -78,20 +84,27 @@ namespace Mohali_Property_Web.Controllers
                 {
                     await file.CopyToAsync(stream);
                 }
-                return result;
+                    return View();
 
 
-
+                }
+                else
+                {
+                    return View();
+                }
             }
+
             else
             {
-                return 0;
+
+                return View();
+
 
             }
 
         }
 
-
+ 
         public IActionResult showkothies()
         {
             return PartialView("/Views/Admin/ManageKothi/All_kothies.cshtml");

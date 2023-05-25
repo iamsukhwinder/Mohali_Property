@@ -26,9 +26,7 @@
 
                     if (res == 1) {
 
-
                         alert("kohti Added");
-
 
                     }
                     else {
