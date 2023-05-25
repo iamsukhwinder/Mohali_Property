@@ -70,7 +70,7 @@
                         <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" onclick="showkothies()">All Kothies</a>
-                                <a class="nav-link" onclick="addkothi()">Add Kothi</a>
+                                <a class="nav-link" href="/Kothi/Add_Kothi">Add Kothi</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsetokens" aria-expanded="false" aria-controls="collapsetokens">
@@ -126,12 +126,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                        @TempData["admin_name"] @{ TempData.Keep("admin_name"); }
-                        
-                    
-                </div>
+              
             </nav>
         </div>
         <div id="layoutSidenav_content">

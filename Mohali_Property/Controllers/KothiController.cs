@@ -19,30 +19,86 @@ namespace Mohali_Property_Web.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult add_kothi_view()
+      
+        public IActionResult Add_Kothi()
         {
-            var check = PartialView("/Views/Admin/ManageKothi/Add_Kothi.cshtml");
-            return check;
+            return View();
         }
 
         [HttpPost]
-        public async Task<int> Add_kothi(KothiModel kothiModel)
+        public async Task<IActionResult> Add_Kothi(IFormCollection kothidata,KothiModel obj)
         {
 
-            var data = await _kothi.Add_Kothi(kothiModel);
-            if (data == null)
+            if (kothidata.Files.Count >= 2)
             {
-                return 0;
+                return View();
             }
+            if (kothidata.Files[0].ContentType != "image/jpeg" && kothidata.Files[0].ContentType != "image/png" && kothidata.Files[0].ContentType != "image/jpg")
+            {
+                return View();
+            }
+
+            if(ModelState.IsValid)
+            {
+               
+            if (kothidata.Files.Count != 0)
+            {
+                var file = kothidata.Files[0];
+                var size = file.Length;
+                int kothi_Number = Convert.ToInt32( kothidata["kothi_Number"]);
+                string block = kothidata["block"];
+                double kothi_size = Convert.ToDouble( kothidata["kothi_size"]);
+                string kothi_description = kothidata["kothi_description"];
+                string dimension = kothidata["dimension"];
+                double plot_area = Convert.ToDouble (kothidata["plot_area"]);
+                double price = Convert.ToDouble(kothidata["price"]);
+                int bhk = Convert.ToInt32( kothidata["bhk"]);
+                double booking_amount = Convert.ToDouble(kothidata["booking_amount"]);
+                string status = kothidata["status"];
+                int hold = Convert.ToInt32 (kothidata["1"]);
+                string kothi_image = kothidata.Files["0"].FileName;
+
+                var webPath = _hostingEnvironment.WebRootPath;
+                var filePath = Path.Combine(webPath, "Image/kothi_images");
+                filePath = Path.Combine(filePath, file.FileName + kothi_Number);
+                KothiModel kothi = new KothiModel();
+                kothi.kothi_Number = kothi_Number;
+                kothi.block = block;
+                kothi.kothi_size = kothi_size;
+                kothi.kothi_description = kothi_description;
+                kothi.dimension = dimension;
+                kothi.plot_area = plot_area;
+                kothi.price = price;
+                kothi.bhk = bhk;
+                kothi.booking_amount = booking_amount;
+                kothi.status = status;
+                kothi.kothi_image = kothi_image;
+                kothi.hold = 1;
+
+                var result = await _kothi.Add_Kothi(kothi);
+                using (var stream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                    return View();
+
+
+                }
+                else
+                {
+                    return View();
+                }
+            }
+
             else
             {
-                return 1;
+                return View();
+
             }
 
         }
 
-
+ 
         public IActionResult showkothies()
         {
             return PartialView("/Views/Admin/ManageKothi/All_kothies.cshtml");
