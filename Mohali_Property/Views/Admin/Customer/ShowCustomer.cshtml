@@ -6,35 +6,44 @@
 }
 
 <style>
-    #div1 {
+    #div2 {
+        /*width : 500px;*/
         margin-top: 30px;
         margin-left: 30px;
         margin-right: 30px;
     }
-
+   /* #customertable{
+        width : 700px;
+    }*/
     #btneditproduct:hover {
         cursor: pointer;
     }
 
+    
+
 </style>
 
 
-<div id="div1">
+<div id="div2">
     <h3>List of All Customers</h3>
-    <table id="customertable" name="customertable" class="display responsive">
+    <br />
+    <button type="button" class="btn btn-warning"><a asp-controller="Customer" asp-action="AddCustomer">Add Customer</a></button>
+    <br />
+    <br />
+    <table  id="customertable" name="customertable" class="display responsive">
         <thead>
             <tr>
-
+               
                 <th>Customer_id</th>
                 <th>Customer_name</th>
                 <th>Parent_name</th>
                 <th>Address</th>
                 <th>City</th>
-                <th>Customer_email</th>
+               @* <th>Customer_email</th>*@
                 <th>Mobile_number</th>
                 <th>Created_date</th>
                 <th>Action</th>
-
+               
             </tr>
         </thead>
 
@@ -42,7 +51,32 @@
 </div>
 
 
+
+@*edit modal*@
+<div class="modal fade" id="EditProdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Customer Details</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="EditCloseModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="editModalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="EditCloseModal()" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" onclick="return Update()" id="editProduct">Update changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
-<script src="~/js/Admin/ManageCustomer/AllCustomerVal.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+
+
+<script src="~/js/Admin/ManageCustomer/AllCustomerVal.js?v=3"></script>
+
 

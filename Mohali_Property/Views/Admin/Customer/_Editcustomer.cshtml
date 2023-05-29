@@ -1,0 +1,36 @@
+﻿@model Mohali_Property_Model.CustomerModel
+
+
+<form enctype="multipart/form-data" asp-controller="Customer" asp-action="Update" method="post" id="edit_customer_form">
+    <input type="hidden" asp-for="customer_id" />
+    
+    <label><b>Customer Name</b></label>
+    <input type="text" class="form-control"  asp-for="customer_name" >
+    <span style="color:red" id="ecustomername"></span><br />
+
+    <label><b>Parent Name</b></label>
+    <input type="text" class="form-control"  asp-for="parent_name">
+    <span style="color:red" id="eparentname"></span><br />
+
+    <label><b>Address</b></label>
+    <input type="text" class="form-control"  asp-for="address">
+    <span style="color:red" id="eaddress"></span><br />
+
+    <label><b>Customer Email</b></label>
+    <input type="text" class="form-control" asp-for="customer_email">
+    <span style="color:red" id="ecustomeremail"></span><br />
+
+    <label><b>City</b></label>
+    <input type="text" class="form-control"  asp-for="city">
+    <span style="color:red" id="ecity"></span><br />
+
+    <label><b>Mobile Number</b></label>
+    <input type="text" class="form-control" asp-for="mobile_number">
+    <span style="color:red" id="emobilenumber"></span><br />
+    
+    <input type="hidden" class="form-control" asp-for="created_date">
+
+    
+
+</form>
+<script src="~/js/Admin/ManageCustomer/AddcustomerVal.js"></script>
