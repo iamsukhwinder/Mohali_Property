@@ -5,7 +5,7 @@
     function getCompanies() {
         $.ajax({
             type: "GET",
-            url: "/Admin/GetComopanyList",
+            url: "/Company/GetComopanyList",
             success: function (data) {
                 debugger;
                 $('#companytable').DataTable().clear().destroy();
@@ -62,7 +62,7 @@
     //it show the comopanydetail in editing mode
 
     function showeditcompanymodal(id) {
-        $.get("/Admin/Editcompany/" + id,
+        $.get("/Company/Editcompany/" + id,
 
             function (res) {
                 debugger;
@@ -184,7 +184,7 @@
     if (result) {
         $.ajax({
             type: "GET",
-            url: "/Admin/DeleteCompany/" + id,
+            url: "/Company/DeleteCompany/" + id,
             success: function (data) {
                 debugger;
                 alert("Company details deleted");

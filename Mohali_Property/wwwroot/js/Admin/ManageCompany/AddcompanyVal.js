@@ -18,7 +18,7 @@
         data.append("image", file_data[i]);
             }
     $.ajax({
-        url: '/Admin/AddCompanyDetail',
+        url: '/Company/AddCompany',
     type: "post",
     dataType: 'json',
     processData: false,
