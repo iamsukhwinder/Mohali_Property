@@ -5,6 +5,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Mohali_Property_Model;
 using MohaliProperty.Extensions.Extensions;
 using MohaliProperty.Model;
 using Newtonsoft.Json;
@@ -81,8 +82,8 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageKothi
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
-                var _usrDetail = JsonConvert.DeserializeObject<List<KothiModel>>(stringResponse);
-                return _usrDetail;
+                var _usrDetail = JsonConvert.DeserializeObject<ResponseModel<List<KothiModel>>>(stringResponse);
+                return _usrDetail.data;
             }
             else
             {
@@ -91,20 +92,20 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageKothi
             }
         }
 
-        public async Task<int> update_kothi(KothiModel obj)
+        public async Task<ResponseModel<int>> update_kothi(KothiModel obj)
         {
             var url = "/api/Admin/updateKothi";
             var response = await Configurations.Initial(_configuration).PostAsJsonAsync(url, obj);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
-                var _usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
+                var _usrDetail = JsonConvert.DeserializeObject<ResponseModel<int>>(stringResponse);
                 return _usrDetail;
             }
             else
             {
                 Console.WriteLine("Internal server Error");
-                return 0;
+                return null;
             }
         }
     }

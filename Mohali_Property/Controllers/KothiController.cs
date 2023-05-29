@@ -116,16 +116,16 @@ namespace Mohali_Property_Web.Controllers
 
 
         [HttpPost]
-        public async Task<int> update_kothi(KothiModel obj)
+        public async Task<int> update_kothi(KothiModel kothi)
         {
-            var kothies = await _kothi.update_kothi(obj);
-            if (kothies == null)
+            var kothies = await _kothi.update_kothi(kothi);
+            if (kothies == null && kothies.is_success == false)
             {
-                return 0;
+                return kothies.status_code;
             }
             else
             {
-                return 1;
+                return kothies.status_code;
             }
         }
 

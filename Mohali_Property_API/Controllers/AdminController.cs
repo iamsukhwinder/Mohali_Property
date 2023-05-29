@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Mohali_Property_Model;
 using MohaliProperty.Dbcontext.Models;
 using MohaliProperty.Model;
 
@@ -182,17 +183,26 @@ namespace Mohali_Property_API.Controllers
         }
 
         [HttpGet("GetKothiList")]
-        public List<KothiModel>GetKothi()
+        public ResponseModel<List<KothiModel>> GetKothi()
         {
             var vm = _context.kothis.FromSqlRaw("manage_kothies");
-
+            ResponseModel<List<KothiModel>> res = new ResponseModel<List<KothiModel>>();
             if(vm==null)
             {
-                return null;
+                res.data = null;
+                res.message = "no data found";
+                res.status_code = 404;
+                res.is_success = false;
+                return res;
             }
             else
             {
-                return vm.ToList();
+                res.data = vm.ToList();
+                res.message = "data found";
+                res.status_code = 200;
+                res.is_success = true;
+                return res;
+                
             }
         }
 
@@ -215,35 +225,46 @@ namespace Mohali_Property_API.Controllers
 
 
         [HttpPost("updateKothi")]
-        public int updateKothi(KothiModel addkothi)
+        public ResponseModel<int> updateKothi(KothiModel addkothi)
         {
             List<SqlParameter> parameters = new List<SqlParameter>()
             {
-                new SqlParameter{ParameterName="@id",Value=addkothi.kothi_id},
+                new SqlParameter{ParameterName="@kothi_id",Value=addkothi.kothi_id},
                new SqlParameter {ParameterName="@kothi_number",Value=addkothi.kothi_Number},
-                new SqlParameter {ParameterName="@dimension" ,Value=addkothi.dimension},
-
-              //  new SqlParameter{ParameterName="@kothi_unit",Value=addkothi.kothi_unit},
                 new SqlParameter{ParameterName="@block",Value=addkothi.block},
                 new SqlParameter{ParameterName="@kothi_size" ,Value=addkothi.kothi_size},
-              //  new SqlParameter{ParameterName="@unit_rate" ,Value=addkothi.unit_rate},
+                new SqlParameter{ParameterName="@kothi_description" ,Value=addkothi.kothi_description},
+                new SqlParameter {ParameterName="@dimension" ,Value=addkothi.dimension},
+                new SqlParameter {ParameterName="@plot_area" ,Value=addkothi.plot_area},
                 new SqlParameter{ParameterName="@price",Value=addkothi.price},
+                new SqlParameter{ParameterName="@bhk",Value=addkothi.bhk},
                 new SqlParameter{ParameterName="@booking_amount",Value=addkothi.booking_amount},
                 new SqlParameter{ParameterName="@status",Value=addkothi.status},
-             //   new SqlParameter{ParameterName="@token_amount" ,Value=addkothi.token_amount}
-
-
+                new SqlParameter{ParameterName="@hold",Value=addkothi.hold},
+                //new SqlParameter{ParameterName="@hold",Value=addkothi.hold},
+                new SqlParameter{ParameterName="@kothi_image",Value=addkothi.kothi_image},
 
             };
-            var result = _context.Database.ExecuteSqlRaw("updateKothi @id, @kothi_number,@dimension,@block,@kothi_size,@price,@booking_amount,@status", parameters.ToArray());
+            var result = _context.Database.ExecuteSqlRaw("updateKothi @kothi_id,@kothi_number,@block," +
+                "@kothi_size,@kothi_description,@dimension,@plot_area,@price,@bhk,@booking_amount,@status,@hold," +
+                "@kothi_image", parameters.ToArray());
+            ResponseModel<int> res = new ResponseModel<int>();
 
             if (result == 0)
             {
-                return result;
+                res.data = result;
+                res.message = "failed to update";
+                res.is_success = false;
+                res.status_code = 402;
+                return res;
             }
             else
             {
-                return 1;
+                res.data = result;
+                res.message = "Kothi details Updated";
+                res.is_success = true;
+                res.status_code = 200;
+                return res;
             }
 
         }

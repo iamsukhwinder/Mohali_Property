@@ -16,10 +16,10 @@ namespace MohaliProperty.Model
         public int kothi_Number { get; set; }
 
 
-        //[Required(ErrorMessage = "kothi block is Required"), Range(5, 50)]
+        //[Required(ErrorMessage = "kothi block is Required")]
         public string block { get; set; }
 
-        //[Required(ErrorMessage="size required")]
+        //[Required(ErrorMessage = "size required")]
         public double kothi_size { get; set; }
 
         //[Required(ErrorMessage = "Kothi Description is Required"), Range(3, 30)]

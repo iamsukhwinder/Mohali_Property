@@ -35,7 +35,7 @@
                             "mRender": function (data, type, row) {
                                 //return ' <a id="btneditproduct" onclick="showeditcompanymodal(' + row.company_id + ')"  title="Edit" class="btn-text-size btn btn-primary btneditproduct" data-id=' + row.id + '>Edit</a>';
                                 //return ' <a   class="btn-text-size " href="/Admin/editProduct/' + row.id+'" >Edit</a>';
-                                return '<img src="/Image/edit.png"  height="20" width="20"  id="btneditproduct" onclick="showeditcompanymodal(' + row.kothi_id + ')"  title="Edit"  data-id=' + row.company_id + '>&nbsp;&nbsp;&nbsp;&nbsp; <img src="/Image/delete.png"  height="20" width="20"  id="btneditproduct" onclick="deletecompanydetail(' + row.kothi_id + ')"  title="Delete"  data-id=' + row.company_id + '>'
+                                return '<img src="/Image/edit.png"  height="20" width="20"  id="btneditproduct" onclick="showeditkothimodal(' + row.kothi_id + ')"  title="Edit"  data-id=' + row.company_id + '>&nbsp;&nbsp;&nbsp;&nbsp; <img src="/Image/delete.png"  height="20" width="20"  id="btneditproduct" onclick="deletekothidetal(' + row.kothi_id + ')"  title="Delete"  data-id=' + row.company_id + '>'
                             }
 
                         },
@@ -63,7 +63,7 @@
 
     //it show the comopanydetail in editing mode
 
-    function showeditcompanymodal(id) {
+function showeditkothimodal(id) {
         $.get("/Kothi/Edit_kothi/" + id,
 
             function (res) {
@@ -77,45 +77,58 @@
             });
 
     $('#EditProdModal').modal("show");
-    };
+    }
 
 
 
 
 
-    function Update() {
-        var result = validate();
-    if (result == false) {
-            return false;
-        }
-    else{
-            var valdata = $("#edit_kothi_form").serialize();
-    //  alert(valdata);
-    $.ajax({
-        url: '/Kothi/update_kothi',
-    type: "post",
-    dataType: 'json',
-    processData: false,
-
-    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-    data: valdata,
-
-    success: function (res) {
-
-                    if (res == 1) {
-
-        alert("Kothi Updated successfully");
-
-                    }
-    else {
-        alert("Please try again");
-
-                    }
+function Update() {
+    debugger;
+    var result = true;
+        //var result = validate();
+            if (result == false) {
+                    return false;
                 }
-            });
-           }
+            else {
+                //var kothi_id = $("#kothi_id");
+                var data = new FormData();
+                var form_data = $('#edit_kothi_form').serializeArray();
+                $.each(form_data, function (key, input) {
+                    data.append(input.name, input.value)
+                });
+                
 
-        }
+               
+                    $.ajax({
+                        url: '/Kothi/update_kothi',
+                        type: "post",
+                        dataType: 'json',
+                        processData: false,
+
+                        contentType:false,
+                        data: data,
+
+                        success: function (res) {
+
+                            if (res == 200) {
+
+                                alert("Kothi Updated successfully");
+                                location.reload();  
+                                //$('#EditProdModal').modal("hide");
+
+                            }
+                            else {
+                                alert("Please try again");
+
+                            }
+                        }
+                    });
+                                
+                
+            }
+
+}
 
 
 
@@ -125,7 +138,7 @@
     }
 
 
-    function deletecompanydetail(id) {
+function deletekothidetal(id) {
         var result = confirm("Are you sure want to delete?")
     if (result) {
         $.ajax({
@@ -133,8 +146,8 @@
             url: "/Kothi/delete_kothi/" + id,
             success: function (data) {
                 debugger;
-                alert("Company details deleted");
-                getCompanies();
+                alert("kothi details deleted");
+                
 
             },
 
@@ -153,51 +166,51 @@
 
 
 
-    function validate() {
+    //function validate() {
 
-            var result = true;
+    //        var result = true;
 
-    var kothino = $("#kothi_Number").val();
-    debugger;
-    if (kothino == "") {
-                debugger;
-    result = false;
-
-
-    $("#ekothinumber").html("please enter  Kothi Number");
-
-            }
-    else {
-
-        $("#ekothinumber").html("");
-            }
+    //var kothino = $("#kothi_Number").val();
+    //debugger;
+    //if (kothino == "") {
+    //            debugger;
+    //result = false;
 
 
+    //$("#ekothinumber").html("please enter  Kothi Number");
 
-    var kothiblock = $("#block").val();
+    //        }
+    //else {
 
-    if (kothiblock == "") {
-        result = false;
-    $("#eblock").html("please enter Block ");
-            }
-    else {
-        $("#eblock").html("");
-            }
+    //    $("#ekothinumber").html("");
+    //        }
 
 
 
-    var denonimation = $("#dimension").val();
+    //var kothiblock = $("#block").val();
 
-    if (denonimation == "") {
-        result = false
+    //if (kothiblock == "") {
+    //    result = false;
+    //$("#eblock").html("please enter Block ");
+    //        }
+    //else {
+    //    $("#eblock").html("");
+    //        }
 
-                $("#edenomination").html("please enter Denomination ");
 
-            }
-    else {
-        $("#edenomination").html("");
+
+    //var denonimation = $("#dimension").val();
+
+    //if (denonimation == "") {
+    //    result = false
+
+    //            $("#edenomination").html("please enter Denomination ");
+
+    //        }
+    //else {
+    //    $("#edenomination").html("");
                 
-            }
+    //        }
 
 
 
@@ -205,69 +218,69 @@
 
 
 
-    var kothisize = $("#kothi_size").val();
+    //var kothisize = $("#kothi_size").val();
 
-    if (kothisize == "") {
-        result = false;
-    $("#ekothisize").html("please enter Kothi Size ");
+    //if (kothisize == "") {
+    //    result = false;
+    //$("#ekothisize").html("please enter Kothi Size ");
                 
-            }
-    else {
+    //        }
+    //else {
 
-        $("#ekothisize").html("");
-            }
-
-
-
-
-
-
-    var price = $("#price").val();
-
-    if (price == "") {
-        result = false;
-    $("#eprice").html("please enter Price ");
-
-            }
-    else {
-        $("#eprice").html("");
-
-            }
-
-
-
-    var bookingAmount = $("#booking_amount").val();
-    if (bookingAmount == "") {
-        result = false;
-
-
-    $("#ebookingamount").html("please enter booking Amount ");
-            }
-    else {
-        $("#ebookingamount").html("");
-            }
+    //    $("#ekothisize").html("");
+    //        }
 
 
 
 
 
 
-    var status = $("#status").val();
-    if (status == "choose...") {
-        result = false;
-    $("#estatus").html("please enter status");
+    //var price = $("#price").val();
 
-        }
-    else {
-        $("#estatus").html("");
+    //if (price == "") {
+    //    result = false;
+    //$("#eprice").html("please enter Price ");
+
+    //        }
+    //else {
+    //    $("#eprice").html("");
+
+    //        }
 
 
-        }
+
+    //var bookingAmount = $("#booking_amount").val();
+    //if (bookingAmount == "") {
+    //    result = false;
+
+
+    //$("#ebookingamount").html("please enter booking Amount ");
+    //        }
+    //else {
+    //    $("#ebookingamount").html("");
+    //        }
 
 
 
-    return result;
-            }
+
+
+
+    //var status = $("#status").val();
+    //if (status == "choose...") {
+    //    result = false;
+    //$("#estatus").html("please enter status");
+
+    //    }
+    //else {
+    //    $("#estatus").html("");
+
+
+    //    }
+
+
+
+    //return result;
+    //        }
 
 
 
