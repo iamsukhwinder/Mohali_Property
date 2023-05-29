@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mohali_Property_Model;
 using MohaliProperty.Model;
 
 namespace MohaliProperty.Services.WebServices.Admin.ManageKothi
@@ -14,7 +15,7 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageKothi
 
         public Task<KothiModel> Edit_kothi(int id);
 
-        public Task<int> update_kothi(KothiModel obj);
+        public Task<ResponseModel<int>> update_kothi(KothiModel obj);
         public Task<int> delete_kothi(int id);
     }
 }
