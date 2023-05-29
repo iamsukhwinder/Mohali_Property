@@ -41,8 +41,38 @@ namespace MohaliProperty.Web.Controllers
         [HttpPost]  
         public async Task <IActionResult> AddCustomer(CustomerModel obj)
         {
-            var data = await _manageCustomer.AddCustomer(obj);
-            return RedirectToAction("AddCustomer", "Customer"); 
+            if(ModelState.IsValid)
+            {
+                DateTime created_date = DateTime.Now.Date;
+                obj.created_date = created_date;
+                var data = await _manageCustomer.AddCustomer(obj);
+                return RedirectToAction("AddCustomer", "Customer"); 
+
+            }
+            else
+            {
+                return RedirectToAction("AddCustomer", "Customer");
+            }
+        }
+
+        [HttpGet]
+        public async Task <IActionResult> Editcustomer(int id)
+        {
+            var data = await _manageCustomer.EditCustomer(id);
+            return PartialView("~/Views/Admin/Customer/_Editcustomer.cshtml",data);
+        }
+
+        [HttpPost]
+        public async Task<int> UpdateCustomer(CustomerModel obj)
+        {
+            var data = await _manageCustomer.UpdateCustomer(obj);
+            return data;
+        }
+
+        public async Task<int> DeleteCustomer(int id)
+        {
+            var data = await _manageCustomer.Deletecustomer(id);
+            return data;
         }
 
 

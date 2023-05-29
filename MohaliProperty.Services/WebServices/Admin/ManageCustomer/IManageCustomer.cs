@@ -12,6 +12,9 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageCustomer
     {
         public Task<List<CustomerModel>> getcustomerlist();
         public Task<int> AddCustomer(CustomerModel obj);
+        public Task<CustomerModel> EditCustomer(int id);
+        public Task<int> UpdateCustomer(CustomerModel obj);
+        public Task<int> Deletecustomer(int id);
 
     }
 }
