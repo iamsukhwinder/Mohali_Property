@@ -1,7 +1,5 @@
 ﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+
 <style>
     #add_company_form {
         margin-top: 30px;
@@ -123,22 +121,7 @@
 
 
 
-            @* <div class="form-group col-md-2">
-            <label>GST No</label>
-            <input type="text" class="form-control" name="gst" id="gst">
-            <span style="color:red" id="egst"></span>
-            </div>
-
-            <div class="form-group col-md-2">
-            <label>Status</label>
-            <select name="status" id="status" class="form-control">
-            <option selected>choose...</option>
-            <option>Active</option>
-            <option>InActive</option>
-
-            </select>
-            <span style="color:red" id="estatus"></span>
-            </div>*@
+           
 
             <div class="form-group col-md-2">
                 <label>Mobile Number</label>
@@ -170,12 +153,7 @@
             data.append(input.name, input.value)
         });
 
-        //var image = $("#user_logo").val();
-        //if (image != '') {
-        //    var file_data = $('input[name = user_logo]')[0].files;
-        //    for (var i = 0; i < file_data.length; i++) {
-        //        data.append("image", file_data[i]);
-        //    }
+        
         $.ajax({
             url: '/ManageUser/Adduser',
             type: "post",
@@ -195,12 +173,7 @@
                     alert("Please try again");
 
                 }
-                //if (res == 300) {
-                //    alert("only image is alowed to upload");
-                //}
-                //if (res == 301) {
-                //    alert("please upload only one file");
-                //}
+             
 
             }
 
@@ -297,39 +270,7 @@
             $("#epincode").html("");
         }
 
-        //var website = $("#website").val();
-        //if (website == "") {
-        //    result = false;
-        //    $("#ewebsite").html("please enter website");
-
-        //}
-        //else {
-        //    $("#ewebsitee").html("");
-        //}
-
-        //var gst = $("#gst").val();
-        //if (gst == "") {
-        //    result = false;
-        //    $("#egst").html("please enter gst");
-
-        //}
-        //else {
-        //    $("#egst").html("");
-        //}
-
-
-
-
-        //var status = $("#status").val();
-        //if (status == "choose...") {
-        //    result = false;
-        //    $("#estatus").html("please enter status");
-
-        //}
-        //else {
-        //    $("#estatus").html("");
-        //}
-
+        
 
 
 
@@ -344,27 +285,7 @@
             $("#emobile_number").html("");
         }
 
-        //var landlinenumber = $("#landlinenumber").val();
-        //if (landlinenumber == "") {
-        //    result = false;
-        //    $("#elandlinenumber").html("please enter landline number");
-
-        //}
-        //else {
-        //    $("#elandlinenumber").html("");
-        //}
-
-
-        //var user_logo = $("#user_logo").val();
-        //if (user_logo == "") {
-        //    result = false;
-        //    $("#euser_logo").html("please insert logo");
-
-        //}
-        //else {
-        //    $("#euser_logo").html("");
-        //}
-
+        
 
         return result;
     }
