@@ -23,9 +23,9 @@ namespace MohaliProperty.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult All_User()
+        public IActionResult all_user_view()
         {
-            return View();
+            return PartialView("/Views/Admin/ManageUser/all_user_view.cshtml");
         }
 
 
