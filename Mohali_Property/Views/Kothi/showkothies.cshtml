@@ -2,6 +2,9 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
 <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+@{
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
 <div id="div1">
     <h3>List of All Kothies</h3>
     <table id="kothitable" name="kothitable" class="display responsive">
@@ -25,10 +28,8 @@
 </div>
 
 
-@{
-    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
-}
-@*edit modal*@
+
+
 <div class="modal fade" id="EditProdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
