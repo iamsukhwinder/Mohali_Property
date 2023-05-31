@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MohaliProperty.Model;
-
+using MohaliProperty.Services.WebServices.Admin.ManageCompany;
 using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 
 namespace Mohali_Property_Web.Controllers
@@ -9,10 +10,12 @@ namespace Mohali_Property_Web.Controllers
     {
         private readonly IManageKothi _kothi;
         private IWebHostEnvironment _hostingEnvironment;
-        public KothiController(IManageKothi kothi, IWebHostEnvironment hostEnvironment)
+        private readonly ICompanyRepository _comp;
+        public KothiController(IManageKothi kothi, IWebHostEnvironment hostEnvironment, ICompanyRepository comp)
         {
             _hostingEnvironment = hostEnvironment;
             _kothi = kothi;
+            _comp = comp;
         }
         public IActionResult Index()
         {
@@ -20,8 +23,18 @@ namespace Mohali_Property_Web.Controllers
         }
 
       
-        public IActionResult Add_Kothi()
+        public async Task<IActionResult> Add_Kothi()
         {
+            var compnies =await _comp.GetComopanyList();
+            List<SelectListItem> compddl = new List<SelectListItem>();
+            foreach(Company_profileVM company in compnies)
+            {
+                SelectListItem compselect = new SelectListItem();
+                compselect.Text = company.company_name;
+                compselect.Value = company.company_id.ToString();
+                compddl.Add(compselect);
+            }
+            ViewData["compddl"] = compddl;
             return View();
         }
 

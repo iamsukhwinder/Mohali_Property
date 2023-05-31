@@ -28,6 +28,8 @@ namespace MohaliProperty.Dbcontext.Models
         public DbSet<CustomerModel> CustomerModels { get; set; }
         public DbSet<UserModel> users { get; set; }
         public DbSet<UserVM> userVMs { get; set; }
+        public DbSet<BookingModel> bookings { get; set; }
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LoginModel>().ToTable("Login");
@@ -40,6 +42,7 @@ namespace MohaliProperty.Dbcontext.Models
             modelBuilder.Entity<CustomerModel>().HasNoKey();
             modelBuilder.Entity<UserModel>().ToTable("Users");
             modelBuilder.Entity <UserVM>().HasNoKey();
+            modelBuilder.Entity <BookingModel>().HasNoKey();
 
 
 

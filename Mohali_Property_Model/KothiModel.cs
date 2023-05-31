@@ -72,6 +72,7 @@ namespace MohaliProperty.Model
         public string kothi_image { get; set; }
 
         public int hold { get; set; }
+        public int company_id { get; set; }
 
     }
 }
