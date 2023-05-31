@@ -26,7 +26,9 @@
 
                     if (res == 1) {
 
-                        alert("Company Added");
+
+                        alert("kohti Added");
+
 
                     }
                     else {

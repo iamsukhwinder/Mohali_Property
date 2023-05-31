@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Admin\images\company_logo\" />
+    <Folder Include="wwwroot\Image\kothi_images\" />
   </ItemGroup>
 
 </Project>
