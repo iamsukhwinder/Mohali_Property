@@ -37,6 +37,41 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageUser
             }
         }
 
+        public async Task<int> delete_user(int id)
+        {
+            var url = "/api/User/DeleteUser?id="+id;
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();
+                var usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
+                return usrDetail;
+            }
+            else
+            {
+                Console.WriteLine("Internal server Error");
+                return 0;
+            }
+        }
+
+        
+        public async Task<int> edit_users(UserModel user)
+        {
+            var url = "/api/User/editUser";
+            var response = await Configurations.Initial(_configuration).GetAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();
+                var usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
+                return usrDetail;
+            }
+            else
+            {
+                Console.WriteLine("Internal server Error");
+                return 0;
+            }
+        }
+
         public async Task<List<UserVM>> GetUserList()
         {
             var url = "/api/User/GetUserList";
@@ -53,6 +88,23 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageUser
                 return null;
             }
 
+        }
+
+        public async Task<int> update_users(UserModel user)
+        {
+            var url = "/api/User/UpdateUser";
+            var response = await Configurations.Initial(_configuration).PostAsJsonAsync(url,user);
+            if (response.IsSuccessStatusCode)
+            {
+                var stringResponse = await response.Content.ReadAsStringAsync();
+                var usrDetail = JsonConvert.DeserializeObject<int>(stringResponse);
+                return usrDetail;
+            }
+            else
+            {
+                Console.WriteLine("Internal server Error");
+                return 0;
+            }
         }
     }
 }
