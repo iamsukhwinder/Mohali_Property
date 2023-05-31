@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Mohali_Property_Model;
 using MohaliProperty.Dbcontext;
 using MohaliProperty.Dbcontext.Models;
+using System.Security.Principal;
 
 namespace MohaliProperty.API.Controllers
 {
@@ -73,6 +74,43 @@ namespace MohaliProperty.API.Controllers
 
 
         }
+
+        [HttpPost("Edit")]
+        public async Task<int> Edit(int id)
+        {
+            SqlParameter parm = new SqlParameter("@id",id);
+            var vm = _context.userVMs.FromSqlRaw("EXEC Edit @id", parm).ToList().FirstOrDefault();
+            return  0;
+        }
+
+
+        [HttpPost("Update")]
+        public UserVM Update(UserVM obj)
+        {
+            List<SqlParameter> parms = new List<SqlParameter>
+            {
+                // Create parameter(s)    
+              new SqlParameter { ParameterName = "@id", Value = obj.id },
+                new SqlParameter { ParameterName = "@name", Value = obj.name },
+                new SqlParameter { ParameterName = "@email", Value = obj.email },
+                new SqlParameter { ParameterName = "@mobile_Number", Value = obj.mobile_number },
+
+                    };
+            var n = _context.Database.ExecuteSqlRaw("Updatedata @id, @name,@email,@mobile_number", parms.ToArray());
+            return obj;
+        }
+
+
+
+
+        [HttpPost("Delete")]
+        public  UserVM Delete(UserVM dlt)
+        {
+            SqlParameter parm = new SqlParameter("@id", dlt.id);
+            var vm = _context.Database.ExecuteSqlRaw("EXEC dltuser @id", parm);
+            return dlt;
+        }
+
 
     }
 
