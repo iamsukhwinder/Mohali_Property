@@ -1,0 +1,68 @@
+﻿@model MohaliProperty.Model.KothiModel;
+<h3>Edit Kothi</h3>
+
+<form method="post" id="edit_kothi_form">
+
+    <input type="hidden" name="kothi_id" asp-for="kothi_id" />
+    <p>Kothi Number: <input type="text" name="kothi_Number" asp-for="kothi_Number" /></p>
+    <span style="color:red" id="ekothinumber"></span>
+
+    <p>Block:<input type="text" name="block" asp-for="block" /></p>
+    <span style="color:red" id="eblock"></span>
+
+
+    <p>Dimention: <input type="text" name="dimension" asp-for="dimension" /></p>
+    <span style="color:red" id="edenomination"></span>
+    @*
+    <p>Kothi Unit: <input type="text" asp-for="kothi_unit" /></p>
+    <span style="color:red" id="ekothiunit"></span>*@
+
+    <p>Kothi Size: <input type="text" name="kothi_size" asp-for="kothi_size" /></p>
+    <span style="color:red" id="ekothisize"></span>
+
+    <p>Kothi Description: <input type="text" name="kothi_description" asp-for="kothi_description" /></p>
+    <span style="color:red" id="ekothidescription"></span>
+
+    @*<p>Dimention: <input type="text" asp-for="dimension" /></p>
+    <span style="color:red" id="edimention"></span>*@
+
+    <p>Plot Area: <input type="text" name="plot_area" asp-for="plot_area" /></p>
+    <span style="color:red" id="eplotarea"></span>
+
+    <p>BHK: <input type="text" name="bhk" asp-for="bhk" /></p>
+    <span style="color:red" id="ebhk"></span>
+
+    <p>Price:<input type="text" name="price" asp-for="price" /></p>
+    <span style="color:red" id="eprice"></span>
+
+    @* <p>Token Amount:<input type="text" asp-for="token_amount" /></p>
+    <span style="color:red" id="etokenamount"></span>*@
+
+    <p> Booking Amount: <input type="text" name="booking_amount" asp-for="booking_amount" /></p>
+    <span style="color:red" id="ebookingamount"></span>
+
+    <input type="hidden" asp-for="status" name="sta" id="sta" />
+
+    <p>
+        Status:
+        <select name="status" id="status">
+            @* <option value ="choose">choose</option>*@
+            <option value="Active">Active</option>
+            <option value="InActive">Inactive</option>
+        </select>
+        <span style="color:red" id="estatus"></span>
+    </p>
+    <input type="hidden" name="hold" asp-for="hold" />
+    <input type="hidden" name="kothi_image" asp-for="kothi_image" />
+    @*<p>
+        Kothi Image:
+        <img id="blah" src="/Image/kothi_images/@Model.kothi_image" alt="Kothi image" width="90" height="90" />
+        <button type="button"><label for="kothi_image">Change Kothi Image</label></button>
+
+        <input type="file" style="display:none;" asp-for="kothi_image" id="kothi_image" name="kothi_image" onchange="readURL(this);" />
+        <span style="color:red" id="ekothi_image"></span>
+    </p>*@
+</form>
+
+
+<script src="/js/Admin/ManageKothi/EditKothiVal.js"></script>

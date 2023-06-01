@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Mohali_Property_API.Modal;
 using Mohali_Property_Model;
+using MohaliProperty.Dbcontext.Models;
+using MohaliProperty.Model;
 
 namespace Mohali_Property_API.Controllers
 {
@@ -11,8 +13,8 @@ namespace Mohali_Property_API.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
-        public AdminController(ApplicationDBContext context)
+        private readonly ApplicationDbContext _context;
+        public AdminController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -142,6 +144,147 @@ namespace Mohali_Property_API.Controllers
 
         }
 
+        [HttpPost("AddKothi")]
+
+        public int add_kothi(KothiModel addkothi)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                   new SqlParameter {ParameterName="@kothi_number",Value=addkothi.kothi_Number},
+                   new SqlParameter{ParameterName="@block",Value=addkothi.block},
+                   new SqlParameter{ParameterName="@kothi_size" ,Value=addkothi.kothi_size},
+                   new SqlParameter{ParameterName="@kothi_description",Value= addkothi.kothi_description},
+                   new SqlParameter {ParameterName="@dimension" ,Value=addkothi.dimension},
+                   new SqlParameter{ParameterName="@plot_area",Value= addkothi.plot_area},
+                   new SqlParameter{ParameterName="@price",Value=addkothi.price},
+                   new SqlParameter{ParameterName="@bhk",Value= addkothi.bhk},
+                   new SqlParameter{ParameterName="@booking_amount",Value=addkothi.booking_amount},
+                   new SqlParameter{ParameterName="@status",Value=addkothi.status},
+                   new SqlParameter{ParameterName="@hold",Value= addkothi.hold},
+                   new SqlParameter{ParameterName="@kothi_image",Value=addkothi.kothi_image},
+                
+
+
+                };
+            var result = _context.Database.ExecuteSqlRaw("add_kothi @kothi_number,@block,@kothi_size,@kothi_description,@dimension,@plot_area,@price,@bhk,@booking_amount,@status,@hold,@kothi_image", parameters.ToArray());
+
+
+            if (result == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+
+
+
+        }
+
+        [HttpGet("GetKothiList")]
+        public ResponseModel<List<KothiModel>> GetKothi()
+        {
+            var vm = _context.kothis.FromSqlRaw("manage_kothies");
+            ResponseModel<List<KothiModel>> res = new ResponseModel<List<KothiModel>>();
+            if(vm==null)
+            {
+                res.data = null;
+                res.message = "no data found";
+                res.status_code = 404;
+                res.is_success = false;
+                return res;
+            }
+            else
+            {
+                res.data = vm.ToList();
+                res.message = "data found";
+                res.status_code = 200;
+                res.is_success = true;
+                return res;
+                
+            }
+        }
+
+       
+
+        [HttpGet("DeleteKothi")]
+        public int DeleteKothi(int id)
+        {
+            SqlParameter parm = new SqlParameter("@id", id);
+            var company = _context.Database.ExecuteSqlRaw("delete_kothi @id", parm);
+            if(company==0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
+
+        [HttpPost("updateKothi")]
+        public ResponseModel<int> updateKothi(KothiModel addkothi)
+        {
+            List<SqlParameter> parameters = new List<SqlParameter>()
+            {
+                new SqlParameter{ParameterName="@kothi_id",Value=addkothi.kothi_id},
+               new SqlParameter {ParameterName="@kothi_number",Value=addkothi.kothi_Number},
+                new SqlParameter{ParameterName="@block",Value=addkothi.block},
+                new SqlParameter{ParameterName="@kothi_size" ,Value=addkothi.kothi_size},
+                new SqlParameter{ParameterName="@kothi_description" ,Value=addkothi.kothi_description},
+                new SqlParameter {ParameterName="@dimension" ,Value=addkothi.dimension},
+                new SqlParameter {ParameterName="@plot_area" ,Value=addkothi.plot_area},
+                new SqlParameter{ParameterName="@price",Value=addkothi.price},
+                new SqlParameter{ParameterName="@bhk",Value=addkothi.bhk},
+                new SqlParameter{ParameterName="@booking_amount",Value=addkothi.booking_amount},
+                new SqlParameter{ParameterName="@status",Value=addkothi.status},
+                new SqlParameter{ParameterName="@hold",Value=addkothi.hold},
+                //new SqlParameter{ParameterName="@hold",Value=addkothi.hold},
+                new SqlParameter{ParameterName="@kothi_image",Value=addkothi.kothi_image},
+
+            };
+            var result = _context.Database.ExecuteSqlRaw("updateKothi @kothi_id,@kothi_number,@block," +
+                "@kothi_size,@kothi_description,@dimension,@plot_area,@price,@bhk,@booking_amount,@status,@hold," +
+                "@kothi_image", parameters.ToArray());
+            ResponseModel<int> res = new ResponseModel<int>();
+
+            if (result == 0)
+            {
+                res.data = result;
+                res.message = "failed to update";
+                res.is_success = false;
+                res.status_code = 402;
+                return res;
+            }
+            else
+            {
+                res.data = result;
+                res.message = "Kothi details Updated";
+                res.is_success = true;
+                res.status_code = 200;
+                return res;
+            }
+
+        }
+
+
+        [HttpGet("editKothi")]
+        public KothiModel editKothi(int id)
+        {
+            SqlParameter parm=new SqlParameter("@id", id);
+            var company = _context.kothis.FromSqlRaw("get_kothi_byid @id", parm).ToList().FirstOrDefault();
+
+            if (company == null)
+            {
+                return null;
+            }
+            else
+            {
+                return company;
+            }
+        }
 
 
 

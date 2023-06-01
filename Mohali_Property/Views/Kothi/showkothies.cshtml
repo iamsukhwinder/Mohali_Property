@@ -1,0 +1,52 @@
+﻿
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+@{
+    Layout = "~/Views/Shared/_AdminDashboard.cshtml";
+}
+<div id="div1">
+    <h3>List of All Kothies</h3>
+    <table id="kothitable" name="kothitable" class="display responsive">
+        <thead>
+            <tr>
+
+                <th>Kothi_id</th>
+                <th>Kothi Number</th>
+                <th>Block</th>
+                <th>Kothi Size</th>
+                <th>demension</th>
+                <th>Price</th>
+                <th>Action</th>
+
+
+
+            </tr>
+        </thead>
+
+    </table>
+</div>
+
+
+
+
+<div class="modal fade" id="EditProdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Kothi</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="EditCloseModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="editModalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="EditCloseModal()" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" onclick="return Update()" id="editProduct">Update changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/Admin/ManageKothi/AllKothiVal.js"></script>

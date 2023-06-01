@@ -1,0 +1,111 @@
+﻿
+@model MohaliProperty.Model.Company_profileVM
+
+<h3>Edit User</h3>
+<form enctype="multipart/form-data" method="post" id="edit_company_form">
+
+
+    <input type="hidden" asp-for="company_id" />
+<p>Company: <input type="text" asp-for="company"/></p>
+<span style="color:red" id="ecompany"></span>
+
+<p>Company Name:<input type="text" asp-for="company_name" /></p>
+<span style="color:red" id="ecompanyname"></span>
+
+<p>Email: <input type="text" asp-for="email" /></p>
+<span style="color:red" id="eemail"></span>
+
+<p>Company Address: <input type="text" asp-for="company_address" /></p>
+ <span style="color:red" id="eaddress"></span>
+
+<p>City: <input type="text" asp-for="city" /></p>
+<span style="color:red" id="ecity"></span>
+
+
+<input type="hidden" asp-for="state" id="stateHide" />
+<p>State:  <select id="state" name="states">
+     @*   <option value="choose">choose</option> *@
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+        <option value="Assam">Assam</option>
+        <option value="Bihar">Bihar</option>
+        <option value="Chandigarh">Chandigarh</option>
+        <option value="Chhattisgarh">Chhattisgarh</option>
+        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+        <option value="Daman and Diu">Daman and Diu</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Lakshadweep">Lakshadweep</option>
+        <option value="Puducherry">Puducherry</option>
+        <option value="Goa">Goa</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Haryana">Haryana</option>
+        <option value="Himachal Pradesh">Himachal Pradesh</option>
+        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+        <option value="Jharkhand">Jharkhand</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Madhya Pradesh">Madhya Pradesh</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Manipur">Manipur</option>
+        <option value="Meghalaya">Meghalaya</option>
+        <option value="Mizoram">Mizoram</option>
+        <option value="Nagaland">Nagaland</option>
+        <option value="Odisha">Odisha</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Sikkim">Sikkim</option>
+        <option value="Tamil Nadu">Tamil Nadu</option>
+        <option value="Telangana">Telangana</option>
+        <option value="Tripura">Tripura</option>
+        <option value="Uttar Pradesh">Uttar Pradesh</option>
+        <option value="Uttarakhand">Uttarakhand</option>
+        <option value="West Bengal">West Bengal</option>
+
+
+
+    </select>
+    <span style="color:red" id="estate"></span>
+
+
+</p>
+
+
+
+<p>Pin Code: <input type="text" asp-for="pin_code" /></p>
+<span style="color:red" id="epincode"></span>
+
+<p>Website: <input type="text" asp-for="website"/></p>
+<span style="color:red" id="ewebsite"></span>
+
+<p>GST No: <input type="text" asp-for="gst_number"/></p>
+<span style="color:red" id="egst"></span>
+
+<input type="hidden" asp-for="status" id="sta"/>
+
+<p> Status: 
+    <select id="status">   
+        @* <option value ="choose">choose</option>*@
+         <option value ="Active">Active</option>
+        <option value="InActive">Inactive</option>
+ </select>
+    <span style="color:red" id="estatus"></span>
+</p>
+
+<p>Mobile No: <input type="text" asp-for="mobileNumber" /></p>
+<span style="color:red" id="emobilenumber"></span>
+
+<p>Landline No: <input type="text" asp-for="landlineNo" /></p>
+<span style="color:red" id="elandlinenumber"></span>
+
+<p>Logo: 
+    <button type="button"><label for="company_logo">Change Profile Pic</label></button>
+    <img id="blah" src="/Admin/images/company_logo/@Model.company_logo" alt="Product image" width="90" height="90" />
+
+    <input type="file" style="display:none;" asp-for="company_logo" id="company_logo" onchange="readURL(this);" />
+    <span style="color:red" id="ecompany_logo"></span>
+    </p>
+    </form>
+
+
+<script src="~/js/Admin/ManageCompany/EditcompanyVal.js"></script>

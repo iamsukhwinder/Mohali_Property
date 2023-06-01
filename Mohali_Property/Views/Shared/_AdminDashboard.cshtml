@@ -13,6 +13,7 @@
     <link href="~/Admin/css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet" />
+        
 </head>
  
 <body class="sb-nav-fixed">
@@ -46,7 +47,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" asp-action="Index" asp-controller="Admin">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -58,33 +59,62 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" onclick="showcompanies()">All Companies</a>
-                                <a class="nav-link" onclick="addcompanies()">Add Company</a>
+                                <a class="nav-link" asp-action="All_compnies" asp-controller="Company">All Companies</a>
+                                <a class="nav-link" asp-controller="Company" asp-action="AddCompany">Add Company</a>
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayoutss">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Manage Kothies
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" asp-action="showkothies" asp-controller="Kothi">All Kothies</a>
+                                <a class="nav-link" href="/Kothi/Add_Kothi">Add Kothi</a>
+                            </nav>
+                        </div>
+                        @*<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsetokens" aria-expanded="false" aria-controls="collapsetokens">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Manage Tokens
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>*@
+                        <div id="collapsetokens" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" asp-action="showtokens" asp-controller="Token">Manage Tokens</a>
+                                @*<a class="nav-link" onclick="addtoken()">Create Token</a>*@
+                            </nav>
+                        </div>
+
+                       @*Manage Customers*@
+                        <a class="nav-link collapsed" asp-controller="Customer" asp-action="ShowCustomer"  data-bs-target="#collapse_manage_customer" aria-expanded="false" aria-controls="collapse_manage_customer">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Manage Customer
+                            <div class="sb-sidenav-collapse-arrow"></div>
+                        </a>
+                        @*<div class="collapse" id="collapse_manage_customer" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" asp-controller="Customer" asp-action="ShowCustomer">Manage Customer</a>
+                                <a class="nav-link" asp-controller="Customer" asp-action="AddCustomer">Add Customer</a>
+
+                            </nav>
+                        </div>*@
+
+
+                        <a class="nav-link collapsed"  data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Pages
+                            Manage User
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                    Authentication
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Login</a>
-                                        <a class="nav-link" href="register.html">Register</a>
-                                        <a class="nav-link" href="password.html">Forgot Password</a>
-                                    </nav>
+                               @* <a class="nav-link" onclick="all_user_view()">Users List</a>*@
+                               <a class="nav-link" asp-action="All_User" asp-controller="ManageUser" >All User</a>
+                                <a class="nav-link" asp-action="Add_User" asp-controller="ManageUser">Add User</a>
+                                </nav>
                                 </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                    Error
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                @*<div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="401.html">401 Page</a>
                                         <a class="nav-link" href="404.html">404 Page</a>
@@ -102,14 +132,9 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Tables
                         </a>
-                    </div>
+                    </div>*@
                 </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                        @TempData["admin_name"] @{ TempData.Keep("admin_name"); }
-                        
-                    
-                </div>
+              
             </nav>
         </div>
         <div id="layoutSidenav_content">
@@ -126,7 +151,7 @@
             $.ajax({
                
                 type: "GET",
-                url: "/Admin/all_company_view",
+                url: "/Company/All_companies",
                 success: function (data) {
                     $("#mainbody").html(data);
                 }
@@ -145,6 +170,116 @@
                 }
             });
         }
+
+        function addkothi(){
+        
+           $.ajax({
+
+               type:"GET",
+                url: "/Kothi/add_kothi_view",
+                success:function(data){
+                  
+                    $("#mainbody").html(data);
+                }
+                
+
+           } );
+        }
+
+
+        function showkothies(){
+            debugger;
+            $.ajax({
+
+                type: "GET",
+                url: "/Kothi/showkothies",
+                success: function (data) {
+                    $("#mainbody").html(data);
+                }
+            });
+        }
+
+
+        function showtokens() {
+            $.ajax({
+                type: "GET",
+                url: "/Token/showtokens",
+                success: function (data) {
+                    $("#mainbody").html(data);
+                }
+            });
+       }
+
+       function addtoken(){
+           $.ajax({
+                type: "GET",
+                url: "/Token/addtokenview",
+                success: function (data) {
+                    $("#mainbody").html(data);
+                }
+            });
+
+       }
+
+
+        function showcustomers() {
+                $.ajax({
+                    type: "GET",
+                    url: "/Customer/showcustomers",
+                    success: function (data) {
+                        $("#mainbody").html(data);
+                    }
+                });
+       }
+
+
+        function addcustomer() {
+            debugger
+            $.ajax({
+                type: "GET",
+                url: "/Customer/addcustomerview",
+                success: function (data) {
+                    $("#mainbody").html(data);
+                }
+            });
+
+
+        }
+        function add_user_view() {
+            debugger;
+            $.ajax({
+
+                type: "GET",
+                url: "/ManageUser/add_user_view",
+
+                success: function (data) {
+                    $("#mainbody").html(data);
+                }
+            });
+
+
+        }
+
+
+
+
+       
+
+
+        
+        function all_user_view() {
+            debugger;
+            $.ajax({
+                    
+                type: "GET",
+                url: "/ManageUser/all_user_view",
+                success: function (data) {
+                    $("#mainbody").html(data);
+                }
+            });
+        }
+
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
@@ -155,6 +290,7 @@
     <script src="js/datatables-simple-demo.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
-   
+  
 </body>
 </html>
+    

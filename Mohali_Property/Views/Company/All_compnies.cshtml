@@ -1,0 +1,72 @@
+﻿@{
+    Layout = "_AdminDashboard";
+
+}
+<style>
+    #div1 {
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-right: 30px;
+       
+    }
+
+    #btneditproduct:hover {
+        
+        cursor : pointer;
+    }
+
+    
+</style>
+
+
+<div id="div1">
+    <h3>List of All Companies</h3>
+    <table id="companytable" name="companytable" class="display responsive">
+    <thead>
+        <tr>
+
+            <th>Id</th>
+            <th>Company_name</th>
+            <th>Company_address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Pin_code</th>
+            <th>Mobile_number</th>
+            <th>Email</th>
+            <th>Action</th>
+            
+
+
+        </tr>
+    </thead>
+
+</table>
+</div>
+
+
+@*edit modal*@
+<div class="modal fade" id="EditProdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Companies details</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="EditCloseModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="editModalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="EditCloseModal()" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" onclick="return Update()" id="editProduct">Update changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+
+<script src="~/js/Admin/ManageCompany/AllcompanyVal.js"></script>
+

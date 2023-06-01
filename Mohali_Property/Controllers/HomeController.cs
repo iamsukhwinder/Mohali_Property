@@ -1,12 +1,14 @@
-﻿using  Mohali_Property_Model;
+﻿
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Mohali_Property.Models;
-using Mohali_Property_Web.APICall;
+
 using System.Diagnostics;
 using System.Security.Claims;
-using Mohali_Property_Web.APICall.Login;
+using MohaliProperty.Model;
+using MohaliProperty.Services.WebServices.Admin.Login;
+using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 
 namespace Mohali_Property.Controllers
 {
@@ -14,17 +16,19 @@ namespace Mohali_Property.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ILoginRepository _loginrepository;
+        private readonly IManageKothi _kothi;
 
-        public HomeController(ILogger<HomeController> logger, ILoginRepository loginrepository)
+        public HomeController(ILogger<HomeController> logger, ILoginRepository loginrepository, IManageKothi kothi)
         {
             _logger = logger;
             _loginrepository = loginrepository;
+            _kothi = kothi;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            
-            return View();
+            var kothies =await _kothi.getkothieslist();   
+            return View(kothies);
         }
 
         public IActionResult Privacy()
@@ -75,12 +79,13 @@ namespace Mohali_Property.Controllers
                         claims.Add(new Claim(ClaimTypes.Role, data.role_name));
                         claims.Add(new Claim(ClaimTypes.NameIdentifier, data.username));
                         claims.Add(new Claim(ClaimTypes.Name, data.password + " " + data.password));
+            
                         var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         var claimPrinciple = new ClaimsPrincipal(claimIdentity);
                         HttpContext.SignInAsync(claimPrinciple);
                         if (data.role_name == "Admin")
                         {
-                        TempData["admin_name"] = data.first_name + " " + data.last_name;
+                        TempData["admin_name"] = data.name;
                         return RedirectToAction("Index", "Admin");
                         }
                         else

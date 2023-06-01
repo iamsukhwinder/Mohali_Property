@@ -1,0 +1,175 @@
+@model MohaliProperty.Model.KothiModel;
+@{
+    Layout = "_AdminDashboard";
+}
+<style>
+    #form {
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    #p1 {
+        opacity: 1;
+        color: red;
+    }
+
+    #div2 {
+        background-color: lightgrey;
+        color: white;
+    }
+
+</style>
+
+<div id="div1" class="container">
+
+    @*
+    comppany_name(drop down)
+    //  kothi_number
+    //  block
+    //  kothi_size
+    //  dimention
+    //  plot area
+    //  price
+    //  bhk
+    booking amount
+    //  status*@
+
+
+
+    <form asp-action="Add_kothi" enctype="multipart/form-data" asp-controller="Kothi" method="post" id="form">
+        <h3>Add Kothi</h3>
+
+        <div id="div2">
+
+            <h3> Kothi Information</h3>
+        </div>
+        <p id="p1">* All Fields are Required</p>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Kothi Number</label>
+                <input type="text" class="form-control" name="kothi_Number" id="kothi_Number" placeholder="Kothi Number">
+                <span style="color:red" id="ekothinumber"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Block</label>
+                <span asp-validation-for="block" class="black-input"></span>
+                <input type="text" class="form-control" name="block" asp-for="block" id="block" placeholder="Block">
+                @*<span style="color:red" id="eblock"></span>*@
+            </div>
+        </div><br />
+        <div class="row">
+
+            <div class="form-group col-md-6">
+                <label>Kothi Size</label>
+                <span asp-validation-for="kothi_size" class="black-input"></span>
+                <input type="text" class="form-control" name="kothi_size" id="kothi_size" asp-for="kothi_size" placeholder="Kothi size in sq.mt">
+                @*<span style="color:red" id="ekothisize"></span>*@
+            </div>
+
+            <div class="form-group col-md-6">
+                <label>Kothi Description</label>
+                <input type="text" class="form-control" name="kothi_description" id="plot_area" placeholder="kothi description">
+                <span style="color:red" id="eplotarea"></span>
+            </div>
+
+        </div><br />
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Dimension</label>
+                <input type="text" class="form-control" name="dimension" id="dimension" placeholder="Dimension">
+                <span style="color:red" id="edenomination"></span>
+            </div>
+
+
+            <div class="form-group col-md-6">
+                <label>Plot Area</label>
+                <input type="text" class="form-control" name="plot_area" id="plot_area" placeholder="Plot Area">
+                <span style="color:red" id="eplotarea"></span>
+            </div>
+
+        </div>
+        <br />
+
+        <div class="row">
+
+            <div class="form-group col-md-6">
+                <label>Price</label>
+                <input type="text" class="form-control" name="price" id="price" placeholder="Price">
+                <span style="color:red" id="eprice"></span>
+            </div>
+
+
+            <div class="form-group col-md-6">
+                <label>BHK</label>
+                <input type="text" class="form-control" name="bhk" id="bhk" placeholder="BHK">
+                <span style="color:red" id="ebhk"></span>
+            </div>
+
+
+        </div>
+        <br />
+
+
+
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Booking Amount</label>
+                <input type="text" class="form-control" name="booking_amount" id="booking_amount" placeholder="Booking Amount">
+                <span style="color:red" id="ebookingamount"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Status</label>
+                <select name="status" id="status" class="form-control">
+                    <option selected>choose...</option>
+                    <option>Active</option>
+                    <option>InActive</option>
+
+                </select>
+                <span style="color:red" id="estatus"></span>
+            </div>
+
+
+        </div>
+        <br />
+        
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>Booking Amount</label>
+            <input type="text" class="form-control" name="booking_amount" id="booking_amount" placeholder="Booking Amount">
+            <span style="color:red" id="ebookingamount"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Status</label>
+            <select name="status" id="status" class="form-control">
+                <option selected>choose...</option>
+                <option>Active</option>
+                <option>InActive</option>
+
+            </select>
+            <span style="color:red" id="estatus"></span>
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+
+            <div class="form-group col-md-6">
+                <label for="company_logo">Kothi Image</label>
+                <input type="file" name="kothi_image" class="form-control" id="kothi_image">
+                <span style="color:red" id="ekothi_image"></span>
+            </div><br />
+
+    </div><br />
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+</div>
+@*onclick="add_kothi()*@
+<script src="/js/Admin/ManageKothi/AddKothiVal.js"></script>
