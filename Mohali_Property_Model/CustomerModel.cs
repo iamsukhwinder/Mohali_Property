@@ -12,8 +12,8 @@ namespace Mohali_Property_Model
 
         [Key]
         public int customer_id { get; set; }
-        //public int company_id { get; set; }
-        [Required(ErrorMessage = "Customer Name is Required")]
+
+        [Required(ErrorMessage = "Customer Name is Required"), Range(3, 50)]
         public string customer_name { get; set; }
 
         [Required(ErrorMessage = "Parent Name is Required")]

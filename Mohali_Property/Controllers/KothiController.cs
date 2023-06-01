@@ -56,9 +56,7 @@ namespace Mohali_Property_Web.Controllers
 
             }
 
-            if(ModelState.IsValid)
-            {
-               
+         
             if (kothi_image.Files.Count != 0)
             {
                 var file = kothi_image.Files[0];
@@ -89,13 +87,9 @@ namespace Mohali_Property_Web.Controllers
                 }
                     return View();
 
-
                 }
-                else
-                {
-                    return View();
-                }
-            }
+              
+            
 
             else
             {

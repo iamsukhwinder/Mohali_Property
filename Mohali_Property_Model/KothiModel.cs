@@ -13,46 +13,41 @@ namespace MohaliProperty.Model
         public int kothi_id { get; set; }
 
 
+        //[Required(ErrorMessage ="Kothi Number is Required")]
         public int kothi_Number { get; set; }
 
 
         //[Required(ErrorMessage = "kothi block is Required")]
         public string block { get; set; }
 
-        //[Required(ErrorMessage = "size required")]
+       // [Required(ErrorMessage = "size required")]
         public double kothi_size { get; set; }
 
-        //[Required(ErrorMessage = "Kothi Description is Required"), Range(3, 30)]
+       // [Required(ErrorMessage = "Kothi Description is Required"), Range(3, 30)]
         public string kothi_description { get; set; }
 
-        //[Required(ErrorMessage = "Dimension is Required"), Range(3, 30)]
+        // [Required(ErrorMessage = "Dimension is Required"), Range(3, 30)]
+
+       // [Required(ErrorMessage = "Dimension is Required")]
         public string dimension { get; set; }
 
-        //[Required(ErrorMessage = "Plot Area is required.")]
 
-        //[Range(0.0, 100.0, ErrorMessage = "The Value field must be between 0.0 and 100.0.")]
-
-        //[RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "The Plot Area field must be a valid decimal number with up to 2 decimal places.")]
-
-
+       // [Required(ErrorMessage = "Plot Area is required.")]   
         public double plot_area { get; set; }
 
-        //[Required(ErrorMessage = "Price is required.")]
-
-        //[Range(0.0, 100.0, ErrorMessage = "The Value field must be between 0.0 and 100.0.")]
-
-        //[RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "The Price field must be a valid decimal number with up to 2 decimal places.")]
-
+       // [Required(ErrorMessage = "Price is required.")]
         public double price { get; set; }
 
-        //[Required(ErrorMessage = "BHK is Required!")]
-        //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$")]
 
+
+
+      //  [Required(ErrorMessage = "BHK is Required!")]
+     
         public int bhk { get; set; }
 
 
 
-        //[Required(ErrorMessage = "Booking Amount is required.")]
+       // [Required(ErrorMessage = "Booking Amount is required.")]
 
         //[Range(0.0, 100.0, ErrorMessage = "The Value field must be between 0.0 and 100.0.")]
 

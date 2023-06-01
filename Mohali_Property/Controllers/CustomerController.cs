@@ -46,13 +46,14 @@ namespace MohaliProperty.Web.Controllers
                 DateTime created_date = DateTime.Now.Date;
                 obj.created_date = created_date;
                 var data = await _manageCustomer.AddCustomer(obj);
-                return RedirectToAction("AddCustomer", "Customer"); 
+                return View();
 
             }
             else
             {
-                return RedirectToAction("AddCustomer", "Customer");
+           //     return RedirectToAction("AddCustomer", "Customer");
             }
+            return View("~/Views/Admin/Customer/AddCustomer.cshtml");
         }
 
         [HttpGet]
