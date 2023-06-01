@@ -97,6 +97,7 @@ namespace MohaliProperty.Web.Controllers
 
                 return null;
             }
+            return RedirectToAction("AddCustomer", "Customer");
 
         }
 
