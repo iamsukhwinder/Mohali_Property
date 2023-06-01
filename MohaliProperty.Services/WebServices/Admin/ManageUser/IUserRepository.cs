@@ -11,5 +11,11 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageUser
     {
         public Task<List<UserVM>> GetUserList();
         public Task<int> add_user(UserModel obj);
+
+        public Task<ResponseModel<int>> update_users(UserVM user);
+
+        public Task<int> delete_user(int id);
+
+        public Task<UserVM> edit_users(int id);
     }
 }

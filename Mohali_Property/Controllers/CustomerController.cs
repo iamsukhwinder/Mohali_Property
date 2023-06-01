@@ -49,6 +49,7 @@ namespace MohaliProperty.Web.Controllers
                 DateTime created_date = DateTime.Now.Date;
                 obj.created_date = created_date;
                 var data = await _manageCustomer.AddCustomer(obj);
+
                 
                 var file = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Email_Image", "Registrationpage.html");
                 String SendMailFrom = "bisheshdhiman5514@gmail.com";
@@ -77,6 +78,9 @@ namespace MohaliProperty.Web.Controllers
                     SmtpServer.Credentials = new NetworkCredential(SendMailFrom, "neenaeaznlfjlivo");
                     SmtpServer.Send(email);
 
+                return View();
+
+
                 }
                 catch (Exception ex)
                 {
@@ -90,12 +94,10 @@ namespace MohaliProperty.Web.Controllers
             }
             else
             {
+
                 return null;
             }
-            return RedirectToAction("AddCustomer", "Customer"); 
 
-            
-           
         }
 
         [HttpGet]

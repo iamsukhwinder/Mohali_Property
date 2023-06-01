@@ -1,11 +1,31 @@
 ﻿//function validate() {
 //    alert("hdkhk");
 //}
-   
+
 
 //function validate() {
 //    alert("hdkhk");
 //}
+
+$(function () {
+    debugger;
+    if ($("#ecompany").html() != '') {
+        //var s = $("#icndisplay").html() + 'anil<i asp-validation-for="customer_name" class="fa fa - info - circle"></i>';
+        //$("#icndisplay").html(s);
+        $("#icndisplay").show();
+        alert("hy");
+    }
+    else {
+
+        alert("no");
+    }
+    var result = $("#ecompany").attr("data-valmsg-replace").val();
+    alert(result);
+});
+
+
+
+
 function validate() {
     debugger;
     var result = true;

@@ -12,7 +12,7 @@ namespace Mohali_Property_Model
     {
         [Key]
 
-        public int user_id { get; set; }
+        public int id { get; set; }
 
         //[Required(ErrorMessage = "name is Required"), Range(3, 50)]
         public string name { get; set; }
@@ -47,7 +47,7 @@ namespace Mohali_Property_Model
 
         //[Required, StringLength(30)]
 
-        public string status { get; set; }
+        //public string status { get; set; }
 
 
 

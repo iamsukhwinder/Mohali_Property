@@ -114,6 +114,12 @@ namespace Mohali_Property.Controllers
             HttpContext.SignOutAsync();
             return RedirectToAction("Login");
         }
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
 
         [HttpGet]
         public IActionResult SignUp()
@@ -167,6 +173,51 @@ namespace Mohali_Property.Controllers
         //    }
         //    return View();
         //}
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(UserModel useremail)
+        {
+            var user =await _loginrepository.checkuserbyemail(useremail.email); 
+            if(user.is_success == false)
+            {
+                TempData["Not_exist"] = user.message;
+                return View();
+            }
+            else
+            {
+                TempData["exist"] = "We have sent you the Reset password link on your email";
+                SendEmail mail = new SendEmail();
+                var tosend = useremail.email;
+                var subject = "Reset Password";
+                var body = "<a href='http://localhost:5130/Home/ResetPassword?email=" + useremail.email + "' > Click on me to reset your password</a>";
+                mail.Sendmail(tosend, subject, body);
+                return View();
+            }
+            
+        }
+        [HttpGet]
+        public IActionResult ResetPassword(string email)
+        
+        {
+            ViewData["user_email"] = email;
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(LoginModel logdetail)
+        {
+            var result =await _loginrepository.updatepassword(logdetail);
+            if(result.is_success == false)
+            {
+                TempData["Not_exist"] = result.message;
+                return RedirectToAction("ForgotPassword", "Home");
+            }
+            else
+            {
+                TempData["Updated"] = result.message;
+                return RedirectToAction("Login", "Home");
+            }
+        }
+
 
 
 
