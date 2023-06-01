@@ -105,6 +105,12 @@ namespace Mohali_Property.Controllers
             return RedirectToAction("Login");
         }
 
+        [HttpGet]
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
 
 
 

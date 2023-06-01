@@ -5,6 +5,7 @@ using MohaliProperty.Services.WebServices.Admin.ManageCustomer;
 using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 using MohaliProperty.Services.WebServices.Admin.ManageTokens;
 using MohaliProperty.Services.WebServices.Admin.ManageUser;
+using MohaliProperty.Services.WebServices.SignUp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ builder.Services.AddScoped<IManageKothi, ManageKothi>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<IManageCustomer, ManageCustomer>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ISignUpRepository, SignUp>();
 
 
 builder.Services.AddSession(options =>
@@ -52,6 +54,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Login}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
