@@ -10,7 +10,10 @@ using MohaliProperty.Model;
 using MohaliProperty.Services.WebServices.Admin.Login;
 using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 using Mohali_Property_Model;
-using System.Numerics;
+using MohaliProperty.Services.WebServices.SignUp;
+using System.Net.Mail;
+using System.Net;
+using MohaliProperty.Services.WebServices.Admin.ManageCustomer;
 
 namespace Mohali_Property.Controllers
 {
@@ -19,12 +22,17 @@ namespace Mohali_Property.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ILoginRepository _loginrepository;
         private readonly IManageKothi _kothi;
+        private readonly ISignUpRepository _signuprepository;
+       
 
-        public HomeController(ILogger<HomeController> logger, ILoginRepository loginrepository, IManageKothi kothi)
+        public HomeController(ILogger<HomeController> logger, ILoginRepository loginrepository, IManageKothi kothi,ISignUpRepository signUpRepository)
         {
             _logger = logger;
             _loginrepository = loginrepository;
             _kothi = kothi;
+            _signuprepository = signUpRepository;
+           
+            
         }
 
         public async Task<IActionResult> Index()
@@ -119,6 +127,52 @@ namespace Mohali_Property.Controllers
             return View();
         }
 
+        //[HttpPost]
+        //public async Task <IActionResult> SignUp(CustomerModel obj)
+        //{
+        //    var data = await _manageCustomer.AddCustomer(obj);
+           
+        //    if (data != null)
+        //    {
+
+
+        //        var file = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Email_Image", "Registrationpage.html");
+        //        String SendMailFrom = "bisheshdhiman5514@gmail.com";
+        //        String SendMailTo = obj.customer_email;
+        //        String SendMailSubject = "Registration Successfully";
+        //        // String SendMailBody = "<a href='http://localhost:5063/Home/Login'>Thanks for registration for us  [Please click here to login] </a>";
+        //        String SendMailBody = System.IO.File.ReadAllText(file);
+        //        try
+        //        {
+        //            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com", 587);
+        //            SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+        //            MailMessage email = new MailMessage();
+        //            // START
+        //            email.From = new MailAddress(SendMailFrom);
+        //            email.To.Add(SendMailTo);
+        //            email.CC.Add(SendMailFrom);
+        //            email.Subject = SendMailSubject;
+        //            email.Body = SendMailBody;
+        //            email.IsBodyHtml = true;
+        //            //END
+        //            SmtpServer.Timeout = 10000;
+        //            SmtpServer.EnableSsl = true;
+        //            SmtpServer.UseDefaultCredentials = false;
+        //            SmtpServer.Credentials = new NetworkCredential(SendMailFrom, "neenaeaznlfjlivo");
+        //            SmtpServer.Send(email);
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //    return View();
+        //}
 
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(UserModel useremail)
