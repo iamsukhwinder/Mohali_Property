@@ -112,6 +112,14 @@ namespace Mohali_Property.Controllers
             return View();
         }
 
+
+        [HttpGet]
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(UserModel useremail)
         {
@@ -155,6 +163,7 @@ namespace Mohali_Property.Controllers
                 return RedirectToAction("Login", "Home");
             }
         }
+
 
 
 
