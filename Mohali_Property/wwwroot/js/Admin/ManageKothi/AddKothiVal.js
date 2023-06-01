@@ -98,12 +98,12 @@
 
 
 
-    var kothi_unit = $("#plot_area").val();
+        var kothi_unit = $("#plot_area").val();
 
     if (kothi_unit == "") {
         result = false;
 
-    $("#eplotarea").html("please enter Plot Area ");
+        $("#eplotarea").html("please enter Plot Area ");
         }
     else {
         $("#eplotarea").html("");
@@ -126,17 +126,17 @@
 
 
 
-    //var unit_rate = $("#unit_rate").val();
+        var bhks = $("#bhk").val();
 
-    //if (unit_rate == "") {
-    //    result = false;
-    //$("#eunitrate").html("please enter Unit rate ");
+        if (bhks == "") {
+        result = false;
+            $("#ebhk").html("please enter Unit rate ");
 
-    //        }
-    //else {
-    //    $("#eunitrate").html("");
+            }
+    else {
+            $("#ebhk").html("");
            
-    //        }
+            }
 
 
 
