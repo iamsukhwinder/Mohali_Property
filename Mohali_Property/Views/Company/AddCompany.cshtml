@@ -38,10 +38,11 @@
         <div class="row">
             <div class="form-group col-md-6">
                 <label>Company</label>
-
+                 
+                
                 <i asp-validation-for="company" class="fa fa-info-circle"></i>
 
-                <span asp-validation-for="company" class="text-danger"></span>
+                <span asp-validation-for="company" id="ecompany" class="text-danger"></span>
                 <input type="text" class="form-control" name="company" id="company" placeholder="Company">
                 @*<span style="color:red" id="ecompany"></span>*@
 
