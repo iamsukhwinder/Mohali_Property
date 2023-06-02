@@ -31,6 +31,7 @@ namespace Mohali_Property_Model
         [Required(ErrorMessage = "Mobile Number is Required")]
         public string mobile_number { get; set; }
 
+        public int login_id { get; set; }
         [Required(ErrorMessage = "Created Date is Required")]
         public DateTime created_date { get; set; }
     }
