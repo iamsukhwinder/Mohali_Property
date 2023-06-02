@@ -45,6 +45,7 @@ namespace Mohali_Property_Model
 
         public string email { get; set; }
 
+        public int login_id { get; set; }
         //[Required, StringLength(30)]
 
         //public string status { get; set; }
