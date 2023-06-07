@@ -1,15 +1,15 @@
 ﻿
 
-    $(document).ready(function(){
-   //     debugger;
-        var s = $("#sta").val();
+$(document).ready(function () {
+    debugger;
+    var s = $("#sta").val();
     $("#status").val(s);
 
     var states = $("#stateHide").val();
     $("#state").val(states);
 
 
-    })
+});
     // for image
     function readURL(input) {
         if (input.files && input.files[0]) {
