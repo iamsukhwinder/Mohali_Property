@@ -56,12 +56,23 @@
 
         var result = true;
 
+        var compayname = $("#company").val();
+        debugger;
+        if (compayname == "") {
+            debugger;
+            result = false;
+            $(#ecompany).html("please enter kothi number");
+        }
+        else {
+            ("#ecompany").html("");
+        }
+
     var kothi_Number = $("#kothi_Number").val();
     debugger;
     if (kothi_Number == "") {
             debugger;
     result = false;
-    $("#ekothinumber").html("please enter  Kothi Number");
+        $("#ekothinumber").html("please enter  Kothi Number");
 
         }
     else {
@@ -84,12 +95,12 @@
         }
 
 
-    var dimension = $("#dimension").val();
+        var dimension = $("#dimension").val();
 
     if (dimension == "") {
         result = false;
 
-    $("#edenomination").html("please enter Denomination ");
+        $("#edenomination").html("please enter Denomination ");
 
         }
     else {
@@ -98,9 +109,9 @@
 
 
 
-        var kothi_unit = $("#plot_area").val();
+        var plotarea = $("#plot_area").val();
 
-    if (kothi_unit == "") {
+        if (plotarea == "") {
         result = false;
 
         $("#eplotarea").html("please enter Plot Area ");
@@ -112,12 +123,12 @@
 
 
 
-    var kothi_size = $("#kothi_size").val();
+        var kothi_size = $("#kothi_size").val();
 
     if (kothi_size == "") {
         result = false;
 
-    $("#ekothisize").html("please enter Kothi Size ");
+        $("#ekothisize").html("please enter Kothi Size ");
         }
     else {
         $("#ekothisize").html("");
@@ -140,9 +151,9 @@
 
 
 
-    var token_amount = $("#price").val();
+    var price = $("#price").val();
 
-    if (token_amount == "") {
+        if (price == "") {
         result = false;
     $("#eprice").html("please enter Price ");
 
