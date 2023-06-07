@@ -16,12 +16,12 @@ namespace MohaliProperty.Web.Controllers
         public async Task<IActionResult> Index(int id)
         {
 
-            var booling_detail =await _booking.getbookingdetail(id);
+            var booking_detail =await _booking.getbookingdetail(id);
             //if(User.Identity.IsAuthenticated == true && User.IsInRole("User"))
             //{
 
             
-            return View();
+            return View(booking_detail.data);
 
             //}
             //else
