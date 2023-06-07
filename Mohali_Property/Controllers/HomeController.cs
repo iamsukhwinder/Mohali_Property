@@ -121,11 +121,11 @@ namespace Mohali_Property.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult SignUp()
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public IActionResult SignUp()
+        //{
+        //    return View();
+        //}
 
         //[HttpPost]
         //public async Task <IActionResult> SignUp(CustomerModel obj)
