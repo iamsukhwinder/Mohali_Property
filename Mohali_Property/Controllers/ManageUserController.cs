@@ -37,13 +37,7 @@ namespace MohaliProperty.Web.Controllers
             return data;
         }
 
-        //[HttpGet]
-        //public async Task<List<UserModel>> addUserList()
-        //{
-        //    var data = await _User.GetUserList();
-        //    return data;
-        //}
-
+         
         [HttpPost]
         public async Task<int> Adduser(UserModel user)
         {

@@ -60,7 +60,7 @@ namespace MohaliProperty.API.Controllers
 
             };
 
-            int n = _context.Database.ExecuteSqlRaw("EXEC add_user @name,@address,@city,@state,@pin_code,@mobile_number,@email,@role_id,@status,@username,@password", parms.ToArray());
+            int n = _context.Database.ExecuteSqlRaw("EXEC add_Users @name,@address,@city,@state,@role_id,@pin_code,@mobile_number,@email,@status,@username,@password", parms.ToArray());
 
 
             if (n == 0)
@@ -80,7 +80,7 @@ namespace MohaliProperty.API.Controllers
         public async Task<UserVM> edit_user(int id)
         {
             SqlParameter parm = new SqlParameter("@id",id);
-            var vm = _context.userVMs.FromSqlRaw("Edituser @id", parm).ToList().FirstOrDefault();
+            var vm = _context.userVMs.FromSqlRaw("EXEC Edituser @id", parm).ToList().FirstOrDefault();
             return  vm;
         }
 
