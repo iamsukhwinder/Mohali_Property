@@ -57,7 +57,7 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageUser
         
         public async Task<UserVM> edit_users(int id)
         {
-            var url = "/api/User/edit_user?id="+id;
+            var url = "/api/User/edit_user?id=" + id;
             var response = await Configurations.Initial(_configuration).GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
@@ -87,6 +87,7 @@ namespace MohaliProperty.Services.WebServices.Admin.ManageUser
                 Console.WriteLine("Internal server Error");
                 return null;
             }
+
 
         }
 

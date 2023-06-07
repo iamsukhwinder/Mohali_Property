@@ -9,10 +9,10 @@
 <form method="post" id="edit_user_form">
 
   <input type="hidden" name="id" asp-for="id" />
-    <p>Name: <input type="text" name="Name" asp-for="name" /></p>
+    <p>Name: <input type="text" name="Name" asp-for="name" value="@Model.name" /></p>
     <span style="color:red" id="Name"></span>
 
-    <p>Address:<input type="text" name="address" asp-for="address" /></p>
+    <p>Address:<input type="text" name="address" asp-for="address" value="@Model.address" /></p>
     <span style="color:red" id="address"></span>
 
 
