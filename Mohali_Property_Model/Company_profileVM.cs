@@ -13,6 +13,7 @@ namespace MohaliProperty.Model
         [Key]
         public int company_id { get; set; }
 
+
         [Required(ErrorMessage = "Company is Required"), StringLength(30)]
 
         public string company { get; set; }
@@ -24,15 +25,16 @@ namespace MohaliProperty.Model
         public string company_address { get; set; }
 
         [Required(ErrorMessage = "City is Required"), StringLength(30)]
+
         public string city { get; set; }
 
         [Required(ErrorMessage = "State is Required"), StringLength(30)]
         public string state { get; set; }
 
-        [Required, StringLength(30)]
+        [Required(ErrorMessage="Pin code is Required")]
         public string pin_code { get; set; }
 
-        [Required, StringLength(30)]
+        [Required(ErrorMessage ="Website is Required")]
         public string website { get; set; }
 
         [Required(ErrorMessage = "Invalid GST Number.")]
@@ -42,12 +44,15 @@ namespace MohaliProperty.Model
         [Required(ErrorMessage = "Status is Required!")]
         public string status { get; set; }
         //[Display(Name = "Image")]
+
         [Required(ErrorMessage = "Pick an Image")]
+
         //[FileExtensions(Extensions = "jpg,jpeg,png")]
         public string company_logo { get; set; }
 
         //[Display(Name = "Phone Number")]
         [Required(ErrorMessage = "Phone Number Required!")]
+
         //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
         //           ErrorMessage = "Entered phone format is not valid.")]
         public string mobileNumber { get; set; }
@@ -55,6 +60,7 @@ namespace MohaliProperty.Model
         [Required(ErrorMessage = "LandLine Number Required!")]
         //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
         //           ErrorMessage = "Entered LandLine Number format is not valid.")]
+
         public string landlineNo { get; set; }
 
         [Required]
