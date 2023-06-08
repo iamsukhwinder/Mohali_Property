@@ -14,6 +14,7 @@ using MohaliProperty.Services.WebServices.SignUp;
 using System.Net.Mail;
 using System.Net;
 using MohaliProperty.Services.WebServices.Admin.ManageCustomer;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 
 namespace Mohali_Property.Controllers
 {
@@ -38,6 +39,7 @@ namespace Mohali_Property.Controllers
         public async Task<IActionResult> Index()
         {
             var kothies =await _kothi.getkothieslist();   
+            
             return View(kothies);
         }
 
@@ -54,6 +56,11 @@ namespace Mohali_Property.Controllers
             return View();
         }
 
+        public IActionResult Signout()
+        {
+            HttpContext.SignOutAsync();
+            return RedirectToAction("Index","Home");
+        }
         public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated == true)
@@ -88,7 +95,7 @@ namespace Mohali_Property.Controllers
                         claims.Add(new Claim("username", data.username));
                         claims.Add(new Claim(ClaimTypes.Role, data.role_name));
                         claims.Add(new Claim(ClaimTypes.NameIdentifier, data.username));
-                        claims.Add(new Claim(ClaimTypes.Name, data.password + " " + data.password));
+                        claims.Add(new Claim(ClaimTypes.Name, data.username ));
             
                         var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         var claimPrinciple = new ClaimsPrincipal(claimIdentity);
@@ -98,10 +105,15 @@ namespace Mohali_Property.Controllers
                         TempData["admin_name"] = data.name;
                         return RedirectToAction("Index", "Admin");
                         }
-                        else
+                        else if(data.role_name == "User")
                         {
                             return RedirectToAction("Index", "User");
-                        }            
+                        }
+                        else
+                        {
+                            HttpContext.Session.SetString("customer_id", data.id.ToString());
+                            return RedirectToAction("Index", "Home");
+                        }
         
 
                 }
