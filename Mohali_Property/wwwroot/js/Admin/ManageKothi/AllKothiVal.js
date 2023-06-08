@@ -147,7 +147,7 @@ function deletekothidetal(id) {
             success: function (data) {
                 debugger;
                 alert("kothi details deleted");
-                
+                location.reload();
 
             },
 

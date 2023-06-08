@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Mohali_Property_Model;
 using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 using MohaliProperty.Services.WebServices.Booking;
 
@@ -28,6 +29,11 @@ namespace MohaliProperty.Web.Controllers
             //{
             //    return RedirectToAction("SignUp", "Home");
             //}
+        }
+        public async Task<IActionResult> Confirm_booking(TokenModel detail)
+        {
+            var result = _booking.genrate_token(detail);
+            return RedirectToAction("Index","Home");
         }
     }
 }
