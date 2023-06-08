@@ -10,5 +10,6 @@ namespace MohaliProperty.Services.WebServices.Booking
     public interface IBookingRepository
     {
         public Task<ResponseModel<BookingModel>> getbookingdetail(int id);
+        public Task<ResponseModel<int>> genrate_token(TokenModel detail);
     }
 }

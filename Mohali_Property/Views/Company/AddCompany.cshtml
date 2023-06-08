@@ -33,24 +33,25 @@
             <h3>Company Information</h3>
 
         </div>
-
+        <span style="color:red">@ViewData["company_added"]</span>
+        <span style="color:red">@ViewData["company_not_added"]</span>
         <p id="p1">* All Fields are Required</p>
         <div class="row">
             <div class="form-group col-md-6">
                 <label>Company</label>
-                 
-                
-                <i asp-validation-for="company" class="fa fa-info-circle"></i>
-
+                @*<i asp-validation-for="company" class="fa fa-info-circle"></i>*@
                 <span asp-validation-for="company" id="ecompany" class="text-danger"></span>
-                <input type="text" class="form-control" name="company" id="company" placeholder="Company">
+                <input type="text" class="form-control" asp-for="company" name="company" id="company" placeholder="Company">
                 @*<span style="color:red" id="ecompany"></span>*@
+
+            </div>
+            <div class="col-md-6">
 
             </div>
             <div class="form-group col-md-6">
                 <label>Company Name</label>
                 <span asp-validation-for="company_name" class="text-danger"></span>
-                <input type="text" class="form-control" name="companyname" id="companyname" placeholder="Company Name">
+                <input type="text" class="form-control" asp-for="company_name" name="company_name" id="companyname" placeholder="Company Name">
                 @*          <span style="color:red" id="ecompanyname"></span>*@
             </div>
         </div><br />
@@ -58,13 +59,13 @@
             <div class="form-group col-md-6">
                 <label>Email</label>
                 <span asp-validation-for="email" class="text-danger"></span>
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                <input type="email" class="form-control" asp-for="email" name="email" id="email" placeholder="Email">
                 @* <span style="color:red" id="eemail"></span>*@
             </div>
             <div class="form-group col-md-6">
                 <label> Company Address</label>
                 <span asp-validation-for="company_address" class="text-danger"></span>
-                <input type="text" class="form-control" name="address" id="address" placeholder="Company Address">
+                <input type="text" class="form-control" asp-for="company_address" name="company_address" id="address" placeholder="Company Address">
                 @*       <span style="color:red" id="eaddress"></span>*@
             </div>
 
@@ -74,7 +75,7 @@
             <div class="form-group col-md-6">
                 <label>City</label>
                 <span asp-validation-for="city" class="text-danger"></span>
-                <input type="text" class="form-control" name="city" id="city" placeholder="City">
+                <input type="text" class="form-control" asp-for="city" name="city" id="city" placeholder="City">
                 @*    <span style="color:red" id="ecity"></span>*@
             </div>
             <div class="form-group col-md-4">
@@ -130,21 +131,21 @@
 
             <div class="form-group col-md-2">
                 <label>PinCode</label>
-                <input type="text" class="form-control" name="pincode" id="pincode">
+                <input type="text" class="form-control" asp-for="pin_code" name="pin_code" id="pincode">
                 @* <span style="color:red" id="epincode"></span>*@
                 <span asp-validation-for="pin_code" class="text-danger"></span>
             </div>
 
             <div class="form-group col-md-2">
                 <label>Website</label>
-                <input type="text" class="form-control" name="website" id="website">
+                <input type="text" class="form-control" name="website" asp-for="website" id="website">
                 @* <span style="color:red" id="ewebsite"></span>*@
                 <span asp-validation-for="website" class="text-danger"></span>
             </div>
 
             <div class="form-group col-md-2">
                 <label>GST No</label>
-                <input type="text" class="form-control" name="gst" id="gst">
+                <input type="text" class="form-control" name="gst_number" asp-for="gst_number" id="gst">
                 @* <span style="color:red" id="egst"></span>*@
                 <span asp-validation-for="gst_number" class="text-danger"></span>
             </div>
@@ -153,8 +154,8 @@
                 <label>Status</label>
                 <select asp-for="status" class="form-control">
                     <option value="" selected>choose...</option>
-                    <option value="1" >Active</option>
-                    <option value="2" >InActive</option>
+                    <option value="Active" >Active</option>
+                    <option value="InActive" >InActive</option>
 
                 </select>
                     <span asp-validation-for="status" class="text-danger"></span>
@@ -162,13 +163,13 @@
             </div>
             <div class="form-group col-md-2">
                 <label>Mobile Number</label>
-                <input type="text" class="form-control" name="mobilenumber" id="mobilenumber">
+                <input type="text" class="form-control" asp-for="mobileNumber" name="mobilenumber" id="mobilenumber">
                 @* <span style="color:red" id="emobilenumber"></span>*@
                 <span asp-validation-for="mobileNumber" class="text-danger"></span>
             </div>
             <div class="form-group col-md-2">
                 <label>Landline Number</label>
-                <input type="text" class="form-control" name="landlinenumber" id="landlinenumber">
+                <input type="text" class="form-control" name="landlineNo" asp-for="landlineNo" id="landlinenumber">
                 <span asp-validation-for="landlineNo" class="text-danger"></span>
                 @*  <span style="color:red" id="elandlinenumber"></span>*@
             </div>
@@ -179,9 +180,13 @@
 
         <div class="form-group col-md-6">
             <label for="company_logo">Company Logo</label>
+            <span style="color:#c72a49">@ViewData["empty_image"]</span>
+            <span style="color:red">@ViewData["not_allowed"]</span>
+              
+            
             <span asp-validation-for="company_logo" class="text-danger"></span>
-            <input type="file" name="company_logo" class="form-control" id="company_logo">
-            @*  <span style="color:red" id="ecompany_logo"></span>*@
+            <input type="file" name="company_logo" asp-for="company_logo" class="form-control" id="company_logo">
+
         </div><br /><br />
 
 
