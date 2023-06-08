@@ -101,19 +101,21 @@
                         </div>*@
 
 
-                        <a class="nav-link collapsed"  data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                       @* <a class="nav-link collapsed"  data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Manage User
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                        </a>*@
+                        
                                @* <a class="nav-link" onclick="all_user_view()">Users List</a>*@
-                               <a class="nav-link" asp-action="All_User" asp-controller="ManageUser" >All User</a>
-                                <a class="nav-link" asp-action="Add_User" asp-controller="ManageUser">Add User</a>
-                                </nav>
-                                </div>
+                                <a class="nav-link collapsed" asp-action="All_User" asp-controller="ManageUser" data-bs-target="#collapse_manage_customer" aria-expanded="false" aria-controls="collapse_manage_customer">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                    Manage Users
+                                    <div class="sb-sidenav-collapse-arrow"></div>
+                                </a>
+                                @*<a class="nav-link" asp-action="Add_User" asp-controller="ManageUser">Add User</a>*@
+                              
                                 @*<div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="401.html">401 Page</a>

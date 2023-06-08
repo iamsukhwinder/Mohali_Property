@@ -3,17 +3,17 @@
     ViewData["Title"] = "Edit_user";
 }
 
-<h1>Edit_user</h1>
+
 
 
 <form method="post" id="edit_user_form">
 
   <input type="hidden" name="id" asp-for="id" />
-    <p>Name: <input type="text" name="Name" asp-for="name" value="@Model.name" /></p>
-    <span style="color:red" id="Name"></span>
+    <p>Name: <input type="text" name="Name" asp-for="name" id ="name" value="@Model.name" /></p>
+    <span style="color:red" id="ename"></span>
 
-    <p>Address:<input type="text" name="address" asp-for="address" value="@Model.address" /></p>
-    <span style="color:red" id="address"></span>
+    <p>Address:<input type="text" name="address" id="address" value="@Model.address" /></p>
+    <span style="color:red" id="eaddress"></span>
 
 
     
@@ -21,17 +21,17 @@
     <p>Kothi Unit: <input type="text" asp-for="kothi_unit" /></p>
     <span style="color:red" id="ekothiunit"></span>*@
 
-    <p>City: <input type="text" name="city" asp-for="city" /></p>
-    <span style="color:red" id="city"></span>
+    <p>City: <input type="text" name="city" asp-for="city" id="city"/></p>
+    <span style="color:red" id="ecity"></span>
 
-    <p>State: <input type="text" name="state" asp-for="state" /></p>
-    <span style="color:red" id="state"></span>
+    <p>State: <input type="text" name="state" asp-for="state" id="state" /></p>
+    <span style="color:red" id="estate"></span>
 
     @*<p>Dimention: <input type="text" asp-for="dimension" /></p>
     <span style="color:red" id="edimention"></span>*@
 
-    <p>Pin_code: <input type="text" name="pin_code" asp-for="pin_code" /></p>
-    <span style="color:red" id="pin_code"></span>
+    <p>Pin_code: <input type="text" name="pin_code" asp-for="pin_code" id="pin_code" /></p>
+    <span style="color:red" id="epincode"></span>
 
     @* <p>Email: <input type="text" name="email" asp-for="email" /></p>
     <span style="color:red" id="email"></span>
@@ -42,8 +42,8 @@
     <p>Token Amount:<input type="text" asp-for="token_amount" /></p>
     <span style="color:red" id="etokenamount"></span>*@
 
-    <p>  Mobile_number: <input type="text" name="mobile_number" asp-for="mobile_number" /></p>
-    <span style="color:red" id="mobile_number"></span>
+    <p>  Mobile_number: <input type="text" name="mobile_number" asp-for="mobile_number" id="mobile_number" /></p>
+    <span style="color:red" id="emobile_number"></span>
 
     @*<input type="hidden" asp-for="status" name="sta" id="sta" />
 
@@ -57,8 +57,8 @@
         <span style="color:red" id="estatus"></span>
     </p>*@
 
-    <p>Email: <input type="text" name="email" asp-for="email" /></p>
-    <span style="color:red" id="email"></span>
+    <p>Email: <input type="text" name="email" asp-for="email" id="email"/></p>
+    <span style="color:red" id="eemail"></span>
    @* <input type="hidden" name="hold" asp-for="hold" />
     <input type="hidden" name="kothi_image" asp-for="kothi_image" />
     <p>

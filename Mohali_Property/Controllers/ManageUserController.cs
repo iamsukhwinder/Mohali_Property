@@ -39,10 +39,22 @@ namespace MohaliProperty.Web.Controllers
 
          
         [HttpPost]
-        public async Task<int> Adduser(UserModel user)
+        public async Task<IActionResult> Add_User(UserModel user)
+            
         {
-            var result = await _User.add_user(user);
-            return result;
+
+            if (ModelState.IsValid)
+            {
+                var result = await _User.add_user(user);
+                return View();
+
+            }
+            else
+            {
+                return View();
+
+            }
+            
         }
 
         [HttpGet]
