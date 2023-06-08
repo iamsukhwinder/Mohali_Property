@@ -7,7 +7,7 @@
 <style>
 	.center {
 		border: 5px solid;
-		margin-top:20%;
+		margin-top:10%;
 		padding: 10px;
 	}
 
@@ -39,9 +39,12 @@
 		</div>
 	</div>
 
-
-
-	<button type="submit" class="btn btn-primary m-3 float-end">Confirm</button>
+	<form asp-action="Confirm_booking" asp-controller="Booking">
+		<input type="hidden" asp-for="kothi_id" />
+		<input type="hidden" asp-for="company_id"/>
+		<input type="hidden" asp-for="customer_id" value='@ViewData["customer_id"]'/>
+		<button type="submit" class="btn btn-primary m-3 float-end">Confirm</button>
+	</form>
 	</div>
 
 </div>

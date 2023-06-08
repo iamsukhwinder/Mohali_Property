@@ -16,13 +16,21 @@ namespace MohaliProperty.Web.Controllers
         }
         public async Task<IActionResult> Index(int id)
         {
-
-            var booking_detail =await _booking.getbookingdetail(id);
-            //if(User.Identity.IsAuthenticated == true && User.IsInRole("User"))
-            //{
-
             
-            return View(booking_detail.data);
+            var user = User.IsInRole("Customer");
+            if (User.IsInRole("Customer"))
+            {
+                var booking_detail = await _booking.getbookingdetail(id);
+
+                ViewData["customer_id"] = HttpContext.Session.GetString("customer_id");
+                return View(booking_detail.data);
+            }
+            else
+            {
+                TempData["not_cutomer"] = "please login first as customer to book";
+                return RedirectToAction("Index", "Home");
+            }
+
 
             //}
             //else
@@ -33,6 +41,7 @@ namespace MohaliProperty.Web.Controllers
         public async Task<IActionResult> Confirm_booking(TokenModel detail)
         {
             var result = _booking.genrate_token(detail);
+            
             return RedirectToAction("Index","Home");
         }
     }
