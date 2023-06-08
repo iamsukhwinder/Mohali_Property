@@ -63,28 +63,31 @@
                                 <a class="nav-link" asp-controller="Company" asp-action="AddCompany">Add Company</a>
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayoutss">
+                        @*Manage Kothies*@
+                        <a class="nav-link collapsed" asp-controller="Kothi" asp-action="showkothies" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayoutss">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Manage Kothies
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            <div class="sb-sidenav-collapse-arrow"></div>
                         </a>
-                        <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                       @* <div class="collapse" id="collapseLayoutss" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" asp-action="showkothies" asp-controller="Kothi">All Kothies</a>
                                 <a class="nav-link" href="/Kothi/Add_Kothi">Add Kothi</a>
                             </nav>
-                        </div>
+                        </div>*@
                         @*<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsetokens" aria-expanded="false" aria-controls="collapsetokens">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Manage Tokens
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>*@
-                        <div id="collapsetokens" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" asp-action="showtokens" asp-controller="Token">Manage Tokens</a>
-                                @*<a class="nav-link" onclick="addtoken()">Create Token</a>*@
-                            </nav>
-                        </div>
+
+                        @*Manage Tokens*@
+                        
+                        <a class="nav-link collapsed" asp-action="showtokens" asp-controller="Token" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayoutss">
+                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Manage Tokens
+                             <div class="sb-sidenav-collapse-arrow"></div>
+                       </a>
 
                        @*Manage Customers*@
                         <a class="nav-link collapsed" asp-controller="Customer" asp-action="ShowCustomer"  data-bs-target="#collapse_manage_customer" aria-expanded="false" aria-controls="collapse_manage_customer">
@@ -101,7 +104,7 @@
                         </div>*@
 
 
-                        <a class="nav-link collapsed"  data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <a class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                             Manage User
@@ -133,7 +136,7 @@
                             Tables
                         </a>
                     </div>*@
-                </div>
+                </>
               
             </nav>
         </div>
