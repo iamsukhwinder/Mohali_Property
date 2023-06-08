@@ -14,35 +14,33 @@ namespace Mohali_Property_Model
 
         public int id { get; set; }
 
-        //[Required(ErrorMessage = "name is Required"), Range(3, 50)]
+        [Required(ErrorMessage = "Name is Required")]
         public string name { get; set; }
 
         
 
-        //[Required(ErrorMessage = "Address is Required"), Range(3, 100)]
+        [Required(ErrorMessage = "Address is Required")]
         public string address { get; set; }
 
-        //[Required(ErrorMessage = "City is Required"), Range(3, 30)]
+        [Required(ErrorMessage = "City is Required")]
         public string city { get; set; }
 
-        //[Required, /*StringLength*/(30)]
+        [Required(ErrorMessage = "State is Required")] 
+
         public string state { get; set; }
 
-        //[Required, /*StringLength*/(30)]
+        [Required(ErrorMessage = "Pincode is Required")]
         public string pin_code { get; set; }
 
-        //[Display(Name = "Phone Number")]
-        //[Required(ErrorMessage = "Phone Number Required!")]
-        //[RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
-        //           ErrorMessage = "Entered phone format is not valid.")]
+       
+        [Required(ErrorMessage = "Phone Number Required!")]
+        
 
         public string mobile_number { get; set; }
 
-        
 
-        //[Required]
-        //[DataType(DataType.EmailAddress, ErrorMessage = "E-mail is not valid")]
 
+        [Required(ErrorMessage = "Email is  Required!")]
         public string email { get; set; }
 
         public int login_id { get; set; }
