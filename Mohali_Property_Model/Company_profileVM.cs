@@ -45,9 +45,11 @@ namespace MohaliProperty.Model
         public string status { get; set; }
         //[Display(Name = "Image")]
 
-        [Required(ErrorMessage = "Pick an Image")]
+        //[Required(ErrorMessage = "Pick an Image")]
 
         //[FileExtensions(Extensions = "jpg,jpeg,png")]
+        //[Required(ErrorMessage = "Please select a file.")]
+        //[DataType(DataType.Upload)]
         public string company_logo { get; set; }
 
         //[Display(Name = "Phone Number")]

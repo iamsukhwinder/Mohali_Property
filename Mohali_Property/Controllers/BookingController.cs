@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Mohali_Property_Model;
 using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 using MohaliProperty.Services.WebServices.Booking;
 
@@ -16,18 +17,23 @@ namespace MohaliProperty.Web.Controllers
         public async Task<IActionResult> Index(int id)
         {
 
-            var booling_detail =await _booking.getbookingdetail(id);
+            var booking_detail =await _booking.getbookingdetail(id);
             //if(User.Identity.IsAuthenticated == true && User.IsInRole("User"))
             //{
 
             
-            return View();
+            return View(booking_detail.data);
 
             //}
             //else
             //{
             //    return RedirectToAction("SignUp", "Home");
             //}
+        }
+        public async Task<IActionResult> Confirm_booking(TokenModel detail)
+        {
+            var result = _booking.genrate_token(detail);
+            return RedirectToAction("Index","Home");
         }
     }
 }

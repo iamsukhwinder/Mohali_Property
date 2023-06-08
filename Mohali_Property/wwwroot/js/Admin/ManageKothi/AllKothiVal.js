@@ -35,7 +35,7 @@
                             "mRender": function (data, type, row) {
                                 //return ' <a id="btneditproduct" onclick="showeditcompanymodal(' + row.company_id + ')"  title="Edit" class="btn-text-size btn btn-primary btneditproduct" data-id=' + row.id + '>Edit</a>';
                                 //return ' <a   class="btn-text-size " href="/Admin/editProduct/' + row.id+'" >Edit</a>';
-                                return '<img src="/Image/edit.png"  height="20" width="20"  id="btneditproduct" onclick="showeditkothimodal(' + row.kothi_id + ')"  title="Edit"  data-id=' + row.company_id + '>&nbsp;&nbsp;&nbsp;&nbsp; <img src="/Image/delete.png"  height="20" width="20"  id="btneditproduct" onclick="deletekothidetal(' + row.kothi_id + ')"  title="Delete"  data-id=' + row.company_id + '>'
+                                return '<img src="/Image/edit.png"  height="20" width="20"  id="btneditproduct" style="cursor:pointer" onclick="showeditkothimodal(' + row.kothi_id + ')"  title="Edit"  data-id=' + row.company_id + '>&nbsp;&nbsp;&nbsp;&nbsp; <img src="/Image/delete.png"  height="20" width="20"  id="btneditproduct" style="cursor:pointer" onclick="deletekothidetal(' + row.kothi_id + ')"  title="Delete"  data-id=' + row.company_id + '>'
                             }
 
                         },
@@ -147,7 +147,7 @@ function deletekothidetal(id) {
             success: function (data) {
                 debugger;
                 alert("kothi details deleted");
-                
+                location.reload();
 
             },
 
