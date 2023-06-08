@@ -87,9 +87,21 @@ namespace Mohali_Property_Web.Controllers
                     {
                         await file.CopyToAsync(stream);
                     }
+                    var compnies = await _comp.GetComopanyList();
+                    List<SelectListItem> compddl = new List<SelectListItem>();
+                    foreach (Company_profileVM company in compnies)
+                    {
+                        SelectListItem compselect = new SelectListItem();
+                        compselect.Text = company.company_name;
+                        compselect.Value = company.company_id.ToString();
+                        compddl.Add(compselect);
+                    }
+                    ViewData["compddl"] = compddl;
+
                     return View();
 
                 }
+               
 
                 return View();
             }
@@ -105,6 +117,7 @@ namespace Mohali_Property_Web.Controllers
                     compddl.Add(compselect);
                 }
                 ViewData["compddl"] = compddl;
+
                 return View();
 
 

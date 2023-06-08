@@ -12,7 +12,7 @@ namespace MohaliProperty.Model
         [Key]
 
 
-        [Required(ErrorMessage = "Company is Required")]
+       
         public int? kothi_id { get; set; }
 
 
@@ -66,7 +66,7 @@ namespace MohaliProperty.Model
         //[DataType(DataType.Upload)]
         //[FileExtensions(Extensions = "jpg,jpeg,png", ErrorMessage = "Please upload an image file (JPG, JPEG, or PNG).")]
 
-        [Required(ErrorMessage = "Kothi Image is Required")]
+        //[Required(ErrorMessage = "Kothi Image is Required")]
         public string kothi_image { get; set; }
 
         public int hold { get; set; }

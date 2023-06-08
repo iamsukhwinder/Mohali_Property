@@ -74,12 +74,7 @@
         </div><br />
 
         <div class="row">
-            <div class="form-group col-md-6">
-                <label>Dimension</label>
-                <span asp-validation-for="dimension" class="text-danger"></span>
-                <input type="text" class="form-control" name="dimension" id="dimension" asp-for="dimension" placeholder="Dimension">
-               @* <span style="color:red" id="edenomination"></span>*@
-            </div>
+          
 
 
             <div class="form-group col-md-6">
@@ -87,6 +82,25 @@
                 <span asp-validation-for="plot_area" class="text-danger"></span>
                 <input type="text" class="form-control" name="plot_area" id="plot_area" asp-for="plot_area" placeholder="Plot Area">
            @*     <span style="color:red" id="eplotarea"></span>*@
+            </div>
+
+
+            <div class="form-group col-md-6">
+                <label>Dimension</label>
+                <span asp-validation-for="dimension" class="text-danger"></span>
+                @* <input type="text" class="form-control" name="dimension" id="dimension" asp-for="dimension" placeholder="Dimension">*@
+                <select name="dimension" id="dimension" asp-for="dimension" class="form-control">
+                    <option value="">choose....</option>
+                    <option value="sq.feet">Sq. Feet</option>
+                    <option value="sq.yard">Sq. Yard</option>
+                    <option value="sq.mtr">Sq. meter</option>
+                    <option value="marla">Marla</option>
+                    <option value="kanal">Kanal</option>
+                    <option value="bigha">Bigha</option>
+                    <option value="killa">Killa</option>
+                    <option value="muraba">Murabba</option>
+                </select>
+                @* <span style="color:red" id="edenomination"></span>*@
             </div>
 
         </div>
@@ -140,7 +154,8 @@
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="kothi_image">Kothi Image</label>
-                 <span asp-validation-for="kothi_image" class="text-danger"></span>
+               @*  <span asp-validation-for="kothi_image" class="text-danger"></span>*@
+                 
                 <input type="file" name="kothi_image" class="form-control" asp-for="kothi_image" id="kothi_image">
                @* <span style="color:red" id="ekothi_image"></span>*@
             </div><br />
