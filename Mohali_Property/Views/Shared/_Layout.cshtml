@@ -23,9 +23,21 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="SignUp" asp-action="SignUp">SignUp</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Login" asp-controller="Home">SignIn</a>
-                    </li>
+                    @{
+                        if(User.Identity.IsAuthenticated == false)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="Login" asp-controller="Home">SignIn</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="Logout" asp-controller="Home">Sign Out</a>
+                            </li>
+                        }
+
+                    }
                     @* <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown

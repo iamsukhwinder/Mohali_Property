@@ -10,7 +10,10 @@ namespace Mohali_Property_Model
     {
         public int kothi_id { get; set; }   
         public int kothi_Number { get; set; }
+        public double kothi_size { get; set; }
+
         public double plot_area { get; set; }
+        public string dimension { get; set; }
         public double price { get; set; }
         public double booking_amount { get; set; }
         public int bhk { get; set; }

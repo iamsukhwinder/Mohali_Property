@@ -23,28 +23,39 @@
 	<div class="card text-white bg-danger ms-9" style="max-width: 85rem;">
 			<div class="card-header"><h4>Booking Details</h4></div>
 		<div class="card-body">
-	<p>Kothi Number : 
-	@Model.kothi_Number
-		</p>
-	<p>Plot Area : 
-		@Model.plot_area
-	</p>
-	<p>Bookingg Amount : 
-		@Model.booking_amount
-	</p>
-	<p>Company Address:
-		@Model.company_address
-	</p>
+				<p>
+					Company Name :
+					@Model.company_name
+				</p>
+				<p>
+					Kothi Number : 
+					@Model.kothi_Number
+				</p>
+		
+				<p>
+					Plot Area : 
+					@Model.plot_area  @Model.dimension
+				</p>
+
+				<p>
+					Bookingg Amount : 
+					@Model.booking_amount
+				</p>
+				<p>
+					Total Price :
+					@Model.price
+				</p>
+	
+				<form asp-action="Confirm_booking" asp-controller="Booking">
+					<input type="hidden" asp-for="kothi_id" />
+					<input type="hidden" asp-for="company_id"/>
+					<input type="hidden" asp-for="customer_id" value='@ViewData["customer_id"]'/>
+					<button type="submit" class="btn btn-primary m-3">Confirm Booking</button>
+				</form>
 			
 		</div>
 	</div>
 
-	<form asp-action="Confirm_booking" asp-controller="Booking">
-		<input type="hidden" asp-for="kothi_id" />
-		<input type="hidden" asp-for="company_id"/>
-		<input type="hidden" asp-for="customer_id" value='@ViewData["customer_id"]'/>
-		<button type="submit" class="btn btn-primary m-3 float-end">Confirm</button>
-	</form>
 	</div>
 
 </div>
