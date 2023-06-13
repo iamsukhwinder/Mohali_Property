@@ -40,9 +40,17 @@ namespace MohaliProperty.Web.Controllers
         }
         public async Task<IActionResult> Confirm_booking(TokenModel detail)
         {
-            var result = _booking.genrate_token(detail);
-            
-            return RedirectToAction("Index","Home");
+            var result =await _booking.genrate_token(detail);
+            if(result.is_success == false)
+            {
+                TempData["fail"] = "Something wrong please try again";
+                return RedirectToAction("Index","Home");
+            }
+            else
+            {
+                TempData["success"] = "Kothi booked successfully";
+                return RedirectToAction("Index","Home");
+            }
         }
     }
 }
