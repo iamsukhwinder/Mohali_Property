@@ -83,6 +83,10 @@ namespace Mohali_Property_Web.Controllers
                     kothi.company_id = kothidata.company_id;
 
                     var result = await _kothi.Add_Kothi(kothi);
+                    if(result == 1)
+                    {
+                        ViewData["kothi_added"] = "kothi added successfully";
+                    }
                     using (var stream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
                     {
                         await file.CopyToAsync(stream);

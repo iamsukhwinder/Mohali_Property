@@ -33,7 +33,7 @@
             <h3>Company Information</h3>
 
         </div>
-        <span style="color:red">@ViewData["company_added"]</span>
+        <span style="color:green">@ViewData["company_added"]</span>
         <span style="color:red">@ViewData["company_not_added"]</span>
         <p id="p1">* All Fields are Required</p>
         <div class="row">
@@ -45,9 +45,7 @@
                 @*<span style="color:red" id="ecompany"></span>*@
 
             </div>
-            <div class="col-md-6">
 
-            </div>
             <div class="form-group col-md-6">
                 <label>Company Name</label>
                 <span asp-validation-for="company_name" class="text-danger"></span>
