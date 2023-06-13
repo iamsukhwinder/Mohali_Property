@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Mohali_Property_Model;
 using MohaliProperty.Services.WebServices.Admin.ManageCompany;
 using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 using MohaliProperty.Services.WebServices.Admin.ManageTokens;
+using System.Data;
 
 namespace Mohali_Property_Web.Controllers
 {
+    [Authorize(Roles = "User,Admin")]
     public class TokenController : Controller
     {
        

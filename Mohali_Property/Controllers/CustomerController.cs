@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Mohali_Property_Model;
 using MohaliProperty.Services.WebServices.Admin.ManageCustomer;
+using System.Data;
 using System.Net;
 using System.Net.Mail;
 
 namespace MohaliProperty.Web.Controllers
 {
+    [Authorize(Roles = "User,Admin")]
     public class CustomerController : Controller
     {
 
