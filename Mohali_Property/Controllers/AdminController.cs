@@ -11,7 +11,8 @@ using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 
 namespace MohaliProperty.Web.Controllers
 {
-	[Authorize(Roles = "Admin")]
+	//[Authorize(Roles = "Admin")]
+   
 	public class AdminController : Controller
 	{
        
@@ -23,6 +24,8 @@ namespace MohaliProperty.Web.Controllers
           
             _kothi = kothi;
         }
+        [Authorize(Roles = "User,Admin")]
+        //[Authorize(Roles ="Admin")]
         public async Task<IActionResult> Index()
 		{
             var kothies = await _kothi.getkothieslist();
