@@ -130,7 +130,7 @@ namespace Mohali_Property.Controllers
                         }
                         else if(data.role_name == "User")
                         {
-                            return RedirectToAction("Index", "User");
+                            return RedirectToAction("Index", "Admin");
                         }
                         else
                         {
