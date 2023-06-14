@@ -18,16 +18,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav  mb-2 mb-lg-0 ms-auto">
                     <li class="nav-item ms-5">
-                        <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link" aria-current="page" asp-controller="Home" asp-action="Index" id="Home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="SignUp" asp-action="SignUp">SignUp</a>
+                        <a class="nav-link" asp-controller="SignUp" asp-action="SignUp" id="SignUp">SignUp</a>
                     </li>
                     @{
                         if(User.Identity.IsAuthenticated == false)
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-action="Login" asp-controller="Home">SignIn</a>
+                                <a class="nav-link" asp-action="Login" asp-controller="Home" id="SignIn">SignIn</a>
                             </li>
                         }
                         else
@@ -55,8 +55,8 @@
                 </ul>
                 @*<form class="d-flex">*@
                 <div class="d-flex ms-auto">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-warning" type="submit">Search</button>
+                    <input class="form-control me-5" id="search_kothies" type="search" placeholder="Search kothi" aria-label="Search">
+                    @*<button class="btn btn-outline-warning" type="submit">Search</button>*@
                     @*</form>*@
                 </div>
             </div>

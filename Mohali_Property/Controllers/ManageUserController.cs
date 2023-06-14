@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Mohali_Property_Model;
 using MohaliProperty.Model;
 using MohaliProperty.Services.WebServices.Admin.ManageUser;
 
 namespace MohaliProperty.Web.Controllers
 {
+    [Authorize(Roles = "User,Admin")]
     public class ManageUserController : Controller
     {
         private readonly IUserRepository _company;

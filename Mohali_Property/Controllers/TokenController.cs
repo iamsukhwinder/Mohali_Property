@@ -9,7 +9,9 @@ using System.Data;
 
 namespace Mohali_Property_Web.Controllers
 {
-        [Authorize(Roles = "Admin")]
+
+    [Authorize(Roles = "User,Admin")]
+
     public class TokenController : Controller
     {
         private readonly ITokenRepository _tokenRepository;
