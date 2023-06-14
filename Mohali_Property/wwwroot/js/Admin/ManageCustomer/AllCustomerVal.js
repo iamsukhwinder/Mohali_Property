@@ -1,6 +1,6 @@
 ﻿
 $(function () {
-    debugger;
+    $("#Manage_customer").addClass("active");
     getCustomers();
 });
 function getCustomers() {

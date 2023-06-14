@@ -1,8 +1,8 @@
 ﻿
 $(function () {
-    debugger;
-    var result =$("#ecompany").attr("data-valmsg-replace").val();
-    alert(result);
+    $("#Manage_companies").addClass("active");
+    //var result =$("#ecompany").attr("data-valmsg-replace").val();
+    //alert(result);
 });
 
 

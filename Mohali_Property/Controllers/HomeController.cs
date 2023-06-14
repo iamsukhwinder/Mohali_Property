@@ -15,6 +15,7 @@ using System.Net.Mail;
 using System.Net;
 using MohaliProperty.Services.WebServices.Admin.ManageCustomer;
 using Microsoft.CodeAnalysis.VisualBasic.Syntax;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mohali_Property.Controllers
 {
@@ -38,9 +39,31 @@ namespace Mohali_Property.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var kothies =await _kothi.getkothieslist();   
-            
-            return View(kothies);
+            //var kothies =await _kothi.getkothieslist();
+
+            var get_filtered_kothies = await GetCustomers(1); 
+            return View(get_filtered_kothies);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(int currentPageIndex)
+        {
+            var get_filtered_kothies = await GetCustomers(currentPageIndex);
+            return View(get_filtered_kothies);
+        }
+
+        private async Task<PagingModel> GetCustomers(int currentPage)
+        {
+            int maxRows = 5;
+            PagingModel pagingModel = new PagingModel();
+            var kothies = await _kothi.getkothieslist();
+            pagingModel.kothies = kothies.OrderBy(m => m.kothi_id).Skip((currentPage - 1) * maxRows)
+                    .Take(maxRows).ToList();
+            double pageCount = (double)((decimal) kothies.Count() / Convert.ToDecimal(maxRows));
+            pagingModel.PageCount = (int)Math.Ceiling(pageCount);
+
+            pagingModel.CurrentPageIndex = currentPage;
+
+            return pagingModel;
         }
 
         public IActionResult Privacy()

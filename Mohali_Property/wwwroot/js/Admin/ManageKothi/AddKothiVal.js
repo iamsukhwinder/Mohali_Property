@@ -1,4 +1,4 @@
-﻿
+﻿$("#Manage_kothies").addClass("active");
     function  add_kothi()
     {
         validate();
@@ -61,7 +61,7 @@
         if (compayname == "") {
             debugger;
             result = false;
-            $(#ecompany).html("please enter kothi number");
+            $("#ecompany").html("please enter kothi number");
         }
         else {
             ("#ecompany").html("");
