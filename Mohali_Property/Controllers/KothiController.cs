@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using System.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MohaliProperty.Model;
 using MohaliProperty.Services.WebServices.Admin.ManageCompany;
@@ -6,6 +8,7 @@ using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 
 namespace Mohali_Property_Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class KothiController : Controller
     {
         private readonly IManageKothi _kothi;

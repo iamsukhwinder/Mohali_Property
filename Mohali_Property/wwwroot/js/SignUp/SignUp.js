@@ -1,5 +1,5 @@
-﻿$(document).ready(function () {
-    debugger;
+﻿    $("#search_kothies").css("visibility", "hidden");
+$(document).ready(function () {
     $("#SignUp").addClass("active");
 });
 

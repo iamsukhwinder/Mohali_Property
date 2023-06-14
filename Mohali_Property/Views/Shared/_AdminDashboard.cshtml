@@ -47,7 +47,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" asp-action="Index" asp-controller="Admin">
+                        <a class="nav-link" id="dashboard" asp-action="Index" asp-controller="Admin">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -58,7 +58,7 @@
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>*@
 
-                        <a class="nav-link collapsed" asp-action="All_compnies" asp-controller="Company" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayoutss">
+                        <a class="nav-link collapsed" id="Manage_companies" asp-action="All_compnies" asp-controller="Company" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayoutss">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Manage Companies
                             <div class="sb-sidenav-collapse-arrow"></div>
@@ -66,7 +66,7 @@
                                 @*<a class="nav-link" asp-controller="Company" asp-action="AddCompany">Add Company</a>*@
                            
                         @*Manage Kothies*@
-                        <a class="nav-link collapsed" asp-controller="Kothi" asp-action="showkothies" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayoutss">
+                        <a class="nav-link collapsed" id="Manage_kothies" asp-controller="Kothi" asp-action="showkothies" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayoutss">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Manage Kothies
                             <div class="sb-sidenav-collapse-arrow"></div>
@@ -85,14 +85,14 @@
 
                         @*Manage Tokens*@
                         
-                        <a class="nav-link collapsed" asp-action="showtokens" asp-controller="Token" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayoutss">
+                        <a class="nav-link collapsed" id="Manage_tokens" asp-action="showtokens" asp-controller="Token" data-bs-target="#collapseLayoutss" aria-expanded="false" aria-controls="collapseLayoutss">
                              <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Manage Tokens
                              <div class="sb-sidenav-collapse-arrow"></div>
                        </a>
 
                        @*Manage Customers*@
-                        <a class="nav-link collapsed" asp-controller="Customer" asp-action="ShowCustomer"  data-bs-target="#collapse_manage_customer" aria-expanded="false" aria-controls="collapse_manage_customer">
+                        <a class="nav-link collapsed" id="Manage_customer" asp-controller="Customer" asp-action="ShowCustomer"  data-bs-target="#collapse_manage_customer" aria-expanded="false" aria-controls="collapse_manage_customer">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Manage Customer
                             <div class="sb-sidenav-collapse-arrow"></div>
@@ -112,7 +112,7 @@
 
                         
                                @* <a class="nav-link" onclick="all_user_view()">Users List</a>*@
-                                <a class="nav-link collapsed" asp-action="All_User" asp-controller="ManageUser" data-bs-target="#collapse_manage_customer" aria-expanded="false" aria-controls="collapse_manage_customer">
+                                <a class="nav-link collapsed" id="Manage_users" asp-action="All_User" asp-controller="ManageUser" data-bs-target="#collapse_manage_customer" aria-expanded="false" aria-controls="collapse_manage_customer">
                                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                     Manage Users
                                     <div class="sb-sidenav-collapse-arrow"></div>

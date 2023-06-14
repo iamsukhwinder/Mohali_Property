@@ -1,7 +1,8 @@
 ﻿
 
 
-    $(function () {
+$(function () {
+    $("#Manage_kothies").addClass("active");
         getkothies();
     });
     function getkothies() {

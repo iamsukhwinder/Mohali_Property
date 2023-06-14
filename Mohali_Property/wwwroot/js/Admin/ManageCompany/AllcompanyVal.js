@@ -1,5 +1,6 @@
 ﻿
-    $(function () {
+$(function () {
+    $("#Manage_companies").addClass("active");
         getCompanies();
     });
     function getCompanies() {
