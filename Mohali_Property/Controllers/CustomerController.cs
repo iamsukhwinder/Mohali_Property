@@ -10,7 +10,9 @@ using System.Net.Mail;
 
 namespace MohaliProperty.Web.Controllers
 {
+
     [Authorize(Roles = "User,Admin")]
+
     public class CustomerController : Controller
     {
 
