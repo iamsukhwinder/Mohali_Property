@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MohaliProperty.Model;
 using MohaliProperty.Services.WebServices.Admin.ManageCompany;
+using System.Data;
 
 namespace MohaliProperty.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CompanyController : Controller
     {
         private readonly ICompanyRepository _company;

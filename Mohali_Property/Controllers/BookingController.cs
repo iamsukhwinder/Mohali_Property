@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Mohali_Property_Model;
 using MohaliProperty.Services.WebServices.Admin.ManageKothi;
 using MohaliProperty.Services.WebServices.Booking;
+using System.Data;
 
 namespace MohaliProperty.Web.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class BookingController : Controller
     {
         private readonly IManageKothi _kothi;
