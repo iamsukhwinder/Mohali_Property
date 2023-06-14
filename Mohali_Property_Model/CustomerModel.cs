@@ -12,7 +12,7 @@ namespace Mohali_Property_Model
 
         [Key]
         public int customer_id { get; set; }
-        //public int company_id { get; set; }
+
         [Required(ErrorMessage = "Customer Name is Required")]
         public string customer_name { get; set; }
 
@@ -31,6 +31,7 @@ namespace Mohali_Property_Model
         [Required(ErrorMessage = "Mobile Number is Required")]
         public string mobile_number { get; set; }
 
+        public int login_id { get; set; }
         [Required(ErrorMessage = "Created Date is Required")]
         public DateTime created_date { get; set; }
     }

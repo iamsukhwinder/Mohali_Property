@@ -1,6 +1,6 @@
 ﻿
 $(function () {
-    debugger;
+    $("#Manage_customer").addClass("active");
     getCustomers();
 });
 function getCustomers() {
@@ -17,7 +17,7 @@ function getCustomers() {
                 processing: true,
 
                 "aaData": data,
-                "order": [[0, 'desc']],
+                "order": [[0, 'asc']],
                 "columns": [
                     //{
                     //    "data": "id",

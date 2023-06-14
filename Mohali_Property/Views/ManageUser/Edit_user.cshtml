@@ -1,0 +1,73 @@
+﻿@model Mohali_Property_Model.UserVM
+@{
+    ViewData["Title"] = "Edit_user";
+}
+
+
+
+
+<form method="post" id="edit_user_form">
+
+  <input type="hidden" name="id" asp-for="id" />
+    <p>Name: <input type="text" name="Name" asp-for="name" id ="name" value="@Model.name" /></p>
+    <span style="color:red" id="ename"></span>
+
+    <p>Address:<input type="text" name="address" id="address" value="@Model.address" /></p>
+    <span style="color:red" id="eaddress"></span>
+
+
+    
+    @*
+    <p>Kothi Unit: <input type="text" asp-for="kothi_unit" /></p>
+    <span style="color:red" id="ekothiunit"></span>*@
+
+    <p>City: <input type="text" name="city" asp-for="city" id="city"/></p>
+    <span style="color:red" id="ecity"></span>
+
+    <p>State: <input type="text" name="state" asp-for="state" id="state" /></p>
+    <span style="color:red" id="estate"></span>
+
+    @*<p>Dimention: <input type="text" asp-for="dimension" /></p>
+    <span style="color:red" id="edimention"></span>*@
+
+    <p>Pin_code: <input type="text" name="pin_code" asp-for="pin_code" id="pin_code" /></p>
+    <span style="color:red" id="epincode"></span>
+
+    @* <p>Email: <input type="text" name="email" asp-for="email" /></p>
+    <span style="color:red" id="email"></span>
+
+    <p>Price:<input type="text" name="price" asp-for="price" /></p>
+    <span style="color:red" id="eprice"></span>
+
+    <p>Token Amount:<input type="text" asp-for="token_amount" /></p>
+    <span style="color:red" id="etokenamount"></span>*@
+
+    <p>  Mobile_number: <input type="text" name="mobile_number" asp-for="mobile_number" id="mobile_number" /></p>
+    <span style="color:red" id="emobile_number"></span>
+
+    @*<input type="hidden" asp-for="status" name="sta" id="sta" />
+
+    <p>
+        Status:
+        <select name="status" id="status">
+            @* <option value ="choose">choose</option>
+            <option value="Active">Active</option>
+            <option value="InActive">Inactive</option>
+        </select>
+        <span style="color:red" id="estatus"></span>
+    </p>*@
+
+    <p>Email: <input type="text" name="email" asp-for="email" id="email"/></p>
+    <span style="color:red" id="eemail"></span>
+   @* <input type="hidden" name="hold" asp-for="hold" />
+    <input type="hidden" name="kothi_image" asp-for="kothi_image" />
+    <p>
+        Kothi Image:
+        <img id="blah" src="/Image/kothi_images/@Model.kothi_image" alt="Kothi image" width="90" height="90" />
+        <button type="button"><label for="kothi_image">Change Kothi Image</label></button>
+
+        <input type="file" style="display:none;" asp-for="kothi_image" id="kothi_image" name="kothi_image" onchange="readURL(this);" />
+        <span style="color:red" id="ekothi_image"></span>
+    </p>*@
+</form>
+

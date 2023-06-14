@@ -29,15 +29,16 @@
                         <img src="/Image/property.jpeg" style="height:250px; width:300px;" alt="Property Image" />
                     </div>
                     <div class="form-input">
+                        <span style="color:green">@TempData["Updated"]</span>
                         <h2>Login </h2>
                         <form asp-controller="Home" asp-action="Login" method="post">
                             <div class="form-group">
-                                <input type="text" id="username" name="username" value="Bisheshdhiman5514@Gmail.Com" required>
+                                <input type="text" id="username" name="username" required>
                                 <span style="color:red" id="eusername"></span>
                                 <label>User Name</label>
                             </div>
                             <div class="form-group">
-                                <input type="password" id="password" name="password" value="12345" required>
+                                <input type="password" id="password" name="password" required>
                                 
                                 <span style="color:red" id="epassword"></span><br />
                                 @{
@@ -59,6 +60,9 @@
                             </div>
 
                         </form>
+                        <div class="mt-3">
+                        <a asp-action="ForgotPassword" asp-controller="Home">Forgot Password ? </a>
+                        </div>
                     </div>
                 </div>
             </div>

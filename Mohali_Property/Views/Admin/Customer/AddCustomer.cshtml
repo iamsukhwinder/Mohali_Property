@@ -43,14 +43,19 @@
             </div>*@
             <div class="form-group col-md-6">
                 <label>Customer Name</label>
+              @*  <i asp-validation-for="customer_name" class="fa fa-info-circle"></i>*@
                 <input type="text" class="form-control" name="customer_name" id="customer_name" asp-for="customer_name" placeholder="Customer Name">
-                <span asp-validation-for="customer_name" class="text-danger w-100"></span>
-              
+                <span asp-validation-for="customer_name" id="ecompany" class="text-danger"></span>
+               <span id="icndisplay" style="display:none;">
+
+                    <i class='fas fa-exclamation' style='font-size:28px;color:red'></i>
+               </span>
             </div>
             <div class="form-group col-md-6">
                 <label>Parent Name</label>
                 <input type="text" class="form-control" name="parent_name" id="parent_name" asp-for="parent_name" placeholder="Parent Name">
-                <span style="color:red" id="eparentname"></span>
+                <span asp-validation-for="parent_name" class="text-danger"></span>
+              @*  <span style="color:red" id="eparentname"></span>*@
             </div>
         </div><br />
         <div class="row">
@@ -58,13 +63,14 @@
             <div class="form-group col-md-6">
                 <label>Address</label>
                 <input type="text" class="form-control" name="address" id="address" asp-for="address" placeholder="Address">
-                <span style="color:red" id="eaddress"></span>
+                <span asp-validation-for="address" class="text-danger"></span>
+               @* <span style="color:red" id="eaddress"></span>*@
             </div>
             <div class="form-group col-md-6">
                 <label>Customer Email</label>
                 <input type="text" class="form-control" name="customer_email" id="customer_email" asp-for="customer_email" placeholder="Customer Email" />
-                <span style="color:red" id="ecustomeremail"></span>
-
+   @*             <span style="color:red" id="ecustomeremail"></span>*@
+   <span asp-validation-for="customer_email" class="text-danger"></span>
             </div>
 
         </div>
@@ -73,12 +79,14 @@
             <div class="form-group col-md-6">
                 <label>City</label>
                 <input type="text" class="form-control" name="city" id="city" asp-for="city" placeholder="City">
-                <span style="color:red" id="ecity"></span>
+               @* <span style="color:red" id="ecity"></span>*@
+               <span asp-validation-for="city" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
                 <label>Mobile Number</label>
                 <input type="text" class="form-control" name="mobile_number" id="mobile_number" asp-for="mobile_number" placeholder="Mobile Number">
-                <span style="color:red" id="emobilenumber"></span>
+              @*  <span style="color:red" id="emobilenumber"></span>*@
+              <span asp-validation-for="mobile_number" class="text-danger"></span>
             </div>
 
            @* <div class="form-group col-md-2">
@@ -102,5 +110,5 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-<script src="~/js/Admin/ManageCustomer/AddcustomerVal.js"></script>
+<script src="~/js/Admin/ManageCustomer/AddcustomerVal.js?id=5"></script>
 

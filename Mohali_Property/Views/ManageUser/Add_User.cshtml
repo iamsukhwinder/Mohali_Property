@@ -25,7 +25,7 @@
 
 <div id="div1" class="container">
 
-    <form asp-controller="ManageUser" asp-action="AddUser" method="post" enctype="multipart/form-data" id="add_user_form">
+    <form asp-controller="ManageUser" asp-action="Add_User" method="post" enctype="multipart/form-data" id="add_user_form">
         <h3>Add User</h3>
 
         <br />
@@ -43,8 +43,10 @@
             </div>*@
             <div class="form-group col-md-6">
                 <label>Name</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Name">
-                <span style="color:red" id="ename"></span>
+                <input type="text" class="form-control" asp-for="name" name="name" id="name" placeholder="Name">
+                @*<span style="color:red" id="ename"></span>*@
+                <span asp-validation-for="name" id="name" class="text-danger"></span>
+
             </div>
         </div><br />
         <div class="row">
@@ -52,11 +54,15 @@
                 <label>Email</label>
                 <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                 <span style="color:red" id="eemail"></span>
+                <span asp-validation-for="email" id="email" class="text-danger"></span>
+
             </div>
             <div class="form-group col-md-6">
                 <label> Address</label>
                 <input type="text" class="form-control" name="address" id="address" placeholder="Address">
                 <span style="color:red" id="eaddress"></span>
+                <span asp-validation-for="address" id="address" class="text-danger"></span>
+
             </div>
 
         </div>
@@ -66,11 +72,13 @@
                 <label>City</label>
                 <input type="text" class="form-control" name="city" id="city" placeholder="City">
                 <span style="color:red" id="ecity"></span>
+                <span asp-validation-for="city" id="city" class="text-danger"></span>
+
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-6">
                 <label>State</label>
                 <select name="state" id="state" class="form-control">
-                    <option selected>choose...</option>
+                    <option value="">choose...</option>
                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -108,7 +116,9 @@
                     <option value="Uttarakhand">Uttarakhand</option>
                     <option value="West Bengal">West Bengal</option>
                 </select>
-                <span style="color:red" id="estate"></span>
+                @*<span style="color:red" id="estate"></span>*@
+                <span asp-validation-for="state" id="state" class="text-danger"></span>
+
 
             </div>
 
@@ -120,7 +130,9 @@
             <div class="form-group col-md-2">
                 <label>PinCode</label>
                 <input type="text" class="form-control" name="pin_code" id="pincode">
-                <span style="color:red" id="epincode"></span>
+                @*<span style="color:red" id="epincode"></span>*@
+                <span asp-validation-for="pin_code" id="pin_code" class="text-danger"></span>
+
             </div>
 
 
@@ -146,6 +158,8 @@
                 <label>Mobile Number</label>
                 <input type="text" class="form-control" name="mobile_number" id="mobilenumber">
                 <span style="color:red" id="emobilenumber"></span>
+                <span asp-validation-for="mobile_number" id="mobile_number" class="text-danger"></span>
+
             </div>
 
             <br />
@@ -154,23 +168,24 @@
         <br />
 
 
-        <button type="button" class="btn btn-primary" onclick="add_user()">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
 
 
     </form>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 <script>
 
 
+    $("#Manage_users").addClass("active");
+    //function add_user() {
 
-    function add_user() {
-
-        //validate();
-        var data = new FormData();
-        var form_data = $('#add_user_form').serializeArray();
-        $.each(form_data, function (key, input) {
-            data.append(input.name, input.value)
-        });
+    //    //validate();
+    //    var data = new FormData();
+    //    var form_data = $('#add_user_form').serializeArray();
+    //    $.each(form_data, function (key, input) {
+    //        data.append(input.name, input.value)
+    //    });
 
         //var image = $("#user_logo").val();
         //if (image != '') {
@@ -178,37 +193,37 @@
         //    for (var i = 0; i < file_data.length; i++) {
         //        data.append("image", file_data[i]);
         //    }
-        $.ajax({
-            url: '/ManageUser/Adduser',
-            type: "post",
-            dataType: 'json',
-            processData: false,
-            contentType: false,
-            data: data,
+    //    $.ajax({
+    //        url: '/ManageUser/Adduser',
+    //        type: "post",
+    //        dataType: 'json',
+    //        processData: false,
+    //        contentType: false,
+    //        data: data,
 
-            success: function (res) {
+    //        success: function (res) {
 
-                if (res == 1) {
+    //            if (res == 1) {
 
-                    alert("User Added");
+    //                alert("User Added");
 
-                }
-                else {
-                    alert("Please try again");
+    //            }
+    //            else {
+    //                alert("Please try again");
 
-                }
-                //if (res == 300) {
-                //    alert("only image is alowed to upload");
-                //}
-                //if (res == 301) {
-                //    alert("please upload only one file");
-                //}
+    //            }
+    //            //if (res == 300) {
+    //            //    alert("only image is alowed to upload");
+    //            //}
+    //            //if (res == 301) {
+    //            //    alert("please upload only one file");
+    //            //}
 
-            }
+    //        }
 
-        });
+    //    });
 
-    }
+    //}
 
 
 

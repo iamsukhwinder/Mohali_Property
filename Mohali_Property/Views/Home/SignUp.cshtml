@@ -1,0 +1,44 @@
+﻿@model Mohali_Property_Model.CustomerModel;
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<p>@TempData["success_msg"]</p>
+
+<link rel="stylesheet" href="~/css/SignUp.css" asp-append-version="true" />
+
+
+
+
+
+<form asp-controller="Customer" asp-action="AddCustomer" method="post">
+<div id="login-box">
+    <div class="left">
+        <h1>Sign up</h1>
+
+            
+            <input type="text" name="customer_name" id="customer_name" asp-for="customer_name" placeholder="Customer Name" />
+            <span style="color:red" id="ecustomername"></span>
+            <input type="text" name="parent_name" id="parent_name" asp-for="parent_name" placeholder="Parent Name" />
+            <span style="color:red" id="eparentname"></span>
+            <input type="text" name="address" id="address" asp-for="address" placeholder="Address" />
+            <span style="color:red" id="eaddress"></span>
+            <input type="text" class="form-control" name="city" id="city"asp-for="city" placeholder="City">
+            <span style="color:red" id="ecity"></span>
+            <input type="text" name="customer_email" id="customer_email" asp-for="customer_email" placeholder="Customer Email" />            
+            <span style="color:red" id="ecustomeremail"></span>
+            <input type="text" class="form-control" name="mobile_number" id="mobile_number"" placeholder="Mobile Number">
+            <span style="color:red" id="emobilenumber"></span>
+            <input type="submit" name="signup_submit" onclick="return validate()" value="Sign me up" />
+
+    </div>  
+    <div class="right">
+        <img src="/Image/b1.jpg" style="height:450px; width:350px;" alt="Property Image" />
+    </div> 
+</div>
+</form>
+
+<script src="~/js/SignUp/SignUp.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+

@@ -9,6 +9,13 @@ using System.Security.Claims;
 using MohaliProperty.Model;
 using MohaliProperty.Services.WebServices.Admin.Login;
 using MohaliProperty.Services.WebServices.Admin.ManageKothi;
+using Mohali_Property_Model;
+using MohaliProperty.Services.WebServices.SignUp;
+using System.Net.Mail;
+using System.Net;
+using MohaliProperty.Services.WebServices.Admin.ManageCustomer;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mohali_Property.Controllers
 {
@@ -17,18 +24,46 @@ namespace Mohali_Property.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ILoginRepository _loginrepository;
         private readonly IManageKothi _kothi;
+        private readonly ISignUpRepository _signuprepository;
+       
 
-        public HomeController(ILogger<HomeController> logger, ILoginRepository loginrepository, IManageKothi kothi)
+        public HomeController(ILogger<HomeController> logger, ILoginRepository loginrepository, IManageKothi kothi,ISignUpRepository signUpRepository)
         {
             _logger = logger;
             _loginrepository = loginrepository;
             _kothi = kothi;
+            _signuprepository = signUpRepository;
+           
+            
         }
 
         public async Task<IActionResult> Index()
         {
-            var kothies =await _kothi.getkothieslist();   
-            return View(kothies);
+            //var kothies =await _kothi.getkothieslist();
+
+            var get_filtered_kothies = await GetCustomers(1); 
+            return View(get_filtered_kothies);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(int currentPageIndex)
+        {
+            var get_filtered_kothies = await GetCustomers(currentPageIndex);
+            return View(get_filtered_kothies);
+        }
+
+        private async Task<PagingModel> GetCustomers(int currentPage)
+        {
+            int maxRows = 5;
+            PagingModel pagingModel = new PagingModel();
+            var kothies = await _kothi.getkothieslist();
+            pagingModel.kothies = kothies.OrderBy(m => m.kothi_id).Skip((currentPage - 1) * maxRows)
+                    .Take(maxRows).ToList();
+            double pageCount = (double)((decimal) kothies.Count() / Convert.ToDecimal(maxRows));
+            pagingModel.PageCount = (int)Math.Ceiling(pageCount);
+
+            pagingModel.CurrentPageIndex = currentPage;
+
+            return pagingModel;
         }
 
         public IActionResult Privacy()
@@ -44,6 +79,11 @@ namespace Mohali_Property.Controllers
             return View();
         }
 
+        public IActionResult Signout()
+        {
+            HttpContext.SignOutAsync();
+            return RedirectToAction("Index","Home");
+        }
         public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated == true)
@@ -78,7 +118,7 @@ namespace Mohali_Property.Controllers
                         claims.Add(new Claim("username", data.username));
                         claims.Add(new Claim(ClaimTypes.Role, data.role_name));
                         claims.Add(new Claim(ClaimTypes.NameIdentifier, data.username));
-                        claims.Add(new Claim(ClaimTypes.Name, data.password + " " + data.password));
+                        claims.Add(new Claim(ClaimTypes.Name, data.username ));
             
                         var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         var claimPrinciple = new ClaimsPrincipal(claimIdentity);
@@ -88,10 +128,15 @@ namespace Mohali_Property.Controllers
                         TempData["admin_name"] = data.name;
                         return RedirectToAction("Index", "Admin");
                         }
+                        else if(data.role_name == "User")
+                        {
+                            return RedirectToAction("Index", "Admin");
+                        }
                         else
                         {
-                            return RedirectToAction("Index", "User");
-                        }            
+                            HttpContext.Session.SetString("customer_id", data.id.ToString());
+                            return RedirectToAction("Index", "Home");
+                        }
         
 
                 }
@@ -103,6 +148,109 @@ namespace Mohali_Property.Controllers
         {
             HttpContext.SignOutAsync();
             return RedirectToAction("Login");
+        }
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+
+        //[HttpGet]
+        //public IActionResult SignUp()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public async Task <IActionResult> SignUp(CustomerModel obj)
+        //{
+        //    var data = await _manageCustomer.AddCustomer(obj);
+           
+        //    if (data != null)
+        //    {
+
+
+        //        var file = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Email_Image", "Registrationpage.html");
+        //        String SendMailFrom = "bisheshdhiman5514@gmail.com";
+        //        String SendMailTo = obj.customer_email;
+        //        String SendMailSubject = "Registration Successfully";
+        //        // String SendMailBody = "<a href='http://localhost:5063/Home/Login'>Thanks for registration for us  [Please click here to login] </a>";
+        //        String SendMailBody = System.IO.File.ReadAllText(file);
+        //        try
+        //        {
+        //            SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com", 587);
+        //            SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+        //            MailMessage email = new MailMessage();
+        //            // START
+        //            email.From = new MailAddress(SendMailFrom);
+        //            email.To.Add(SendMailTo);
+        //            email.CC.Add(SendMailFrom);
+        //            email.Subject = SendMailSubject;
+        //            email.Body = SendMailBody;
+        //            email.IsBodyHtml = true;
+        //            //END
+        //            SmtpServer.Timeout = 10000;
+        //            SmtpServer.EnableSsl = true;
+        //            SmtpServer.UseDefaultCredentials = false;
+        //            SmtpServer.Credentials = new NetworkCredential(SendMailFrom, "neenaeaznlfjlivo");
+        //            SmtpServer.Send(email);
+
+        //        }
+        //        catch (Exception ex)
+        //        {
+
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //    return View();
+        //}
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(UserModel useremail)
+        {
+            var user =await _loginrepository.checkuserbyemail(useremail.email); 
+            if(user.is_success == false)
+            {
+                TempData["Not_exist"] = user.message;
+                return View();
+            }
+            else
+            {
+                TempData["exist"] = "We have sent you the Reset password link on your email";
+                SendEmail mail = new SendEmail();
+                var tosend = useremail.email;
+                var subject = "Reset Password";
+                var body = "<a href='http://localhost:5130/Home/ResetPassword?email=" + useremail.email + "' > Click on me to reset your password</a>";
+                mail.Sendmail(tosend, subject, body);
+                return View();
+            }
+            
+        }
+        [HttpGet]
+        public IActionResult ResetPassword(string email)
+        
+        {
+            ViewData["user_email"] = email;
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(LoginModel logdetail)
+        {
+            var result =await _loginrepository.updatepassword(logdetail);
+            if(result.is_success == false)
+            {
+                TempData["Not_exist"] = result.message;
+                return RedirectToAction("ForgotPassword", "Home");
+            }
+            else
+            {
+                TempData["Updated"] = result.message;
+                return RedirectToAction("Login", "Home");
+            }
         }
 
 

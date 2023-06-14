@@ -1,5 +1,6 @@
 ﻿
-    $(function () {
+$(function () {
+    $("#Manage_companies").addClass("active");
         getCompanies();
     });
     function getCompanies() {
@@ -79,8 +80,9 @@
 
 
     function Update() {
-       var result  = validate();
-    if(result== false){
+        var result = validate();
+        //debbuger;
+    if(result == false){
            return false;
        }
 
@@ -94,15 +96,15 @@
     var image = $("#company_logo").val();
     if (image != '') {
             var file_data = $('input[name = company_logo]')[0].files;
-    for (var i = 0; i < file_data.length; i++) {
-        data.append("image", file_data[i]);
+        for (var i = 0; i < file_data.length; i++) {
+            data.append("image", file_data[i]);
             }
     var state = $("#state").val();
     var status = $("#status").val();
     data.set("state",state);
     data.set("status",status);
     $.ajax({
-        url: '/Admin/update_company',
+        url: '/Company/update_company',
     type: "post",
     dataType: 'json',
     processData: false,
@@ -133,15 +135,14 @@
         }else{
             var imgsrc = $("#blah").attr("src");
     var imagename = imgsrc.split("/");
-    if(imagename[3] != ""){
-        data.set("company_logo", imagename[3]);
+    if(imagename[4] != ""){
+        data.set("company_logo", imagename[4]);
     var state = $("#state").val();
-    alert(state);
     data.set("state", state);
     var status = $("#status").val();
     data.set("status", status);
     $.ajax({
-        url: '/Admin/update_company',
+        url: '/Company/update_company',
     type: "post",
     dataType: 'json',
     processData: false,
@@ -152,7 +153,9 @@
 
                     if (res == 1) {
 
-        alert("Company updated");
+                        alert("Company updated");
+                        getCompanies();
+                        EditCloseModal();
 
                         }
     else {

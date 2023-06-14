@@ -162,11 +162,12 @@ namespace Mohali_Property_API.Controllers
                    new SqlParameter{ParameterName="@status",Value=addkothi.status},
                    new SqlParameter{ParameterName="@hold",Value= addkothi.hold},
                    new SqlParameter{ParameterName="@kothi_image",Value=addkothi.kothi_image},
+                   new SqlParameter{ParameterName="@company_id",Value=addkothi.company_id},
                 
 
 
                 };
-            var result = _context.Database.ExecuteSqlRaw("add_kothi @kothi_number,@block,@kothi_size,@kothi_description,@dimension,@plot_area,@price,@bhk,@booking_amount,@status,@hold,@kothi_image", parameters.ToArray());
+            var result = _context.Database.ExecuteSqlRaw("add_kothi @kothi_number,@block,@kothi_size,@kothi_description,@dimension,@plot_area,@price,@bhk,@booking_amount,@status,@hold,@kothi_image,@company_id", parameters.ToArray());
 
 
             if (result == 0)

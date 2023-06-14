@@ -7,6 +7,7 @@
         margin-top: 30px;
         margin-left: 30px;
         margin-right: 30px;
+        margin-bottom: 50px;
     }
 
     #p1 {
@@ -33,54 +34,74 @@
 
             <h3> Kothi Information</h3>
         </div>
+        <span style="color:green">@ViewData["kothi_added"]</span>
         <p id="p1">* All Fields are Required</p>
         <div class="row">
             <div class="form-group col-md-4">
                 <label>Company Name:</label>
-                <select class="form-control " id="company" name="Ccompany"  asp-items='(List<SelectListItem>)ViewData["compddl"]'></select><br />
-                <span style="color:red" id="ekothinumber"></span>
+                <span asp-validation-for="company_id" class="text-danger"></span>
+                <select class="form-control " id="company" name="company_id" asp-items='(List<SelectListItem>)ViewData["compddl"]'></select><br />
+               @* <span style="color:red" id="ecompany"></span>*@
             </div>
             <div class="form-group col-md-4">
                 <label>Kothi Number</label>
-                <input type="text" class="form-control" name="kothi_Number" id="kothi_Number" placeholder="Kothi Number">
-                <span style="color:red" id="ekothinumber"></span>
+                <span asp-validation-for="kothi_Number" class="text-danger"></span>
+                <input type="text" class="form-control" name="kothi_Number" id="kothi_Number" asp-for="kothi_Number" placeholder="Kothi Number">
+                @*<span style="color:red" id="ekothinumber"></span>*@
             </div>
             <div class="form-group col-md-4">
                 <label>Block</label>
-                <span asp-validation-for="block" class="black-input"></span>
+                <span asp-validation-for="block" class="text-danger"></span>
                 <input type="text" class="form-control" name="block" asp-for="block" id="block" placeholder="Block">
-                @*<span style="color:red" id="eblock"></span>*@
+             @*   <span style="color:red" id="eblock"></span>*@
             </div>
         </div>
         <div class="row">
 
             <div class="form-group col-md-6">
                 <label>Kothi Size</label>
-                <span asp-validation-for="kothi_size" class="black-input"></span>
+                <span asp-validation-for="kothi_size" class="text-danger"></span>
                 <input type="text" class="form-control" name="kothi_size" id="kothi_size" asp-for="kothi_size" placeholder="Kothi size in sq.mt">
-                @*<span style="color:red" id="ekothisize"></span>*@
+               @* <span style="color:red" id="ekothisize"></span>*@
             </div>
 
             <div class="form-group col-md-6">
                 <label>Kothi Description</label>
-                <input type="text" class="form-control" name="kothi_description" id="plot_area" placeholder="kothi description">
-                <span style="color:red" id="eplotarea"></span>
+                <span asp-validation-for="kothi_description" class="text-danger"></span>
+                <input type="text" class="form-control" name="kothi_description" id="plot_area" asp-for="kothi_description" placeholder="kothi description">
+                @*<span style="color:red" id="eplotarea"></span>*@
             </div>
 
         </div><br />
 
         <div class="row">
-            <div class="form-group col-md-6">
-                <label>Dimension</label>
-                <input type="text" class="form-control" name="dimension" id="dimension" placeholder="Dimension">
-                <span style="color:red" id="edenomination"></span>
-            </div>
+          
 
 
             <div class="form-group col-md-6">
                 <label>Plot Area</label>
-                <input type="text" class="form-control" name="plot_area" id="plot_area" placeholder="Plot Area">
-                <span style="color:red" id="eplotarea"></span>
+                <span asp-validation-for="plot_area" class="text-danger"></span>
+                <input type="text" class="form-control" name="plot_area" id="plot_area" asp-for="plot_area" placeholder="Plot Area">
+           @*     <span style="color:red" id="eplotarea"></span>*@
+            </div>
+
+
+            <div class="form-group col-md-6">
+                <label>Dimension</label>
+                <span asp-validation-for="dimension" class="text-danger"></span>
+                @* <input type="text" class="form-control" name="dimension" id="dimension" asp-for="dimension" placeholder="Dimension">*@
+                <select name="dimension" id="dimension" asp-for="dimension" class="form-control">
+                    <option value="">choose....</option>
+                    <option value="sq.feet">Sq. Feet</option>
+                    <option value="sq.yard">Sq. Yard</option>
+                    <option value="sq.mtr">Sq. meter</option>
+                    <option value="marla">Marla</option>
+                    <option value="kanal">Kanal</option>
+                    <option value="bigha">Bigha</option>
+                    <option value="killa">Killa</option>
+                    <option value="muraba">Murabba</option>
+                </select>
+                @* <span style="color:red" id="edenomination"></span>*@
             </div>
 
         </div>
@@ -90,15 +111,17 @@
 
             <div class="form-group col-md-6">
                 <label>Price</label>
-                <input type="text" class="form-control" name="price" id="price" placeholder="Price">
-                <span style="color:red" id="eprice"></span>
+                <span asp-validation-for="price" class="text-danger"></span>
+                <input type="text" class="form-control" name="price" id="price" asp-for="price" placeholder="Price">
+               @* <span style="color:red" id="eprice"></span>*@
             </div>
 
 
             <div class="form-group col-md-6">
                 <label>BHK</label>
-                <input type="text" class="form-control" name="bhk" id="bhk" placeholder="BHK">
-                <span style="color:red" id="ebhk"></span>
+                <span asp-validation-for="bhk" class="text-danger"></span>
+                <input type="text" class="form-control" name="bhk" id="bhk" asp-for="bhk" placeholder="BHK">
+               @* <span style="color:red" id="ebhk"></span>*@
             </div>
 
 
@@ -111,18 +134,20 @@
         <div class="row">
             <div class="form-group col-md-6">
                 <label>Booking Amount</label>
-                <input type="text" class="form-control" name="booking_amount" id="booking_amount" placeholder="Booking Amount">
-                <span style="color:red" id="ebookingamount"></span>
+                 <span asp-validation-for="booking_amount" class="text-danger"></span>
+                <input type="text" class="form-control" name="booking_amount" id="booking_amount" asp-for="booking_amount" placeholder="Booking Amount">
+               @* <span style="color:red" id="ebookingamount"></span>*@
             </div>
             <div class="form-group col-md-6">
                 <label>Status</label>
-                <select name="status" id="status" class="form-control">
-                    <option selected>choose...</option>
-                    <option>Active</option>
-                    <option>InActive</option>
+                <span asp-validation-for="status" class="text-danger"></span>
+                <select name="status" id="status" asp-for="status" class="form-control">
+                    <option value="">choose...</option>
+                    <option value="Active">Active</option>
+                    <option value="InActive">InActive</option>
 
                 </select>
-                <span style="color:red" id="estatus"></span>
+               @* <span style="color:red" id="estatus"></span>*@
             </div>
 
         </div>
@@ -130,16 +155,19 @@
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="kothi_image">Kothi Image</label>
-                <input type="file" name="kothi_image" class="form-control" id="kothi_image">
-                <span style="color:red" id="ekothi_image"></span>
+               @*  <span asp-validation-for="kothi_image" class="text-danger"></span>*@
+                 
+                <input type="file" name="kothi_image" class="form-control" asp-for="kothi_image" id="kothi_image">
+               @* <span style="color:red" id="ekothi_image"></span>*@
             </div><br />
         </div><br />
 
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+       @* <button type="submit" class="btn btn-primary">Submit</button>*@
+       <input type="submit" class="btn btn-primary" value="Submit" onclick="add_kothi()" />
 
     </form>
 
 </div>
-@*onclick="add_kothi()*@
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 <script src="/js/Admin/ManageKothi/AddKothiVal.js"></script>

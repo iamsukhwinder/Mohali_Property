@@ -1,4 +1,5 @@
 ﻿$(function () {
+    $("#Manage_tokens").addClass("active");
     gettokens();
     });
     function gettokens() {

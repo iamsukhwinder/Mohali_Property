@@ -12,7 +12,7 @@
     }
 </style>
 <div class="card-group mt-5">
-<div class="card text-white bg-primary ms-4"  style="max-width: 15rem;">
+<div class="card text-white bg-primary ms-4"  style="max-width: 20rem;">
     <div class="card-header">Total kothies</div>
     <div class="card-body">
             <h5 class="card-title">No. of kothies: @ViewData["kothi_count"]</h5>
@@ -33,25 +33,29 @@
         @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>*@
     </div>
 </div>
-<div class="card text-white bg-success  ms-4" style="max-width: 15rem;">
+<div class="card text-white bg-success  ms-5" style="max-width: 20rem;">
     <div class="card-header">Available Kothies</div>
     <div class="card-body">
             <h5 class="card-title">Available Kothies: @ViewData["available_kothies_count"]</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text">Here is the numbers of kothies that are available to booking .</p>
     </div>
 </div>
-<div class="card text-white bg-danger ms-4" style="max-width: 15rem;">
+@*<div class="card text-white bg-danger ms-4" style="max-width: 15rem;">
         <div class="card-header">Expired Tokens</div>
     <div class="card-body">
         <h5 class="card-title">Expired Tokens</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
-</div>
-<div class="card text-dark bg-warning  ms-4" style="max-width: 15rem;">
+</div>*@
+<div class="card text-dark bg-warning  ms-5" style="max-width: 20rem;">
         <div class="card-header">On Hold Kothies</div>
     <div class="card-body">
             <h5 class="card-title">On Hold Kothies : @ViewData["Hold_kothies"]</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text">Here is the numbers of kothies that are hold by customer and not available for booking</p>
     </div>
 </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script>
+    $("#dashboard").addClass("active");
+</script>

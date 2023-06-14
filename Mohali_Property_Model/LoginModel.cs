@@ -28,7 +28,7 @@ namespace MohaliProperty.Model
 
         //[Range(0, 15, ErrorMessage = "Can only be between 0 .. 15")]
         //[StringLength(2, ErrorMessage = "Max 2 digits")]
-        public int user_id { get; set; }
+        //public int user_id { get; set; }
 
         [Required(ErrorMessage = "Status is required")]
         [StringLength(20, MinimumLength = 5)]
