@@ -36,7 +36,7 @@ namespace Mohali_Property.Controllers
            
             
         }
-
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             //var kothies =await _kothi.getkothieslist();
