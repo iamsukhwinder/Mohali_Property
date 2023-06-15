@@ -41,7 +41,15 @@ namespace MohaliProperty.API.Controllers
         [HttpPost("add_user")]
         public int add_user(UserModel obj)
         {
-            List<SqlParameter> parms = new List<SqlParameter>
+            var result = _context.Logins.Where(m => m.username == obj.email && m.role_id==2).FirstOrDefault();
+            if (result != null)
+            {
+                return 3;
+            }
+            else
+            {
+
+                List<SqlParameter> parms = new List<SqlParameter>
             {
 
                   new SqlParameter { ParameterName = "@name", Value = obj.name },
@@ -60,17 +68,18 @@ namespace MohaliProperty.API.Controllers
 
             };
 
-            int n = _context.Database.ExecuteSqlRaw("EXEC add_Users @name,@address,@city,@state,@role_id,@pin_code,@mobile_number,@email,@status,@username,@password", parms.ToArray());
+                int n = _context.Database.ExecuteSqlRaw("EXEC add_Users @name,@address,@city,@state,@role_id,@pin_code,@mobile_number,@email,@status,@username,@password", parms.ToArray());
 
 
-            if (n == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
+                if (n == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
 
+                }
             }
 
 

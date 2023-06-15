@@ -128,9 +128,10 @@ namespace Mohali_Property.Controllers
                         TempData["admin_name"] = data.name;
                         return RedirectToAction("Index", "Admin");
                         }
-                        else if(data.role_name == "User")
+                        else if(data.role_name == "User")   
                         {
-                            return RedirectToAction("Index", "Admin");
+                        TempData["admin_name"] = data.name;
+                        return RedirectToAction("Index", "Admin");
                         }
                         else
                         {

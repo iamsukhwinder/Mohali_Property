@@ -4,6 +4,7 @@
 }
 
 
+
 <style>
     #add_company_form {
         margin-top: 30px;
@@ -27,7 +28,9 @@
 
     <form asp-controller="ManageUser" asp-action="Add_User" method="post" enctype="multipart/form-data" id="add_user_form">
         <h3>Add User</h3>
-
+        <p style="color:red">@TempData["msg1"]</p>
+        <p style="color:green">@TempData["msg2"]</p>
+      
         <br />
         <div id="div2">
             <h3> User Information</h3>
@@ -129,7 +132,7 @@
 
             <div class="form-group col-md-2">
                 <label>PinCode</label>
-                <input type="text" class="form-control" name="pin_code" id="pincode">
+                <input type="text" class="form-control" name="pin_code" id="pincode" placeholder="Pincode">
                 @*<span style="color:red" id="epincode"></span>*@
                 <span asp-validation-for="pin_code" id="pin_code" class="text-danger"></span>
 
@@ -156,7 +159,7 @@
 
             <div class="form-group col-md-2">
                 <label>Mobile Number</label>
-                <input type="text" class="form-control" name="mobile_number" id="mobilenumber">
+                <input type="text" class="form-control" name="mobile_number" id="mobilenumber" placeholder="Mobile Number">
                 <span style="color:red" id="emobilenumber"></span>
                 <span asp-validation-for="mobile_number" id="mobile_number" class="text-danger"></span>
 
